@@ -1,0 +1,7 @@
+server:
+  servlet:
+    context-path: /api
+
+
+dir:
+  beifen: C:\working\my-project\dailyWeb-back\beifen
