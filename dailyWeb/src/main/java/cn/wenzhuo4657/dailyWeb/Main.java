@@ -9,9 +9,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,11 +20,12 @@ import java.nio.file.Paths;
 
 @Slf4j
 @SpringBootApplication
-public class main implements ApplicationRunner {
+@RestController
+public class Main implements ApplicationRunner {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(main.class, args);
+        SpringApplication.run(Main.class, args);
     }
 
 //    todo  1，md文件编辑 2，每日邮件备份：程序内实现，没必要写脚本    3，tg通知（目前的想法是如果备份失败通过tg进行提醒）
@@ -47,7 +47,6 @@ public class main implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
        String fileName="content.md";
-       fileName = env.getProperty("dir.beifen");
        String beifen = env.getProperty("dir.beifen");
 
         log.info("初始化文件  备份路径:{}",beifen);
@@ -77,7 +76,8 @@ public class main implements ApplicationRunner {
     @RequestMapping(
             value = "md",
             method = RequestMethod.GET,
-            produces = "text/markdown; charset=UTF-8")
+            produces = "text/markdown; charset=UTF-8"
+    )
     public String editMd() {
         try {
             String text = Files.readString(filePath);
@@ -89,10 +89,20 @@ public class main implements ApplicationRunner {
 
     }
 
-    @RequestMapping(value = "md", method = RequestMethod.PUT)
-    public void saveMd(@RequestParam("md") String md) {
-//        为避免写入异常，应先拷贝一份，然后写入
+    @RequestMapping(
+            value = "md",
+            method = RequestMethod.PUT,
+            consumes = "text/markdown; charset=UTF-8",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public boolean saveMd(@RequestBody() String md) {
+        try {
+            Files.writeString(filePath, md);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
 
-        return "saveMd";
     }
 }

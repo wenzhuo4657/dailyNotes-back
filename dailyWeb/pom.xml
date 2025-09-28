@@ -43,4 +43,32 @@
     </dependencies>
 
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+
+                <!--                    每一个<execution>都是一个归档包的定义 -->
+                <!--                    可执行jar包配置-->
+                <execution>
+                    <id>repackage</id>
+
+                    <goals>
+                        <!--                            绑定生命周期在package后-->
+                        <goal>repackage</goal>
+                    </goals>
+                    <configuration>
+
+                        <attach>true</attach>
+                    </configuration>
+                </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+
 </project>
