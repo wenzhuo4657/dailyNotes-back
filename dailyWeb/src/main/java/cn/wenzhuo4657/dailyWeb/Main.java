@@ -20,7 +20,6 @@ import java.nio.file.Paths;
 
 @Slf4j
 @SpringBootApplication
-@RestController
 public class Main implements ApplicationRunner {
 
 
@@ -36,9 +35,12 @@ public class Main implements ApplicationRunner {
 
 
 
-    private Path filePath;
+    private static  Path filePath;
 
 
+    public static Path getFilePath() {
+        return filePath;
+    }
 
     @Resource
     private Environment env;
@@ -73,36 +75,5 @@ public class Main implements ApplicationRunner {
         log.info("初始化完成  path: {}",filePath.toString());
     }
 
-    @RequestMapping(
-            value = "md",
-            method = RequestMethod.GET,
-            produces = "text/markdown; charset=UTF-8"
-    )
-    public String editMd() {
-        try {
-            String text = Files.readString(filePath);
-            return text;
-        }catch (IOException e){
-            log.error("读取文件失败",e);
-            return "读取文件失败";
-        }
 
-    }
-
-    @RequestMapping(
-            value = "md",
-            method = RequestMethod.PUT,
-            consumes = "text/markdown; charset=UTF-8",
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    public boolean saveMd(@RequestBody() String md) {
-        try {
-            Files.writeString(filePath, md);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-
-    }
 }
