@@ -8,6 +8,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +22,8 @@ import java.nio.file.Paths;
 
 @Slf4j
 @SpringBootApplication
-public class Main implements ApplicationRunner {
+public class Main  extends SpringBootServletInitializer implements ApplicationRunner {
+
 
 
     public static void main(String[] args) {
@@ -76,4 +79,11 @@ public class Main implements ApplicationRunner {
     }
 
 
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        log.info("SpringApplicationBuilder-----------------");
+        log.info("this:  {}",this.getClass());
+        log.info("Main: {}",Main.class);
+        return builder.sources(Main.class);
+    }
 }
