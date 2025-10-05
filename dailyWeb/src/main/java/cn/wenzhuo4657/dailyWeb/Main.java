@@ -19,6 +19,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+//    todo  1，md文件编辑 2，每日邮件备份：程序内实现，没必要写脚本    3，tg通知（目前的想法是如果备份失败通过tg进行提醒）
+
+
+
+
+//    todo  war打包问题
+//    1，映射失效，疑似是加载顺序有问题，并导致无法或者Main的静态变量，但是如果运行时获取就没问题
 
 @Slf4j
 @SpringBootApplication
@@ -29,8 +36,6 @@ public class Main  extends SpringBootServletInitializer implements ApplicationRu
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
     }
-
-//    todo  1，md文件编辑 2，每日邮件备份：程序内实现，没必要写脚本    3，tg通知（目前的想法是如果备份失败通过tg进行提醒）
 
 
 

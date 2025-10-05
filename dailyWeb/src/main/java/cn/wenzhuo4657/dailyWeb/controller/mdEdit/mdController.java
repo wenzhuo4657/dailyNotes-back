@@ -24,7 +24,8 @@ import java.nio.file.Path;
 public class mdController {
 
 
-    private Path filePath= Main.getFilePath();
+
+
 
 
     /**
@@ -37,6 +38,7 @@ public class mdController {
     )
     public String editMd() {
         try {
+            Path filePath= Main.getFilePath();
             String text = Files.readString(filePath);
             return text;
         }catch (IOException e){
@@ -59,6 +61,7 @@ public class mdController {
     )
     public boolean saveMd(@RequestBody() String md) {
         try {
+            Path filePath= Main.getFilePath();
             Files.writeString(filePath, md);
         } catch (IOException e) {
             e.printStackTrace();
@@ -80,6 +83,7 @@ public class mdController {
     public ResponseEntity<Resource> DownLoadFile() {
         try {
 
+            Path filePath= Main.getFilePath();
             long size = Files.size(filePath);
             InputStreamResource body = new InputStreamResource(Files.newInputStream(filePath));
 
