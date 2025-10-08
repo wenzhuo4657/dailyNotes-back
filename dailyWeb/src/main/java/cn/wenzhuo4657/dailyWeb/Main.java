@@ -28,7 +28,7 @@ import java.nio.file.Paths;
 
 @Slf4j
 @SpringBootApplication
-public class Main  extends SpringBootServletInitializer implements ApplicationRunner {
+public class Main   implements ApplicationRunner {
 
 
 
@@ -83,11 +83,5 @@ public class Main  extends SpringBootServletInitializer implements ApplicationRu
     }
 
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        log.info("SpringApplicationBuilder-----------------");
-        log.info("this:  {}",this.getClass());
-        log.info("Main: {}",Main.class);
-        return builder.sources(Main.class);
-    }
+
 }

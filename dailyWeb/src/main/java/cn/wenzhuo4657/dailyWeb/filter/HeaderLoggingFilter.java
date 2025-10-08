@@ -50,8 +50,10 @@ public class HeaderLoggingFilter extends OncePerRequestFilter {
             int status = res.getStatus();
             Map<String, String> respHeaders = collectHeaders(res);
 
-            log.info("HTTP {} {} | {} ms\nRequestHeaders: {}\nResponse({}) Headers: {}",
-                    method, uri, cost, reqHeaders, status, respHeaders);
+            log.info("HTTP {} {} | {} ms\nRequestHeaders: \n{}\nResponse({}) Headers:\n{}",
+                    method, uri, cost, getHearders(reqHeaders), status, getHearders(respHeaders));
+
+            res.copyBodyToResponse();
 
 
         }
@@ -76,10 +78,16 @@ public class HeaderLoggingFilter extends OncePerRequestFilter {
     }
 
 
-//    合并请求头的toString方法
+
     private String maskIfSensitive(String name, List<String> values) {
-
-
         return String.join(", ", values);
+    }
+
+    private  String   getHearders(Map<String, String> map){
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            sb.append(entry.getKey()).append(": ").append(entry.getValue()).append("\n");
+        }
+        return sb.toString();
     }
 }

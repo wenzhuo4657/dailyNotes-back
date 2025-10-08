@@ -99,8 +99,6 @@ public class mdController {
                     .contentLength(size)
                     .body(body);
 
-
-
             return res;
         }catch (IOException e){
             log.error("下载文件失败",e);
@@ -116,18 +114,24 @@ public class mdController {
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
+
+
+        Path filePath = Main.getFilePath();
 
         if (file == null || file.isEmpty()) {
             return ResponseEntity.badRequest().body("{\"error\":\"文件为空\"}");
         }
-        String original = StringUtils.cleanPath(file.getOriginalFilename() == null ? "" : file.getOriginalFilename());
-        if (original.isEmpty()) {
-            return ResponseEntity.badRequest().body("{\"error\":\"缺少文件名\"}");
-        }
+//        String original = StringUtils.cleanPath(file.getOriginalFilename() == null ? "" : file.getOriginalFilename());
+//        if (original.isEmpty()) {
+//            return ResponseEntity.badRequest().body("{\"error\":\"缺少文件名\"}");
+//        }
 
-//        todo 待修正
-        return  null;
+        Files.writeString(filePath, new String(file.getBytes()));
+
+
+
+        return ResponseEntity.ok().build();
     }
 
 }
