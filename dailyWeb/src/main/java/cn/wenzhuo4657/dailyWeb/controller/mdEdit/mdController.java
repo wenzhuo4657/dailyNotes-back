@@ -91,12 +91,17 @@ public class mdController {
                     .filename(filePath.getFileName().toString(), StandardCharsets.UTF_8)
                     .build();
 
-            return ResponseEntity.ok()
+
+            ResponseEntity<Resource> res = ResponseEntity.ok()
                     .contentType(MediaType.parseMediaType("text/markdown; charset=UTF-8"))
                     .header(HttpHeaders.CONTENT_DISPOSITION, cd.toString())
                     .header(HttpHeaders.CACHE_CONTROL, "no-store") // 按需调整缓存策略
                     .contentLength(size)
                     .body(body);
+
+
+
+            return res;
         }catch (IOException e){
             log.error("下载文件失败",e);
             return ResponseEntity.status(500).body(null);

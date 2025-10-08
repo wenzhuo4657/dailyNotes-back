@@ -24,8 +24,7 @@ import java.nio.file.Paths;
 
 
 
-//    todo  war打包问题
-//    1，映射失效，疑似是加载顺序有问题，并导致无法或者Main的静态变量，但是如果运行时获取就没问题
+
 
 @Slf4j
 @SpringBootApplication
