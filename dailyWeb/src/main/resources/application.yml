@@ -4,4 +4,11 @@ server:
 
 
 dir:
-  beifen: /home/user/snap/daily/beifen
+  beifen: ${daily.home:/home/user/snap/daily/beifen}
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.sqlite.JDBC
+    url: "jdbc:sqlite:${dir.beifen}/beifen.db"
+

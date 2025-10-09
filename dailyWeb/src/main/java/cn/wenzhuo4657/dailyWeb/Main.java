@@ -3,23 +3,17 @@ package cn.wenzhuo4657.dailyWeb;
 
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.core.env.Environment;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-//    todo  1，md文件编辑 2，每日邮件备份：程序内实现，没必要写脚本    3，tg通知（目前的想法是如果备份失败通过tg进行提醒）
+//    todo   2，每日邮件备份：程序内实现，没必要写脚本    3，tg通知（目前的想法是如果备份失败通过tg进行提醒）
 
 
 
