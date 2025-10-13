@@ -27,3 +27,6 @@ CREATE TABLE content_type (
                               name TEXT NOT NULL,
                               des TEXT
 );
+
+
+

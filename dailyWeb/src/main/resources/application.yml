@@ -12,3 +12,5 @@ spring:
     driver-class-name: org.sqlite.JDBC
     url: "jdbc:sqlite:${dir.beifen}/beifen.db"
 
+
+
