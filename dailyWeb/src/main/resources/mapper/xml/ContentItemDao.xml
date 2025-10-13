@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.wenzhuo4657.dailyWeb.dao.ContentItemDao">
+
+    <resultMap id="contentItem"  type="cn.wenzhuo4657.dailyWeb.entity.ContentItem">
+        <id property="id" column="id" />
+        <result property="content_name_Id" column="content_name_id" />
+        <result property="content" column="content" />
+        <result property="field" column="Field" />
+        <result property="data" column="Data" />
+    </resultMap>
+
+
+
+
+    <select id="queryByContentId" resultType="cn.wenzhuo4657.dailyWeb.entity.ContentItem">
+        select * from content_item where content_name_id=#{i}
+--         Todo 由于在sqlite中的日期类型使用TXT表示的，他应该不能在数据库中排序，因此必须要在java内存中排序，核心是返回给前端的数据必须要做排序
+    </select>
 </mapper>

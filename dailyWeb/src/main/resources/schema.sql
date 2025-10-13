@@ -9,6 +9,10 @@ CREATE TABLE content_name (
 );
 
 
+insert into content_name(id,name,type,create_time,update_time)
+values(0,'daily-base',0,datetime(),datetime());
+
+
 
 -- content_item definition
 
@@ -27,6 +31,9 @@ CREATE TABLE content_type (
                               name TEXT NOT NULL,
                               des TEXT
 );
+insert into content_type(id,name,des) values(0,'daily-base','基本日报类型：以日期 格式分割content_item数据返回前端展示 ');
+
+
 
 
 
