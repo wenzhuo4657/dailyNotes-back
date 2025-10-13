@@ -2,4 +2,5 @@
 日报程序后端
 
 
-该分支用于测试war包，部署tomcat等servlet容器
+一键安装脚本
+`bash <(curl -fsSL https://raw.githubusercontent.com/wenzhuo4657/myScript/main/daily-install.sh)`
