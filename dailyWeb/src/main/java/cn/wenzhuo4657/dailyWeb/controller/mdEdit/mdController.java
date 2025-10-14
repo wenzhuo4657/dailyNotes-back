@@ -39,7 +39,7 @@ public class mdController {
     @RequestMapping(
             method = RequestMethod.GET
     )
-    public List<ItemDto> getMd() {
+    public List<ItemDto> getMd() throws ClassNotFoundException {
 
         return mdRepository.getMd();
     }

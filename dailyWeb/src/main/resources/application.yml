@@ -5,12 +5,13 @@ server:
 
 dir:
   beifen: ${daily.home:/home/user/snap/daily/beifen}
+  db: beifen.db
 
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: org.sqlite.JDBC
-    url: "jdbc:sqlite:${dir.beifen}/beifen.db"
+    url: "jdbc:sqlite:${dir.beifen}/${dir.db}"
 
 
 

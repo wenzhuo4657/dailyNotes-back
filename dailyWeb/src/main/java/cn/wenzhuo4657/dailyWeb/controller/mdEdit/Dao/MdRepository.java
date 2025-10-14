@@ -4,13 +4,13 @@ package cn.wenzhuo4657.dailyWeb.controller.mdEdit.Dao;
 import cn.wenzhuo4657.dailyWeb.controller.mdEdit.Dto.InsertItemDto;
 import cn.wenzhuo4657.dailyWeb.controller.mdEdit.Dto.ItemDto;
 import cn.wenzhuo4657.dailyWeb.controller.mdEdit.Dto.UpdateItemDto;
-import cn.wenzhuo4657.dailyWeb.controller.mdEdit.utils.FuntionUtils;
 import cn.wenzhuo4657.dailyWeb.dao.ContentItemDao;
 import cn.wenzhuo4657.dailyWeb.entity.ContentItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -25,9 +25,20 @@ public class MdRepository {
     private  static final int BASIC_CONTENT_ID = BASIC_CONTENT.id;
 
 
-    public List<ItemDto> getMd(){
+    public List<ItemDto> getMd() throws ClassNotFoundException {
         List<ContentItem> contentItems = contentItemDao.queryByContentId(BASIC_CONTENT_ID);
-        return FuntionUtils.toItemDto(contentItems);
+
+        List<ItemDto> itemDtos= new ArrayList<>();
+        for (
+                ContentItem contentItem : contentItems
+        ){
+            ItemDto itemDto = new ItemDto();
+            itemDto.setId(contentItem.getId());
+            itemDto.setContent(contentItem.getContent());
+            itemDto.setTitle(contentItemType.toTitle(BASIC_CONTENT));
+        }
+
+        return itemDtos;
     }
 
 
@@ -46,6 +57,7 @@ public class MdRepository {
         ContentItem contentItem = new ContentItem();
         contentItem.setContent_name_Id(BASIC_CONTENT_ID);
 
+
         contentItem.setField(contentItemType.toFiled(BASIC_CONTENT));
 
         contentItem.setContent(params.getContent());
@@ -58,6 +70,7 @@ public class MdRepository {
 
 
     public  static  class   contentItemType{
+
 //        根据ItemType生成对应的Filed属性
 
         public enum ItemType{
@@ -86,6 +99,13 @@ public class MdRepository {
 
             if (itemType.id.equals(ItemType.BASIC_CONTENT.id)){
                 return  "";
+            }
+            throw  new ClassNotFoundException("不支持的ItemType");
+        }
+
+        public static String toTitle(ItemType itemType) throws ClassNotFoundException {
+            if (itemType.id.equals(ItemType.BASIC_CONTENT.id)){
+                return  new Date(System.currentTimeMillis()).toString();
             }
             throw  new ClassNotFoundException("不支持的ItemType");
         }

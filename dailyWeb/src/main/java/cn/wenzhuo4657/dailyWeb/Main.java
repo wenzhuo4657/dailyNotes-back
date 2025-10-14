@@ -39,10 +39,17 @@ public class Main  implements ApplicationRunner {
 
     private static  Path filePath;
 
+    private static Path dbfilePath;
+
 
     public static Path getFilePath() {
         return filePath;
     }
+
+    public static Path getDbfilePath() {
+        return dbfilePath;
+    }
+
 
 
     @Autowired
@@ -52,5 +59,8 @@ public class Main  implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         String property = env.getProperty("dir.beifen");
         filePath = Paths.get(property);
+
+        String property1 = env.getProperty("dir.db");
+        dbfilePath = Paths.get(property,property1);
     }
 }
