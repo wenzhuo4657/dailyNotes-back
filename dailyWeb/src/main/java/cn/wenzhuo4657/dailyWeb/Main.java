@@ -3,6 +3,7 @@ package cn.wenzhuo4657.dailyWeb;
 
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,7 +23,7 @@ import java.nio.file.Paths;
 
 @Slf4j
 @SpringBootApplication
-public class Main  {
+public class Main  implements ApplicationRunner {
 
 
 
@@ -40,11 +41,16 @@ public class Main  {
 
 
     public static Path getFilePath() {
-        return null;
+        return filePath;
     }
 
 
+    @Autowired
+    private  Environment  env;
 
-
-
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        String property = env.getProperty("dir.beifen");
+        filePath = Paths.get(property);
+    }
 }

@@ -21,7 +21,7 @@ CREATE TABLE content_item (
                               content_name_id INTEGER NOT NULL,
                               item_content TEXT NOT NULL,
                               item_Field TEXT,
-                              "data" TEXT NOT NULL
+                              "date" TEXT NOT NULL
 );
 
 -- content_type definition

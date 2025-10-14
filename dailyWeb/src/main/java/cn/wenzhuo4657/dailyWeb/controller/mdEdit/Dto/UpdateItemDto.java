@@ -4,11 +4,8 @@ package cn.wenzhuo4657.dailyWeb.controller.mdEdit.Dto;
 import lombok.Data;
 
 @Data
-public class ItemDto {
+public class UpdateItemDto {
 
     private Integer id;
-
-    private String title;
-
     private String content;
 }

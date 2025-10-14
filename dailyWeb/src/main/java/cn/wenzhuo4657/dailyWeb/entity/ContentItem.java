@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.sql.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,6 +19,7 @@ public class ContentItem {
     private String content;
 
     private String field;
+
 
     private Date data;
 }
