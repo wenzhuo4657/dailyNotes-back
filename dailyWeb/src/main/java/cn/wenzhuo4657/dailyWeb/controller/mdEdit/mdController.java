@@ -14,6 +14,7 @@ import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,7 +26,9 @@ import java.util.List;
 import java.util.Map;
 
 @Slf4j
-@RestController(value = "md")
+@Controller(value = "md")
+@ResponseBody // 直接将响应值作为 HTTP 响应体正文，默认会走视图解析
+@RequestMapping(value = "/md")
 public class mdController {
 
 
@@ -65,7 +68,7 @@ public class mdController {
             method = RequestMethod.POST
     )
     public boolean addItem(InsertItemDto params) throws ClassNotFoundException {
-        mdRepository.addItem( params);
+        mdRepository.addItem(params);
         return true;
     }
 

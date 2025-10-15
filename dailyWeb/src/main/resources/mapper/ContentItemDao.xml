@@ -3,11 +3,14 @@
 <mapper namespace="cn.wenzhuo4657.dailyWeb.dao.ContentItemDao">
 
 
-    <insert id="insert">
-        insert into content_item(content_name_id,content,field,date) values(#{content_name_id},#{content},#{field),#{data})
+    <insert id="insert" parameterType="cn.wenzhuo4657.dailyWeb.entity.ContentItem">
+        insert into content_item(content_name_id,content,field,date)
+        values(#{content_name_Id},#{content},#{field},#{data})
     </insert>
-    <update id="update">
-        update content_item set content=#{content} where id=#{id} and content_name_id= #{content_name_id}
+    <update id="update" parameterType="cn.wenzhuo4657.dailyWeb.entity.ContentItem">
+        update content_item
+        set content=#{content}
+        where id=#{id} and content_name_id=#{content_name_Id}
     </update>
 
 

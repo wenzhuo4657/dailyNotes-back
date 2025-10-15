@@ -12,6 +12,19 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: org.sqlite.JDBC
     url: "jdbc:sqlite:${dir.beifen}/${dir.db}"
+  sql:
+    init:
+      schema-locations: classpath:schema.sql
+      mode: always
+      data-locations:  classpath:data.sql
 
 
 
+
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
