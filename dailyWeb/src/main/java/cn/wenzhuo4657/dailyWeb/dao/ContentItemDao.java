@@ -17,4 +17,6 @@ public interface ContentItemDao {
     int insert(ContentItem record);
 
     void update(ContentItem itemDto);
+
+    int queryByContentIdAndDate(ContentItem contentItem);
 }

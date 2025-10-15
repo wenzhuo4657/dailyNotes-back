@@ -22,7 +22,9 @@ public class ContentItem {
     private String field;
 
 
-    private Date data;
+    private String date;
+
+
 
 
     public void setField(String field) {

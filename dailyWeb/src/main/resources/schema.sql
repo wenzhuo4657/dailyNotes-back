@@ -23,6 +23,7 @@ CREATE TABLE  if not exists content_item (
                               item_content TEXT NOT NULL,
                               item_Field TEXT,
                               date TEXT NOT NULL
+
 );
 
 -- content_type definition

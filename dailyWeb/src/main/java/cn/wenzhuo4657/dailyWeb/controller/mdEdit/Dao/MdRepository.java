@@ -35,7 +35,8 @@ public class MdRepository {
             ItemDto itemDto = new ItemDto();
             itemDto.setId(contentItem.getId());
             itemDto.setContent(contentItem.getContent());
-            itemDto.setTitle(contentItemType.toTitle(BASIC_CONTENT));
+            itemDto.setTitle(contentItemType.toTitle(BASIC_CONTENT,contentItem));
+            itemDtos.add(itemDto);
         }
 
         return itemDtos;
@@ -54,16 +55,17 @@ public class MdRepository {
 
     public void addItem(InsertItemDto params) throws ClassNotFoundException {
 
+
         ContentItem contentItem = new ContentItem();
         contentItem.setContent_name_Id(BASIC_CONTENT_ID);
-
-
         contentItem.setField(contentItemType.toFiled(BASIC_CONTENT));
-
         contentItem.setContent(params.getContent());
+        contentItem.setDate(new Date(System.currentTimeMillis()).toString());
 
-        contentItem.setData(new Date(System.currentTimeMillis()));
-        contentItemDao.insert(contentItem);
+        if (contentItemDao.queryByContentIdAndDate(contentItem)==0){
+            contentItemDao.insert(contentItem);
+        }
+
 
     }
 
@@ -103,9 +105,9 @@ public class MdRepository {
             throw  new ClassNotFoundException("不支持的ItemType");
         }
 
-        public static String toTitle(ItemType itemType) throws ClassNotFoundException {
+        public static String toTitle(ItemType itemType, ContentItem field) throws ClassNotFoundException {
             if (itemType.id.equals(ItemType.BASIC_CONTENT.id)){
-                return  new Date(System.currentTimeMillis()).toString();
+                return  field.getDate().toString();
             }
             throw  new ClassNotFoundException("不支持的ItemType");
         }

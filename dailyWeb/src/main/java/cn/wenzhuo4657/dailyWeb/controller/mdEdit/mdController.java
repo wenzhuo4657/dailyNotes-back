@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -53,7 +54,12 @@ public class mdController {
     @RequestMapping(
             method = RequestMethod.PUT
     )
-    public boolean updateItem( UpdateItemDto params) {
+    public boolean updateItem(@RequestBody UpdateItemDto params) {
+
+        if (params.getId() == null){
+            return false;
+        }
+
 
         mdRepository.updateMd( params);
         return true;
@@ -63,14 +69,18 @@ public class mdController {
 
     /**
      * 新增文档item
+     * TODO 暂时仅支持增加当天的文档，当天文档已存在时会失效
      */
     @RequestMapping(
             method = RequestMethod.POST
     )
-    public boolean addItem(InsertItemDto params) throws ClassNotFoundException {
+    public boolean addItem(@RequestBody InsertItemDto params) throws ClassNotFoundException {
         mdRepository.addItem(params);
         return true;
     }
+
+
+
 
 
 
