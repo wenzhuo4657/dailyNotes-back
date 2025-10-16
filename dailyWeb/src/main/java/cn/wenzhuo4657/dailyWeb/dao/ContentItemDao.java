@@ -1,6 +1,5 @@
 package cn.wenzhuo4657.dailyWeb.dao;
 
-import cn.wenzhuo4657.dailyWeb.controller.mdEdit.Dto.ItemDto;
 import cn.wenzhuo4657.dailyWeb.entity.ContentItem;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
