@@ -2,7 +2,8 @@ package cn.wenzhuo4657.dailyWeb.controller.mdEdit;
 
 
 import cn.wenzhuo4657.dailyWeb.Main;
-import cn.wenzhuo4657.dailyWeb.controller.mdEdit.Dao.MdRepository;
+import cn.wenzhuo4657.dailyWeb.controller.mdEdit.Dao.DailyRepository;
+
 import cn.wenzhuo4657.dailyWeb.controller.mdEdit.Dto.InsertItemDto;
 import cn.wenzhuo4657.dailyWeb.controller.mdEdit.Dto.ItemDto;
 import cn.wenzhuo4657.dailyWeb.controller.mdEdit.Dto.UpdateItemDto;
@@ -27,14 +28,13 @@ import java.util.List;
 import java.util.Map;
 
 @Slf4j
-@Controller(value = "md")
+@Controller(value = "content")
 @ResponseBody // 直接将响应值作为 HTTP 响应体正文，默认会走视图解析
 @RequestMapping(value = "/md")
-public class mdController {
+public class DailyController extends TypeDailyController{
 
 
-    @Autowired
-    private MdRepository mdRepository;
+
 
 
     /**
@@ -43,10 +43,12 @@ public class mdController {
     @RequestMapping(
             method = RequestMethod.GET
     )
-    public List<ItemDto> getMd() throws ClassNotFoundException {
+    public List<ItemDto> getMd(
+    ) throws ClassNotFoundException {
 
         return mdRepository.getMd();
     }
+
 
     /**
      * 修改文档item
@@ -73,10 +75,11 @@ public class mdController {
     @RequestMapping(
             method = RequestMethod.POST
     )
-    public boolean addItem(@RequestBody InsertItemDto params) throws ClassNotFoundException {
-        mdRepository.addItem(params);
+    public boolean addItem()  {
+        mdRepository.addItem();
         return true;
     }
+
 
 
 
