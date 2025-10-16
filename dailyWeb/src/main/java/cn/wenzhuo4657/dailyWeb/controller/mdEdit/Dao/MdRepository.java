@@ -59,7 +59,7 @@ public class MdRepository {
         ContentItem contentItem = new ContentItem();
         contentItem.setContent_name_Id(BASIC_CONTENT_ID);
         contentItem.setField(contentItemType.toFiled(BASIC_CONTENT));
-        contentItem.setContent(params.getContent());
+        contentItem.setContent("");
         contentItem.setDate(new Date(System.currentTimeMillis()).toString());
 
         if (contentItemDao.queryByContentIdAndDate(contentItem)==0){

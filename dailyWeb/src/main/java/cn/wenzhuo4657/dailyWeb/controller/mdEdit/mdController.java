@@ -68,8 +68,7 @@ public class mdController {
 
 
     /**
-     * 新增文档item
-     * TODO 暂时仅支持增加当天的文档，当天文档已存在时会失效
+     * 新增文档item条目
      */
     @RequestMapping(
             method = RequestMethod.POST

@@ -8,5 +8,5 @@ public class InsertItemDto {
 
 
     private  Integer content_name_Id;
-    private String content;
+
 }
