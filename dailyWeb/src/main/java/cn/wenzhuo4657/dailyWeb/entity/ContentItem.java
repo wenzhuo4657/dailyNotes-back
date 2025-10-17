@@ -1,5 +1,9 @@
 package cn.wenzhuo4657.dailyWeb.entity;
 
+import cn.wenzhuo4657.dailyWeb.controller.mdEdit.function.typeDaily.FiledFn;
+import cn.wenzhuo4657.dailyWeb.controller.mdEdit.function.typeDaily.FiledFunction;
+import cn.wenzhuo4657.dailyWeb.controller.mdEdit.function.typeDaily.TitleFn;
+import cn.wenzhuo4657.dailyWeb.controller.mdEdit.model.vo.contentItemType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,12 +32,22 @@ public class ContentItem {
 
 
     public void setField(String field) {
-        this.field = field;
-    }
-
-
-    //        TODO java使用函数式接口,以此来避免直接使用String类型设置title，对于title和field的设置必须使用我设置的contentItemType中的转换方法
-    public String setField(Function  function) {
         throw  new UnsupportedOperationException("不支持此操作");
     }
+
+    /**
+     * 初始化filed
+     */
+    public void setField(FiledFn function, contentItemType.ItemType itemType) throws ClassNotFoundException {
+        String res=function.toFiled(itemType);
+        this.field=res;
+    }
+
+    /**
+     *todo  变更filed
+     */
+
+
+
+
 }
