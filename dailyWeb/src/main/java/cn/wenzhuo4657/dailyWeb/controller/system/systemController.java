@@ -115,7 +115,7 @@ public class systemController {
 
 
         try (InputStream in = file.getInputStream()) {
-            Files.copy(in, temp, ATOMIC_MOVE,REPLACE_EXISTING);
+            Files.copy(in, temp, REPLACE_EXISTING);
         }
         Files.move( temp,Main.getDbfilePath(),REPLACE_EXISTING);
 
