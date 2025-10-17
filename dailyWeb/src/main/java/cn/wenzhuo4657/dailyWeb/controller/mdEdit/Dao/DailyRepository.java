@@ -1,6 +1,7 @@
 package cn.wenzhuo4657.dailyWeb.controller.mdEdit.Dao;
 
 
+import cn.wenzhuo4657.dailyWeb.controller.mdEdit.function.typeDaily.FiledFunction;
 import cn.wenzhuo4657.dailyWeb.controller.mdEdit.model.Dto.InsertItemDto;
 import cn.wenzhuo4657.dailyWeb.controller.mdEdit.model.Dto.ItemDto;
 import cn.wenzhuo4657.dailyWeb.controller.mdEdit.model.Dto.UpdateItemDto;
@@ -45,7 +46,7 @@ public class DailyRepository {
                 ItemDto itemDto = new ItemDto();
                 itemDto.setId(contentItem.getId());
                 itemDto.setContent(contentItem.getContent());
-                itemDto.setTitle(contentItemType.toTitle(itemType,contentItem));
+                itemDto.setTitle(FiledFunction.toTitle.apply(itemType,contentItem));
                 itemDtos.add(itemDto);
             }
             return itemDtos;
@@ -94,7 +95,7 @@ public class DailyRepository {
             contentItemType.ItemType itemType = contentItemType.ItemType.toItemType(params.getContent_name_Id());
             ContentItem contentItem = new ContentItem();
             contentItem.setContent_name_Id(itemType.getId());
-            contentItem.setField(contentItemType.toFiled(itemType));
+            contentItem.setField(FiledFunction.toFiled,itemType);
             contentItem.setContent("");
             contentItem.setDate(new Date(System.currentTimeMillis()).toString());
 
