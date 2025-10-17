@@ -15,7 +15,7 @@ public class FiledFunction {
                 return  field.getDate().toString();
             }
             if (itemType.getId().equals(contentItemType.ItemType.CHECK_LIST.getId())){
-                return  field.getField();//这里实际上是将title作为前端的内容信息，此处备忘录为是否完成
+                return  field.getField();
             }
             throw  new ClassNotFoundException("不支持的ItemType");
 

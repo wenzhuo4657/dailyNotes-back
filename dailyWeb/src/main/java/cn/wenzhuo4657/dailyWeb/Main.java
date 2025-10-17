@@ -60,6 +60,9 @@ public class Main  implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         String property = env.getProperty("dir.beifen");
         filePath = Paths.get(property);
+        if (!Files.exists(filePath)) {
+            Files.createDirectory(filePath);
+        }
 
         String property1 = env.getProperty("dir.db");
         dbfilePath = Paths.get(property,property1);
