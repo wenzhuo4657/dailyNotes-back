@@ -137,7 +137,7 @@ public class systemController {
             stmt.execute(attachSql);
 
             // **合并 表数据**
-//            TODO sql编写
+//            TODO sql脚本，以后数据库一定会变，所以之后要注意对不同版本的数据库进行兼容，对于库表版本进行标记，
 //            1，清除原表数据
             String deleteSql = """
                     DELETE FROM main.content_item;
