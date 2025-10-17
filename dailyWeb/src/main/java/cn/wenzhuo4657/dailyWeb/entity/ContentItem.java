@@ -29,10 +29,12 @@ public class ContentItem {
     private String date;
 
 
-
-
+    /**
+     *  该set只能用于mybatis,
+     *
+     */
     public void setField(String field) {
-        throw  new UnsupportedOperationException("不支持此操作");
+        this.field = field;
     }
 
     /**
