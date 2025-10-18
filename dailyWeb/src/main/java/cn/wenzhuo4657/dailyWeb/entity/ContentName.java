@@ -16,7 +16,7 @@ public class ContentName {
 
     private String name;
 
-    private String type;
+    private Integer type;
 
     private Date createTime;
 

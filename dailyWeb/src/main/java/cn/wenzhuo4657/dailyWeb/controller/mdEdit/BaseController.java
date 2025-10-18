@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Slf4j
 @Controller(value = "content")
 @ResponseBody // 直接将响应值作为 HTTP 响应体正文，默认会走视图解析
 @RequestMapping(value = "/md")
-public class DailyController extends TypeDailyController{
+public class BaseController extends TypeDailyController  {
 
 
 

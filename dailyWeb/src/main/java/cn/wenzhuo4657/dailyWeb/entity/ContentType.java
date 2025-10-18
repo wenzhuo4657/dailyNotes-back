@@ -13,7 +13,7 @@ public class ContentType {
 
     private String name;
 
-    private String type;
+    private String des;
 
 
 }

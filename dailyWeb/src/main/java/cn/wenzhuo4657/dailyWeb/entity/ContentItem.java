@@ -29,10 +29,7 @@ public class ContentItem {
     private String date;
 
 
-    /**
-     *  该set只能用于mybatis,
-     *
-     */
+
     public void setField(String field) {
         this.field = field;
     }
@@ -45,9 +42,7 @@ public class ContentItem {
         this.field=res;
     }
 
-    /**
-     *todo  变更filed
-     */
+
 
 
 

@@ -18,26 +18,28 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class DailyRepository {
+public class BaseRepository extends FieldRepository {
 
-    @Autowired
-    private ContentItemDao contentItemDao;
 
 
 
     private  static  final  contentItemType.ItemType BASIC_CONTENT = contentItemType.ItemType.BASIC_CONTENT;
-    private  static final int BASIC_CONTENT_ID = BASIC_CONTENT.getId();
+    private  static final int BASIC_CONTENT_TYPE_ID = BASIC_CONTENT.getId();
+    private static final int BASE_CONTENT_NAME_ID = 0;
 
 
-    public List<ItemDto> getMd() throws ClassNotFoundException {
-        return getMd(BASIC_CONTENT_ID);
+    public List<ItemDto> getMd(){
+        return getMd(BASE_CONTENT_NAME_ID,BASIC_CONTENT_TYPE_ID);
     }
 
-    public List<ItemDto> getMd(Integer content_name_Id)  {
+
+    public List<ItemDto> getMd(Integer content_name_Id, Integer type)  {
 
         try {
-            contentItemType.ItemType itemType = contentItemType.ItemType.toItemType(content_name_Id);
-            List<ContentItem> contentItems = contentItemDao.queryByContentId(itemType.getId());
+
+            contentItemType.ItemType itemType = contentItemType.ItemType.toItemType(type);
+
+            List<ContentItem> contentItems = contentItemDao.queryByContentId(content_name_Id);
 
             List<ItemDto> itemDtos= new ArrayList<>();
             for (
@@ -61,12 +63,12 @@ public class DailyRepository {
 
 
     public boolean updateMd(UpdateItemDto itemDto){
-        return  updateMd(itemDto,BASIC_CONTENT_ID);
+        return  updateMd(itemDto,BASIC_CONTENT_TYPE_ID);
     }
-    public boolean updateMd(UpdateItemDto itemDto,Integer content_name_Id){
+    public boolean updateMd(UpdateItemDto itemDto,Integer type){
 
         try {
-            contentItemType.ItemType itemType = contentItemType.ItemType.toItemType(content_name_Id);
+            contentItemType.ItemType itemType = contentItemType.ItemType.toItemType(type);
             ContentItem contentItem = new ContentItem();
             contentItem.setId(itemDto.getId());
             contentItem.setContent(itemDto.getContent());
@@ -81,20 +83,18 @@ public class DailyRepository {
     }
 
     public void addItem()  {
-        InsertItemDto params = new InsertItemDto();
-        params.setContent_name_Id(BASIC_CONTENT_ID);
 
-        addItem( params);
+        addItem(BASE_CONTENT_NAME_ID,BASIC_CONTENT_TYPE_ID);
 
     }
 
-    public void addItem(InsertItemDto params)  {
+    public void addItem(Integer content_name_Id,Integer type)  {
 
 
         try {
-            contentItemType.ItemType itemType = contentItemType.ItemType.toItemType(params.getContent_name_Id());
+            contentItemType.ItemType itemType = contentItemType.ItemType.toItemType(type);
             ContentItem contentItem = new ContentItem();
-            contentItem.setContent_name_Id(itemType.getId());
+            contentItem.setContent_name_Id(content_name_Id);
             contentItem.setField(FiledFunction.toFiled,itemType);
             contentItem.setContent("");
             contentItem.setDate(new Date(System.currentTimeMillis()).toString());

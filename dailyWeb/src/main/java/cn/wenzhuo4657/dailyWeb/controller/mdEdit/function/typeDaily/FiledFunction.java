@@ -1,5 +1,6 @@
 package cn.wenzhuo4657.dailyWeb.controller.mdEdit.function.typeDaily;
 
+import cn.wenzhuo4657.dailyWeb.controller.mdEdit.model.vo.ContentItemFiled;
 import cn.wenzhuo4657.dailyWeb.controller.mdEdit.model.vo.contentItemType;
 import cn.wenzhuo4657.dailyWeb.entity.ContentItem;
 
@@ -25,15 +26,9 @@ public class FiledFunction {
     public static  FiledFn toFiled = new FiledFn() {
         @Override
         public String toFiled(contentItemType.ItemType itemType) throws ClassNotFoundException {
-//            TODO 这是item field属性的初始化方法，但由于目前不出处理，所以实际上直接返回也行，但这样子写方便后续拓展
-            if (itemType.getId().equals(contentItemType.ItemType.BASIC_CONTENT.getId())){
-                return contentItemType.ItemType.BASIC_CONTENT.getField() ;
-            }
-            if (itemType.getId().equals(contentItemType.ItemType.CHECK_LIST.getId())){
 
-                return  contentItemType.ItemType.CHECK_LIST.getField();
-            }
-            throw  new ClassNotFoundException("不支持的ItemType");
+            return ContentItemFiled.toFiled(itemType.getField());
+
         }
 
     };
