@@ -49,6 +49,7 @@ public class BaseRepository extends FieldRepository {
                 itemDto.setId(contentItem.getId());
                 itemDto.setContent(contentItem.getContent());
                 itemDto.setTitle(FiledFunction.toTitle.apply(itemType,contentItem));
+                itemDto.setExpand(FiledFunction.toExpand.apply(itemType,contentItem));
                 itemDtos.add(itemDto);
             }
             return itemDtos;
@@ -73,7 +74,7 @@ public class BaseRepository extends FieldRepository {
             contentItem.setId(itemDto.getId());
             contentItem.setContent(itemDto.getContent());
             contentItem.setContent_name_Id(itemType.getId());
-            contentItemDao.update(contentItem);
+            contentItemDao.updateContent(contentItem);
         }catch (ClassNotFoundException e){
             log.error("不支持的ItemType");
             return false;
@@ -112,6 +113,12 @@ public class BaseRepository extends FieldRepository {
         }
 
     }
+
+
+    public ContentItem selectContentItem(Integer id){
+        return contentItemDao.selectContentItem(id);
+    }
+
 
 
 

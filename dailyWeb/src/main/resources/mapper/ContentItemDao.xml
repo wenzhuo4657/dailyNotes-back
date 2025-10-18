@@ -15,10 +15,17 @@
         insert into content_item(content_name_id,item_content,item_Field,date)
         values(#{content_name_Id},#{content},#{field},#{date})
     </insert>
-    <update id="update" parameterType="cn.wenzhuo4657.dailyWeb.entity.ContentItem">
+
+    <update id="updateContent"  parameterType="cn.wenzhuo4657.dailyWeb.entity.ContentItem">
         update content_item
         set item_content=#{content}
-        where id=#{id} and content_name_id=#{content_name_Id}
+        where id=#{id}  and content_name_id=#{content_name_Id}
+
+    </update>
+    <update id="updateField" parameterType="cn.wenzhuo4657.dailyWeb.entity.ContentItem">
+        update content_item
+        set item_Field= #{field}
+        where id= #{id}
     </update>
 
 
@@ -27,5 +34,8 @@
     </select>
     <select id="queryByContentIdAndDate" resultType="java.lang.Integer" parameterType="cn.wenzhuo4657.dailyWeb.entity.ContentItem">
         select  count(*) from content_item where  content_name_id=#{content_name_Id} and date=#{date}
+    </select>
+    <select id="selectContentItem" resultType="cn.wenzhuo4657.dailyWeb.entity.ContentItem">
+        select * from content_item where id=#{id}
     </select>
 </mapper>

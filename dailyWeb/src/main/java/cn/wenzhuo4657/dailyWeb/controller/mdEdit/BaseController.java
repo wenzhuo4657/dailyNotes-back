@@ -19,20 +19,20 @@ public class BaseController extends TypeDailyController  {
 
 
     /**
-     * 获取基本文档（即日报）所有数据，无需指定参数
+     * 获取基本文档（即日报）基本数据，无需指定参数
      */
     @RequestMapping(
             method = RequestMethod.GET
     )
     public List<ItemDto> getMd(
-    ) throws ClassNotFoundException {
+    )  {
 
         return mdRepository.getMd();
     }
 
 
     /**
-     * 修改文档item
+     * 修改文档item content
      */
     @RequestMapping(
             method = RequestMethod.PUT

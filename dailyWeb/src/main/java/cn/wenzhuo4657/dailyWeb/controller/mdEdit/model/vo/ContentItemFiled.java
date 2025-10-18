@@ -21,7 +21,8 @@ public class ContentItemFiled {
      * ps（2） 所有属性值都为字符串形式
      */
     public  enum ItemFiled{
-        status("status","no"),
+        title("title","摸鱼~~~~~"),
+        status("status","false"),
         data("data","null");
 
 
@@ -75,5 +76,17 @@ public class ContentItemFiled {
             map.put(split1[0],split1[1]);
         }
         return map;
+    }
+
+
+    /**
+     * 该函数有点危险，会返回带有未知属性的filed,但是校验的话感觉又没必要
+     */
+    public static String  toFiled(Map<String,String> map){
+        StringBuilder filed=new StringBuilder();
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            filed.append(entry.getKey()).append(FILED_SPLIT_1).append(entry.getValue()).append(FILED_SPLIT_2);
+        }
+        return filed.toString();
     }
 }
