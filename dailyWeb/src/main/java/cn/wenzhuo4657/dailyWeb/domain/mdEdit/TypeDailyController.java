@@ -61,7 +61,14 @@ public class TypeDailyController  extends FieldController {
             method = RequestMethod.POST
     )
     public boolean addItem(@RequestBody InsertItemDto params)  {
-        mdRepository.addItem(params.getContent_name_Id(),params.getType());
+//        todo 参数校验，使用spring-boot-starter-validation
+        if (params.getDate()==null){
+            mdRepository.addItem(params.getContent_name_Id(),params.getType());
+
+        }else {
+            mdRepository.addItem(params.getContent_name_Id(),params.getType(),params.getDate());
+        }
+
         return true;
     }
 

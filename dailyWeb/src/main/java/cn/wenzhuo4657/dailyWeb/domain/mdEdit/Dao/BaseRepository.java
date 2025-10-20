@@ -87,15 +87,18 @@ public class BaseRepository extends FieldRepository {
     }
 
     public void addItem(Integer content_name_Id,Integer type)  {
+        addItem(content_name_Id,type,new Date(System.currentTimeMillis()));
 
 
+    }
+    public  void addItem(Integer content_name_Id,Integer type,Date  date){
         try {
             contentItemType.ItemType itemType = contentItemType.ItemType.toItemType(type);
             ContentItem contentItem = new ContentItem();
             contentItem.setContent_name_Id(content_name_Id);
             contentItem.setField(FiledFunction.toFiled,itemType);
             contentItem.setContent("");
-            contentItem.setDate(new Date(System.currentTimeMillis()).toString());
+            contentItem.setDate(date.toString());
 
             if (itemType==BASIC_CONTENT&&contentItemDao.queryByContentIdAndDate(contentItem)!=0){
                 throw new Exception("已经存在");
