@@ -29,11 +29,13 @@ mybatis:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
 
+
+# TODO  这些变量要可以被覆盖
 email:
   enable: false
   config:
-    user: wenzhuo4657@gmail.com
     from: wenzhuo4657@gmail.com
+    to: wenzhuo4657@gmail.com
     password: rgtpeuydxysjebpc
 
 

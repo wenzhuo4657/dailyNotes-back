@@ -32,8 +32,8 @@ mybatis:
 email:
   enable: false
   config:
-    user: wenzhuo4657@gmail.com
     from: wenzhuo4657@gmail.com
+    to: wenzhuo4657@gmail.com
     password: rgtpeuydxysjebpc
 
 
