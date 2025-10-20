@@ -102,9 +102,7 @@ public class systemController {
     public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
 
 
-// todo 疑似有并发风险，导致 tempDb卸载失败
-//        （1） The database file is locked (database is locked)
-//        （2）SQL error or missing database (database tempDb is already in use)
+
 
         if (file == null || file.isEmpty()) {
             return ResponseEntity.badRequest().body("{\"error\":\"文件为空\"}");
