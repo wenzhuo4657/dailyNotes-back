@@ -14,7 +14,4 @@ public class CorsConfig implements WebMvcConfigurer {
                 .allowedHeaders("*") // 允许所有请求头
                 .maxAge(3600); // 预检请求的有效期（秒）
     }
-
-
-
 }

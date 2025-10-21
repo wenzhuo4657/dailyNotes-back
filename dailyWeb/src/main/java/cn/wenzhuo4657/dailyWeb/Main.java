@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+//    todo   2，每日邮件备份：程序内实现，没必要写脚本    3，tg通知（目前的想法是如果备份失败通过tg进行提醒）
 
 
 
