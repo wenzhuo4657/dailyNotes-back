@@ -1,9 +1,9 @@
-package cn.wenzhuo4657.dailyWeb.domain.mdEdit;
+package cn.wenzhuo4657.dailyWeb.domain.ItemEdit;
 
 
-import cn.wenzhuo4657.dailyWeb.domain.mdEdit.model.Dto.InsertItemDto;
-import cn.wenzhuo4657.dailyWeb.domain.mdEdit.model.Dto.ItemDto;
-import cn.wenzhuo4657.dailyWeb.domain.mdEdit.model.Dto.UpdateItemDto;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.InsertItemDto;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.ItemDto;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.UpdateItemDto;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,8 +16,10 @@ import java.util.List;
  */
 public class TypeDailyController  extends FieldController {
 
-    //TODO 备忘录类型，相关选择列表接口，暂时不处理多文档，而是处理多文档类型
-//        备忘录需要关联tg通知，做成条目， 通知类型， 每日通知
+
+
+
+
 
 
     @RequestMapping(
@@ -54,7 +56,7 @@ public class TypeDailyController  extends FieldController {
 
 
     /**
-     * 新增文档item条目
+     * 新增文档item条目  当日
      */
     @RequestMapping(
             value = "type",
@@ -62,14 +64,24 @@ public class TypeDailyController  extends FieldController {
     )
     public boolean addItem(@RequestBody InsertItemDto params)  {
 //        todo 参数校验，使用spring-boot-starter-validation
-        if (params.getDate()==null){
-            mdRepository.addItem(params.getContent_name_Id(),params.getType());
-
-        }else {
-            mdRepository.addItem(params.getContent_name_Id(),params.getType(),params.getDate());
-        }
+        mdRepository.addItem(params.getContent_name_Id(),params.getType());
 
         return true;
+    }
+
+
+    /**
+     * 新增文档item条目  指定时间
+     * 支持类型： 基本日报
+     */
+    @RequestMapping(
+            value = "type/daily/date",
+            method = RequestMethod.POST
+    )
+    public boolean addItemInDaily(@RequestBody InsertItemDto params)  {
+
+//        1,先插入2，再修改时间
+        return  true;
     }
 
 

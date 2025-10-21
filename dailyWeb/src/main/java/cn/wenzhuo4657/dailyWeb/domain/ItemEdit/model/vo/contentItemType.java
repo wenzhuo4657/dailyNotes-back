@@ -1,4 +1,4 @@
-package cn.wenzhuo4657.dailyWeb.domain.mdEdit.model.vo;
+package cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo;
 
 
 /**
@@ -8,10 +8,22 @@ public   class   contentItemType{
 
 //        根据ItemType生成对应的Filed属性
 
+        private static ContentItemFiled.ItemFiled[] Base_Content_Field=
+                new ContentItemFiled.ItemFiled[]{
+                        ContentItemFiled.ItemFiled.title
+
+        };
+        private static ContentItemFiled.ItemFiled[] Check_List_Field=
+                new ContentItemFiled.ItemFiled[]{
+                        ContentItemFiled.ItemFiled.status,
+                        ContentItemFiled.ItemFiled.data,
+                        ContentItemFiled.ItemFiled.title
+        };
+
 
         public enum ItemType{
-            BASIC_CONTENT(0,new ContentItemFiled.ItemFiled[0],"basic_content"),
-            CHECK_LIST(1, new ContentItemFiled.ItemFiled[]{ContentItemFiled.ItemFiled.status, ContentItemFiled.ItemFiled.data},"check_list");
+            BASIC_CONTENT(0,contentItemType.Base_Content_Field,"basic_content"),
+            CHECK_LIST(1, contentItemType.Check_List_Field,"check_list");
 
 
 

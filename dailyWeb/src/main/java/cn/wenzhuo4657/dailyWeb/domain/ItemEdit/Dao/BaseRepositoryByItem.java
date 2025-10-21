@@ -1,10 +1,10 @@
-package cn.wenzhuo4657.dailyWeb.domain.mdEdit.Dao;
+package cn.wenzhuo4657.dailyWeb.domain.ItemEdit.Dao;
 
 
-import cn.wenzhuo4657.dailyWeb.domain.mdEdit.function.typeDaily.FiledFunction;
-import cn.wenzhuo4657.dailyWeb.domain.mdEdit.model.Dto.ItemDto;
-import cn.wenzhuo4657.dailyWeb.domain.mdEdit.model.Dto.UpdateItemDto;
-import cn.wenzhuo4657.dailyWeb.domain.mdEdit.model.vo.contentItemType;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.function.typeDaily.FiledFunction;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.ItemDto;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.UpdateItemDto;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.contentItemType;
 import cn.wenzhuo4657.dailyWeb.entity.ContentItem;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@Component
-public class BaseRepository extends FieldRepository {
+@Component()
+public class BaseRepositoryByItem extends FieldRepository {
 
 
 
@@ -87,18 +87,13 @@ public class BaseRepository extends FieldRepository {
     }
 
     public void addItem(Integer content_name_Id,Integer type)  {
-        addItem(content_name_Id,type,new Date(System.currentTimeMillis()));
-
-
-    }
-    public  void addItem(Integer content_name_Id,Integer type,Date  date){
         try {
             contentItemType.ItemType itemType = contentItemType.ItemType.toItemType(type);
             ContentItem contentItem = new ContentItem();
             contentItem.setContent_name_Id(content_name_Id);
             contentItem.setField(FiledFunction.toFiled,itemType);
             contentItem.setContent("");
-            contentItem.setDate(date.toString());
+            contentItem.setDate(new Date(System.currentTimeMillis()).toString());
 
             if (itemType==BASIC_CONTENT&&contentItemDao.queryByContentIdAndDate(contentItem)!=0){
                 throw new Exception("已经存在");
@@ -111,6 +106,8 @@ public class BaseRepository extends FieldRepository {
         }catch (Exception e){
             log.error("添加失败");
         }
+
+
 
     }
 

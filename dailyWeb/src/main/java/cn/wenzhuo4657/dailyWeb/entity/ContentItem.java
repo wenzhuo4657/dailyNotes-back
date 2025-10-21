@@ -1,7 +1,7 @@
 package cn.wenzhuo4657.dailyWeb.entity;
 
-import cn.wenzhuo4657.dailyWeb.domain.mdEdit.function.typeDaily.FiledFn;
-import cn.wenzhuo4657.dailyWeb.domain.mdEdit.model.vo.contentItemType;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.function.typeDaily.FiledFn;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.contentItemType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

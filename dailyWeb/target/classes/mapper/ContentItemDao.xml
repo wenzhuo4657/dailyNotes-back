@@ -35,7 +35,7 @@
     <select id="queryByContentIdAndDate" resultType="java.lang.Integer" parameterType="cn.wenzhuo4657.dailyWeb.entity.ContentItem">
         select  count(*) from content_item where  content_name_id=#{content_name_Id} and date=#{date}
     </select>
-    <select id="selectContentItem" resultType="cn.wenzhuo4657.dailyWeb.entity.ContentItem">
+    <select id="selectContentItem" resultMap="contentItem" >
         select * from content_item where id=#{id}
     </select>
 </mapper>

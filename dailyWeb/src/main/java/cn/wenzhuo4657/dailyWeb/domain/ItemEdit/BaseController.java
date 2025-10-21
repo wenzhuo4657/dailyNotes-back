@@ -1,8 +1,8 @@
-package cn.wenzhuo4657.dailyWeb.domain.mdEdit;
+package cn.wenzhuo4657.dailyWeb.domain.ItemEdit;
 
 
-import cn.wenzhuo4657.dailyWeb.domain.mdEdit.model.Dto.ItemDto;
-import cn.wenzhuo4657.dailyWeb.domain.mdEdit.model.Dto.UpdateItemDto;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.ItemDto;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.UpdateItemDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

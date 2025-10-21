@@ -1,4 +1,4 @@
-package cn.wenzhuo4657.dailyWeb.domain.mdEdit;
+package cn.wenzhuo4657.dailyWeb.domain.ItemEdit;
 
 /**
  * 关于controller

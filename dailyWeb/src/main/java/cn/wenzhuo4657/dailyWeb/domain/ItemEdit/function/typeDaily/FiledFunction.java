@@ -1,7 +1,7 @@
-package cn.wenzhuo4657.dailyWeb.domain.mdEdit.function.typeDaily;
+package cn.wenzhuo4657.dailyWeb.domain.ItemEdit.function.typeDaily;
 
-import cn.wenzhuo4657.dailyWeb.domain.mdEdit.model.vo.ContentItemFiled;
-import cn.wenzhuo4657.dailyWeb.domain.mdEdit.model.vo.contentItemType;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.ContentItemFiled;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.contentItemType;
 import cn.wenzhuo4657.dailyWeb.entity.ContentItem;
 
 import java.util.Map;
@@ -15,6 +15,7 @@ public class FiledFunction {
             if (itemType.getId().equals(contentItemType.ItemType.BASIC_CONTENT.getId())){
                 return  field.getDate().toString();
             }
+
             if (itemType.getId().equals(contentItemType.ItemType.CHECK_LIST.getId())){
                 Map<String, String> map = ContentItemFiled.toMap(field.getField());
                 return  map.get(ContentItemFiled.ItemFiled.title.getFiled());

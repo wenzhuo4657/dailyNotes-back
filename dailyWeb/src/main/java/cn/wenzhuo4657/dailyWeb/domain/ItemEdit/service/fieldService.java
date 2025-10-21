@@ -1,13 +1,15 @@
-package cn.wenzhuo4657.dailyWeb.domain.mdEdit.service;
+package cn.wenzhuo4657.dailyWeb.domain.ItemEdit.service;
 
-import cn.wenzhuo4657.dailyWeb.domain.mdEdit.Dao.BaseRepository;
-import cn.wenzhuo4657.dailyWeb.domain.mdEdit.model.Dto.UpdateCheckListDto;
-import cn.wenzhuo4657.dailyWeb.domain.mdEdit.model.vo.ContentItemFiled;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.Dao.BaseRepositoryByItem;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.UpdateCheckListDto;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.ContentItemFiled;
 import cn.wenzhuo4657.dailyWeb.entity.ContentItem;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Map;
 
@@ -15,7 +17,7 @@ import java.util.Map;
 @Service
 public class fieldService {
        @Autowired
-       private BaseRepository mdRepository;
+       private BaseRepositoryByItem mdRepository;
 
 
     public void updateCheckListTitle(UpdateCheckListDto params) {
@@ -44,7 +46,9 @@ public class fieldService {
         try {
             Map<String, String> map = ContentItemFiled.toMap(contentItem.getField());
             map.put(ContentItemFiled.ItemFiled.status.getFiled(), "true");
-            map.put(ContentItemFiled.ItemFiled.data.getFiled(), new Date(System.currentTimeMillis()).toString());
+
+            DateTimeFormatter TS = DateTimeFormatter.ofPattern("yyyyMMdd");
+            map.put(ContentItemFiled.ItemFiled.data.getFiled(), LocalDateTime.now().format(TS));
             String filed = ContentItemFiled.toFiled(map);
             mdRepository.updateField(contentItem.getId(),filed );
         }catch (ClassNotFoundException e){

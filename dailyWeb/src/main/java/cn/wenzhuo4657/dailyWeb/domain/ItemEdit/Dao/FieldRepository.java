@@ -1,4 +1,4 @@
-package cn.wenzhuo4657.dailyWeb.domain.mdEdit.Dao;
+package cn.wenzhuo4657.dailyWeb.domain.ItemEdit.Dao;
 
 import cn.wenzhuo4657.dailyWeb.dao.ContentItemDao;
 import cn.wenzhuo4657.dailyWeb.entity.ContentItem;

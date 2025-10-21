@@ -1,4 +1,4 @@
-package cn.wenzhuo4657.dailyWeb.domain.mdEdit.model.vo;
+package cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo;
 
 
 import lombok.extern.slf4j.Slf4j;
