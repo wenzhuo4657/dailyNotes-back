@@ -7,8 +7,9 @@
 
 `bash <(curl -fsSL https://raw.githubusercontent.com/wenzhuo4657/myScript/main/daily-install.sh)`
 
-演示地址
-https://test.wenzhuo4657.org/md-web/
+
+
+<a href="https://test.wenzhuo4657.org/md-web/" target="_blank" rel="noopener noreferrer">演示地址</a>
 
 
 
