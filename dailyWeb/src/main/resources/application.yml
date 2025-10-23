@@ -36,6 +36,6 @@ email:
   config:
     from: wenzhuo4657@gmail.com
     to: wenzhuo4657@gmail.com
-    password: rgtpeuydxysjebpc
+    password: ${GMAIL_PASSWORD}
 
 

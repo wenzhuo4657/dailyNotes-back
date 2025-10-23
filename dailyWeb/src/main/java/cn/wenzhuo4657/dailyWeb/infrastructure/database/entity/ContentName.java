@@ -1,4 +1,4 @@
-package cn.wenzhuo4657.dailyWeb.entity;
+package cn.wenzhuo4657.dailyWeb.infrastructure.database.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

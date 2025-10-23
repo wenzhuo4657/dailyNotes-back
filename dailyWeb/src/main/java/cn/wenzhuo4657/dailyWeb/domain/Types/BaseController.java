@@ -1,8 +1,9 @@
 package cn.wenzhuo4657.dailyWeb.domain.Types;
 
 
-import cn.wenzhuo4657.dailyWeb.domain.Types.Dao.BaseRepositoryByTypes;
 import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.TypeDto;
+import cn.wenzhuo4657.dailyWeb.domain.Types.repository.ITypesRepository;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.repository.TypesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ import java.util.List;
 public class BaseController {
 
     @Autowired
-    private BaseRepositoryByTypes baseRepository;
+    private ITypesRepository baseRepository;
 
     /**
      * 获取所有类型

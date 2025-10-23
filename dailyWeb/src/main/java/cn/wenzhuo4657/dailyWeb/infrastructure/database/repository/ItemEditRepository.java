@@ -1,35 +1,39 @@
-package cn.wenzhuo4657.dailyWeb.domain.ItemEdit.Dao;
-
+package cn.wenzhuo4657.dailyWeb.infrastructure.database.repository;
 
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.function.typeDaily.FiledFunction;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.ItemDto;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.UpdateItemDto;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.contentItemType;
-import cn.wenzhuo4657.dailyWeb.entity.ContentItem;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.repository.IItemEditRepository;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.ContentItemDao;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentItem;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Slf4j
-@Component()
-public class BaseRepositoryByItem extends FieldRepository {
-
-
-
-
+@Repository
+public class ItemEditRepository implements IItemEditRepository {
     private  static  final  contentItemType.ItemType BASIC_CONTENT = contentItemType.ItemType.BASIC_CONTENT;
     private  static final int BASIC_CONTENT_TYPE_ID = BASIC_CONTENT.getId();
     private static final int BASE_CONTENT_NAME_ID = 0;
 
 
+    @Autowired
+    protected ContentItemDao contentItemDao;
+
+    @Override
     public List<ItemDto> getMd(){
         return getMd(BASE_CONTENT_NAME_ID,BASIC_CONTENT_TYPE_ID);
     }
 
 
+    @Override
     public List<ItemDto> getMd(Integer content_name_Id, Integer type)  {
 
         try {
@@ -60,9 +64,12 @@ public class BaseRepositoryByItem extends FieldRepository {
     }
 
 
+    @Override
     public boolean updateMd(UpdateItemDto itemDto){
         return  updateMd(itemDto,BASIC_CONTENT_TYPE_ID);
     }
+
+    @Override
     public boolean updateMd(UpdateItemDto itemDto,Integer type){
 
         try {
@@ -80,12 +87,14 @@ public class BaseRepositoryByItem extends FieldRepository {
         return true;
     }
 
+    @Override
     public void addItem()  {
 
         addItem(BASE_CONTENT_NAME_ID,BASIC_CONTENT_TYPE_ID);
 
     }
 
+    @Override
     public void addItem(Integer content_name_Id,Integer type)  {
         try {
             contentItemType.ItemType itemType = contentItemType.ItemType.toItemType(type);
@@ -112,12 +121,19 @@ public class BaseRepositoryByItem extends FieldRepository {
     }
 
 
+    @Override
     public ContentItem selectContentItem(Integer id){
         return contentItemDao.selectContentItem(id);
     }
 
 
 
-
+    @Override
+    public void updateField(Integer id, String field) {
+        ContentItem item = new ContentItem();
+        item.setId(id);
+        item.setField(field);
+        contentItemDao.updateField(item);
+    }
 
 }
