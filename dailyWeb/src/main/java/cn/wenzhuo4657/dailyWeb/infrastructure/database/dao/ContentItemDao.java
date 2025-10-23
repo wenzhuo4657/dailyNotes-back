@@ -1,6 +1,6 @@
-package cn.wenzhuo4657.dailyWeb.dao;
+package cn.wenzhuo4657.dailyWeb.infrastructure.database.dao;
 
-import cn.wenzhuo4657.dailyWeb.entity.ContentItem;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentItem;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

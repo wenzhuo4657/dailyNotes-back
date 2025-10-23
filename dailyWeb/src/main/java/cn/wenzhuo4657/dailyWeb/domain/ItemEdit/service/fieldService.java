@@ -1,23 +1,22 @@
 package cn.wenzhuo4657.dailyWeb.domain.ItemEdit.service;
 
-import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.Dao.BaseRepositoryByItem;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.UpdateCheckListDto;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.ContentItemFiled;
-import cn.wenzhuo4657.dailyWeb.entity.ContentItem;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentItem;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.repository.ItemEditRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Map;
 
 @Slf4j
 @Service
 public class fieldService {
        @Autowired
-       private BaseRepositoryByItem mdRepository;
+       private ItemEditRepository mdRepository;
 
 
     public void updateCheckListTitle(UpdateCheckListDto params) {

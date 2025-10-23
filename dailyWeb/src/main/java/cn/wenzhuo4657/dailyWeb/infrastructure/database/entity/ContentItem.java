@@ -1,4 +1,4 @@
-package cn.wenzhuo4657.dailyWeb.entity;
+package cn.wenzhuo4657.dailyWeb.infrastructure.database.entity;
 
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.function.typeDaily.FiledFn;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.contentItemType;

@@ -1,8 +1,9 @@
 package cn.wenzhuo4657.dailyWeb.domain.ItemEdit;
 
-import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.Dao.BaseRepositoryByItem;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.UpdateCheckListDto;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.repository.IItemEditRepository;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.service.fieldService;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.repository.ItemEditRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ public class FieldController {
 
 
     @Autowired
-    protected BaseRepositoryByItem mdRepository;
+    protected IItemEditRepository mdRepository;
 
     @Autowired
     protected fieldService fieldService;
