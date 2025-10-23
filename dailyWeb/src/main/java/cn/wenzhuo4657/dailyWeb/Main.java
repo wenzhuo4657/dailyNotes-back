@@ -1,6 +1,7 @@
 package cn.wenzhuo4657.dailyWeb;
 
 
+import cn.dev33.satoken.SaManager;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
@@ -32,6 +33,8 @@ public class Main  implements ApplicationRunner {
 
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
+        log.info("启动成功");
+        log.info("Sa-Token 配置如下：" + SaManager.getConfig());
     }
 
 

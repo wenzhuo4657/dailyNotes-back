@@ -51,7 +51,7 @@ public   class   contentItemType{
 
 
 //            todo 这里可以拓展，启用哪些ItemType，
-//            具体来说，可以写到环境里，然后做成一个路由接口返回给前端，这样在解析contentItemType，也就是
+//            具体来说，可以写到环境里，然后做成一个路由接口返回给前端，这样在解析contentItemType
 
             public static ItemType toItemType(int id) throws ClassNotFoundException {
                 for (ItemType itemType : ItemType.values()){

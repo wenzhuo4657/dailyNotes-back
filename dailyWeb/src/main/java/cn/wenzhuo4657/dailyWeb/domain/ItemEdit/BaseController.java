@@ -3,7 +3,9 @@ package cn.wenzhuo4657.dailyWeb.domain.ItemEdit;
 
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.ItemDto;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.UpdateItemDto;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,7 +38,7 @@ public class BaseController extends TypeDailyController  {
     @RequestMapping(
             method = RequestMethod.PUT
     )
-    public boolean updateItem(@RequestBody UpdateItemDto params) {
+    public boolean updateItem( @Valid @RequestBody UpdateItemDto params) {
 
         if (params.getId() == null){
             return false;

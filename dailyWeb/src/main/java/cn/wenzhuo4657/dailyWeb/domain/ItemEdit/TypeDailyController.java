@@ -4,6 +4,7 @@ package cn.wenzhuo4657.dailyWeb.domain.ItemEdit;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.InsertItemDto;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.ItemDto;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.UpdateItemDto;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -62,8 +63,7 @@ public class TypeDailyController  extends FieldController {
             value = "type",
             method = RequestMethod.POST
     )
-    public boolean addItem(@RequestBody InsertItemDto params)  {
-//        todo 参数校验，使用spring-boot-starter-validation
+    public boolean addItem(@Valid @RequestBody InsertItemDto params)  {
         mdRepository.addItem(params.getContent_name_Id(),params.getType());
 
         return true;
@@ -78,7 +78,7 @@ public class TypeDailyController  extends FieldController {
             value = "type/daily/date",
             method = RequestMethod.POST
     )
-    public boolean addItemInDaily(@RequestBody InsertItemDto params)  {
+    public boolean addItemInDaily(@Valid @RequestBody InsertItemDto params)  {
 
 //        1,先插入2，再修改时间
         return  true;
