@@ -1,12 +1,5 @@
 package cn.wenzhuo4657.dailyWeb.infrastructure.database.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 public class ContentType {
 
     private Integer id;
@@ -15,5 +8,36 @@ public class ContentType {
 
     private String des;
 
+    public ContentType() {
+    }
 
+    public ContentType(Integer id, String name, String des) {
+        this.id = id;
+        this.name = name;
+        this.des = des;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDes() {
+        return des;
+    }
+
+    public void setDes(String des) {
+        this.des = des;
+    }
 }

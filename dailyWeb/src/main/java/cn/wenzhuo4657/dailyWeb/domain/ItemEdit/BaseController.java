@@ -40,12 +40,9 @@ public class BaseController extends TypeDailyController  {
     )
     public boolean updateItem( @Valid @RequestBody UpdateItemDto params) {
 
-        if (params.getId() == null){
-            return false;
-        }
-
-
         mdRepository.updateMd( params);
+
+
         return true;
 
     }

@@ -1,7 +1,8 @@
 package cn.wenzhuo4657.dailyWeb.domain.system.service.impl;
 
 import cn.wenzhuo4657.dailyWeb.domain.system.service.SystemService;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +15,9 @@ import java.sql.Statement;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
-@Slf4j
 @Service
 public class SystemServiceImpl implements SystemService {
+    private static final Logger log = LoggerFactory.getLogger(SystemServiceImpl.class);
 
     @Autowired
     private DataSource dataSource;

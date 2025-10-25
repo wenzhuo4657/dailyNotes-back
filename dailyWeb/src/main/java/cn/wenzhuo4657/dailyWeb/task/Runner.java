@@ -2,7 +2,8 @@ package cn.wenzhuo4657.dailyWeb.task;
 
 
 import cn.wenzhuo4657.dailyWeb.domain.email.EmailService;
-import lombok.extern.slf4j.Slf4j;
+
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -10,12 +11,14 @@ import org.springframework.stereotype.Component;
 
 
 
-@Slf4j
+
 @Component
 public class Runner {
 
     @Autowired
     private EmailService emailService;
+
+    private final static Logger log= org.slf4j.LoggerFactory.getLogger(Runner.class);
 
 
     /**

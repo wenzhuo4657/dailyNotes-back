@@ -1,13 +1,15 @@
 package cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo;
 
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Slf4j
 public class ContentItemFiled {
+
+    private static final Logger log = LoggerFactory.getLogger(ContentItemFiled.class);
 
     public static final String FILED_SPLIT_1=":";
     public static final String FILED_SPLIT_2=" ";

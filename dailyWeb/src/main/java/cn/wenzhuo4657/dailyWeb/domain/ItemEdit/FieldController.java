@@ -3,7 +3,6 @@ package cn.wenzhuo4657.dailyWeb.domain.ItemEdit;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.UpdateCheckListDto;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.repository.IItemEditRepository;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.service.fieldService;
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.repository.ItemEditRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

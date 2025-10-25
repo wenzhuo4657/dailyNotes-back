@@ -3,7 +3,8 @@ package cn.wenzhuo4657.dailyWeb.domain.system;
 
 import cn.wenzhuo4657.dailyWeb.Main;
 import cn.wenzhuo4657.dailyWeb.domain.system.service.SystemService;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
@@ -28,12 +29,13 @@ import java.time.format.DateTimeFormatter;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
-@Slf4j
 @RestController(value = "system")
 public class systemController {
 
 
 
+
+    private static final Logger log = LoggerFactory.getLogger(systemController.class);
 
     @Autowired
     private SystemService systemService;

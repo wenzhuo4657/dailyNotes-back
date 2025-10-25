@@ -7,7 +7,7 @@ import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.contentItemType;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.repository.IItemEditRepository;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.ContentItemDao;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentItem;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,13 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Slf4j
+
 @Repository
 public class ItemEditRepository implements IItemEditRepository {
     private  static  final  contentItemType.ItemType BASIC_CONTENT = contentItemType.ItemType.BASIC_CONTENT;
     private  static final int BASIC_CONTENT_TYPE_ID = BASIC_CONTENT.getId();
     private static final int BASE_CONTENT_NAME_ID = 0;
 
+    private final static Logger log= org.slf4j.LoggerFactory.getLogger(ItemEditRepository.class);
 
     @Autowired
     protected ContentItemDao contentItemDao;

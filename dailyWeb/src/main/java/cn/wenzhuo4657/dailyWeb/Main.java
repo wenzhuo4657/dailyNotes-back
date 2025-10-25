@@ -2,9 +2,7 @@ package cn.wenzhuo4657.dailyWeb;
 
 
 import cn.dev33.satoken.SaManager;
-import jakarta.annotation.Resource;
-import lombok.extern.slf4j.Slf4j;
-import org.mybatis.spring.annotation.MapperScan;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -13,8 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -24,10 +20,11 @@ import java.nio.file.Paths;
 
 
 
-@Slf4j
+
 @SpringBootApplication
 @EnableScheduling
 public class Main  implements ApplicationRunner {
+    private final static Logger log = org.slf4j.LoggerFactory.getLogger(Main.class);
 
 
 
