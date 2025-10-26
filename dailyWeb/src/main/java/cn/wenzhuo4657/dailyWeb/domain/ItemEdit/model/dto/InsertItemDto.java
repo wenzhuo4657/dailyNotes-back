@@ -1,6 +1,7 @@
 package cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto;
 
 
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
@@ -11,11 +12,14 @@ public class InsertItemDto {
 
 
     @NotNull
+    @Min(0)
     private Integer content_name_Id;
+
     @NotNull
-    @Min(value = 0)
+    @Min(0)
+    @Max(1)
     private Integer type;
-    private Date date;
+    private Date date; // 可选字段
 
     public InsertItemDto() {
     }
@@ -50,3 +54,4 @@ public class InsertItemDto {
         this.date = date;
     }
 }
+

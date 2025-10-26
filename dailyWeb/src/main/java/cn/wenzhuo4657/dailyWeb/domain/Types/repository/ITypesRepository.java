@@ -7,4 +7,7 @@ import java.util.List;
 public interface ITypesRepository {
 
     List<TypeDto> getAll();
+
+
+    List<TypeDto> getAllByUserId(Integer userId);
 }

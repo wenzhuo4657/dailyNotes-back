@@ -1,30 +1,56 @@
-package cn.wenzhuo4657.dailyWeb.domain.ItemEdit.service;
+package cn.wenzhuo4657.dailyWeb.domain.ItemEdit;
 
-import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.UpdateCheckListDto;
+
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.*;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.ContentItemFiled;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.repository.IItemEditRepository;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentItem;
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.repository.ItemEditRepository;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Map;
 
+/**
+ * 默认文档行为实现
+ */
 @Service
-public class fieldService {
-       private static final Logger log = LoggerFactory.getLogger(fieldService.class);
-       @Autowired
-       private ItemEditRepository mdRepository;
+public  class ItemEditService implements IItemEditService,CheckListService {
+    Logger log = org.slf4j.LoggerFactory.getLogger(ItemEditService.class);
+
+    @Autowired
+    protected IItemEditRepository mdRepository;
 
 
-    public void updateCheckListTitle(UpdateCheckListDto params) {
+
+    @Override
+    public boolean insertItem(InsertItemDto dto) {
+        mdRepository.addItem();
+        return true;
+    }
+
+    @Override
+    public boolean updateItem(UpdateItemDto dto) {
+        mdRepository.updateMd( dto);
+        return true;
+    }
+
+    @Override
+    public List<ItemDto> getItem(QueryItemDto dto) {
+        return mdRepository.getMd(dto.getContentNameId(),dto.getType());
+    }
+
+
+    @Override
+    public boolean CheckList(UpdateCheckListDto params) {
         ContentItem contentItem = mdRepository.selectContentItem(params.getId());
         if (contentItem==null){
             log.error("未找到该条目");
-            return;
+            return false;
+
         }
         try {
             Map<String, String> map = ContentItemFiled.toMap(contentItem.getField());
@@ -33,15 +59,17 @@ public class fieldService {
             mdRepository.updateField(contentItem.getId(),filed );
         }catch (ClassNotFoundException e){
             log.error("不支持的属性");
+            return false;
         }
-
+        return true;
     }
 
-    public void updateCheckListFinish(Integer id) {
+    @Override
+    public boolean CheckListFinish(Integer id) {
         ContentItem contentItem = mdRepository.selectContentItem(id);
         if (contentItem==null){
             log.error("未找到该条目");
-            return;
+            return false;
         }
         try {
             Map<String, String> map = ContentItemFiled.toMap(contentItem.getField());
@@ -53,6 +81,8 @@ public class fieldService {
             mdRepository.updateField(contentItem.getId(),filed );
         }catch (ClassNotFoundException e){
             log.error("不支持的属性");
+            return false;
         }
+        return true;
     }
 }

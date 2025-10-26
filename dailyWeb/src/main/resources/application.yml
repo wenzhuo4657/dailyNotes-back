@@ -1,6 +1,6 @@
 server:
-#  servlet:
- #   context-path: /api
+  servlet:
+    context-path: /api
   port: 8080
   ip: localhost  # todo 部署ip。后续使用动态配置
 

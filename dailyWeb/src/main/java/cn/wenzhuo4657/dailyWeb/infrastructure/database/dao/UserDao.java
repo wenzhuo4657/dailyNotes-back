@@ -1,6 +1,7 @@
 package cn.wenzhuo4657.dailyWeb.infrastructure.database.dao;
 
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.User;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.awt.print.Pageable;
@@ -12,6 +13,7 @@ import java.util.List;
  * @author makejava
  * @since 2025-10-26 15:24:06
  */
+@Mapper
 public interface UserDao {
 
     /**
@@ -80,5 +82,6 @@ public interface UserDao {
      */
     int deleteById(Integer id);
 
+    User queryByOauthId(@Param("oauthProvider") String oauthProvider,@Param("oauthProviderUserId") String oauthProviderUserId);
 }
 

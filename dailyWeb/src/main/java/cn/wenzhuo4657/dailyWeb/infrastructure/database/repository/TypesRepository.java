@@ -33,4 +33,18 @@ public class TypesRepository implements ITypesRepository {
         }
         return typeDtos;
     }
+
+    @Override
+    public List<TypeDto> getAllByUserId(Integer userId) {
+        log.warn("暂时没有处理动态路由----");
+        List<ContentType> all = contentTypeDao.getAll();
+        List<TypeDto> typeDtos = new ArrayList<>();
+        for (ContentType contentType : all){
+            TypeDto typeDto = new TypeDto();
+            typeDto.setId(contentType.getId());
+            typeDto.setName(contentType.getName());
+            typeDtos.add(typeDto);
+        }
+        return typeDtos;
+    }
 }

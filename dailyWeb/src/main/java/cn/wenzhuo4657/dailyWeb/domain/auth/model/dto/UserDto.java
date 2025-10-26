@@ -29,4 +29,13 @@ public class UserDto {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", avatar='" + avatar + '\'' +
+                '}';
+    }
 }
