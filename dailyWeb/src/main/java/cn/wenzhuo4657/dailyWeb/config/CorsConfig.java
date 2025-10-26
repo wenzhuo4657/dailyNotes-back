@@ -1,7 +1,10 @@
 package cn.wenzhuo4657.dailyWeb.config;
 
+import cn.dev33.satoken.interceptor.SaInterceptor;
+import cn.dev33.satoken.stp.StpUtil;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
@@ -15,6 +18,16 @@ public class CorsConfig implements WebMvcConfigurer {
                 .maxAge(3600); // 预检请求的有效期（秒）
     }
 
-
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        // 注册 Sa-Token 拦截器，打开注解式鉴权功能
+        registry.addInterceptor(new SaInterceptor(handle -> StpUtil.checkLogin()))
+                .addPathPatterns("/**")
+                .excludePathPatterns(
+                        "/oauth/**",          // 排除所有 OAuth 相关路径
+                        "/",                  // 排除首页
+                        "/error"              // 排除错误页
+                );
+    }
 
 }

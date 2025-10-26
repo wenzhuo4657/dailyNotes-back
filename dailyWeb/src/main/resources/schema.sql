@@ -34,6 +34,15 @@ CREATE TABLE if not exists content_type (
                               des TEXT
 );
 
+-- user definition
+CREATE TABLE  if not exists  user (
+                        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                        avatar_url TEXT NOT NULL,
+                        name TEXT NOT NULL,
+                        oauth_provider TEXT NOT NULL,
+                        oauth_provider_user_id TEXT NOT NULL,
+                        created_at TEXT NOT NULL
+);
 
 
 

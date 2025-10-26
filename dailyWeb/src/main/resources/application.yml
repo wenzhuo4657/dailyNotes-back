@@ -1,6 +1,8 @@
 server:
-  servlet:
-    context-path: /api
+#  servlet:
+ #   context-path: /api
+  port: 8080
+  ip: localhost  # todo 部署ip。后续使用动态配置
 
 
 dir:
@@ -39,3 +41,22 @@ email:
     password: ${GMAIL_PASSWORD}
 
 
+sa-token:
+  # token 名称 (同时也是 cookie 名称)
+  token-name: satoken
+  # token 有效期，单位s 默认30天, -1代表永不过期
+  timeout: 2592000
+  # 是否允许同一账号并发登录 (为true时允许一起登录, 为false时新登录挤掉旧登录)
+  is-concurrent: false
+  # token风格
+  token-style: uuid
+  # 是否输出操作日志
+  is-log: true
+
+
+
+#  todo 目前github登录的相关地址都是用本地，在部署版本中，需要可以动态配置ip
+github:
+  client-id:  ${GITHUB_CLIENT_ID}
+  client-secret:  ${GITHUB_CLIENT_SECRET}
+  redirect-uri: http://${server.ip}:${server.port}/oauth/callback/github
