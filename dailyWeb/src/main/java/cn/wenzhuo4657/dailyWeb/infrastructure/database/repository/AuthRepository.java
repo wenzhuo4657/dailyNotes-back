@@ -1,10 +1,8 @@
 package cn.wenzhuo4657.dailyWeb.infrastructure.database.repository;
 
 
-import cn.dev33.satoken.stp.StpUtil;
 import cn.wenzhuo4657.dailyWeb.domain.auth.model.aggregate.CheckUserByOauthAggregate;
 import cn.wenzhuo4657.dailyWeb.domain.auth.model.aggregate.RegisterAggregate;
-import cn.wenzhuo4657.dailyWeb.domain.auth.model.dto.UserDto;
 import cn.wenzhuo4657.dailyWeb.domain.auth.repository.IAuthRepository;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.UserDao;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.User;
@@ -12,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 
 @Repository
 public class AuthRepository  implements IAuthRepository {

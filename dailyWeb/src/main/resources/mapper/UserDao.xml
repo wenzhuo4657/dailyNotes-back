@@ -19,33 +19,6 @@ id, avatar_url, name, oauth_provider, oauth_provider_user_id, created_at
         where id = #{id}
     </select>
 
-    <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="UserMap">
-        select
-id, avatar_url, name, oauth_provider, oauth_provider_user_id, created_at
-        from user
-        <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="avatarUrl != null and avatarUrl != ''">
-                and avatar_url = #{avatarUrl}
-            </if>
-            <if test="name != null and name != ''">
-                and name = #{name}
-            </if>
-            <if test="oauthProvider != null and oauthProvider != ''">
-                and oauth_provider = #{oauthProvider}
-            </if>
-            <if test="oauthProviderUserId != null and oauthProviderUserId != ''">
-                and oauth_provider_user_id = #{oauthProviderUserId}
-            </if>
-            <if test="createdAt != null and createdAt != ''">
-                and created_at = #{createdAt}
-            </if>
-        </where>
-        limit #{pageable.offset}, #{pageable.pageSize}
-    </select>
 
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
@@ -73,7 +46,10 @@ id, avatar_url, name, oauth_provider, oauth_provider_user_id, created_at
         </where>
     </select>
     <select id="queryByOauthId" resultType="cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.User">
-        select  * from user where  oauth_provider = #{oauthProvider} and oauth_provider_user_id = #{oauthProviderUserId}
+        select
+          id, avatar_url, name, oauth_provider, oauth_provider_user_id, created_at
+        from user
+        where oauth_provider = #{oauthProvider} and oauth_provider_user_id = #{oauthProviderUserId}
     </select>
 
     <!--新增所有列-->

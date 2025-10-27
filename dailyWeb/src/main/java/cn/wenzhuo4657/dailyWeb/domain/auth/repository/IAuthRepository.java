@@ -2,7 +2,6 @@ package cn.wenzhuo4657.dailyWeb.domain.auth.repository;
 
 import cn.wenzhuo4657.dailyWeb.domain.auth.model.aggregate.CheckUserByOauthAggregate;
 import cn.wenzhuo4657.dailyWeb.domain.auth.model.aggregate.RegisterAggregate;
-import cn.wenzhuo4657.dailyWeb.domain.auth.model.dto.RegisterByOauthDto;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.User;
 
 public interface IAuthRepository {

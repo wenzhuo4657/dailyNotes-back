@@ -2,6 +2,7 @@ package cn.wenzhuo4657.dailyWeb;
 
 
 import cn.dev33.satoken.SaManager;
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -23,6 +24,7 @@ import java.nio.file.Paths;
 
 @SpringBootApplication
 @EnableScheduling
+@MapperScan("cn.wenzhuo4657.dailyWeb.infrastructure.database.dao")
 public class Main  implements ApplicationRunner {
     private final static Logger log = org.slf4j.LoggerFactory.getLogger(Main.class);
 
