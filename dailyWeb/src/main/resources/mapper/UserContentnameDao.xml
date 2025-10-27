@@ -38,6 +38,12 @@ id, userId, contentNameId, typeId
         </where>
     </select>
 
+    <select id="query" resultType="java.lang.Integer">
+        select count(*)
+        from user_contentName
+        where userId = #{userId} and typeId = #{typeId} and contentNameId = #{contentNameId}
+    </select>
+
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into user_contentName(userId, contentNameId, typeId)

@@ -71,5 +71,6 @@ public interface UserContentnameDao {
      */
     int deleteById(Integer id);
 
+    int query(@Param("contentNameId") Integer contentNameId, @Param("type") Integer type, @Param("userid") Integer userid);
 }
 

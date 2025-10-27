@@ -17,7 +17,6 @@ public class InsertItemDto {
 
     @NotNull
     @Min(0)
-    @Max(1)
     private Integer type;
     private Date date; // 可选字段
 

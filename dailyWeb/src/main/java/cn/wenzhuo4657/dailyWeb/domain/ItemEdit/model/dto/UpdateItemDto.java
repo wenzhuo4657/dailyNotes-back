@@ -10,8 +10,15 @@ public class UpdateItemDto {
     @NotNull
     @Min(value = 0)
     private Integer id;
+
+    @NotNull
+    @Min(0)
+    private Integer type;
+
     @NotNull
     private String content;
+
+
 
 
     public UpdateItemDto(Integer id, String content) {
@@ -33,5 +40,13 @@ public class UpdateItemDto {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }
