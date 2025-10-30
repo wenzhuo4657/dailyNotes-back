@@ -9,6 +9,15 @@
         <result property="typeid" column="typeId" jdbcType="INTEGER"/>
     </resultMap>
 
+
+    <resultMap type="cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentName" id="ContentnameMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="VARCHAR"/>
+    </resultMap>
+
     <!--查询单个-->
     <select id="queryById" resultMap="UserContentnameMap">
         select
@@ -42,6 +51,16 @@ id, userId, contentNameId, typeId
         select count(*)
         from user_contentName
         where userId = #{userId} and typeId = #{typeId} and contentNameId = #{contentNameId}
+    </select>
+
+
+    <select id="queryByloginIdAndtypeId"
+            resultMap="ContentnameMap">
+        select c.*
+        from user_contentName u
+                left join contentName c on u.contentNameId = c.id
+        where u.userId = #{loginId}
+          and u.typeId = #{typeId}
     </select>
 
     <!--新增所有列-->

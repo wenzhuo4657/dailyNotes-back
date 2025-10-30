@@ -27,8 +27,9 @@ public class ItemController {
     @Autowired
     private ItemEditService itemEditService;
 
-    @GetMapping("/get")
-    public List<ItemDto> getItems(@Valid QueryItemDto params) {
+    @PostMapping("/get")
+    public List<ItemDto> getItems(@Valid @RequestBody QueryItemDto params) {
+        
         return itemEditService.getItem(params);
     }
 
@@ -44,13 +45,13 @@ public class ItemController {
         return ResponseEntity.ok(Map.of("success", ok));
     }
 
-    @PostMapping("/checklist")
+    @PostMapping("/field/checklist/title")
     public ResponseEntity<?> updateChecklist(@Valid @RequestBody UpdateCheckListDto body) {
         boolean ok = itemEditService.CheckList(body);
         return ResponseEntity.ok(Map.of("success", ok));
     }
 
-    @PostMapping("/checklist/finish")
+    @PostMapping("field/checklist/finish")
     public ResponseEntity<?> finishChecklist(@RequestParam("id") @NotNull @Min(0) Integer id) {
         boolean ok = itemEditService.CheckListFinish(id);
         return ResponseEntity.ok(Map.of("success", ok));

@@ -1,7 +1,6 @@
 package cn.wenzhuo4657.dailyWeb.domain.ItemEdit;
 
 
-import cn.dev33.satoken.stp.StpUtil;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.*;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.ContentItemFiled;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.repository.IItemEditRepository;
@@ -26,34 +25,42 @@ public  class ItemEditService implements IItemEditService,CheckListService {
     @Autowired
     protected IItemEditRepository mdRepository;
 
+    private void isPermission(Integer contentNameId, Integer type) {
+        if (!mdRepository.queryContentName(contentNameId, type, SaTokenUtils.getLoginId())){
+            throw new RuntimeException("用户没有操作该文档的权限");
+        }
+    }
 
 
     @Override
     public boolean insertItem(InsertItemDto dto) {
-
-        boolean b = mdRepository.queryContentName(dto.getContent_name_Id(), dto.getType(), SaTokenUtils.getLoginId());
-        if (!b){
-            log.error("用户没有操作该文档的权限");
+        try {
+            isPermission(dto.getContentNameId(),dto.getType());
+        }catch (Exception e){
+            log.error("查看文档权限失败",e);
             return false;
         }
-        mdRepository.addItem(dto.getContent_name_Id(),dto.getType());
+
+
+        mdRepository.addItem(dto.getContentNameId(),dto.getType());
         return true;
     }
 
     @Override
     public boolean updateItem(UpdateItemDto dto) {
 
-        boolean b = mdRepository.queryContentName(dto.getId(), dto.getType(), SaTokenUtils.getLoginId());
-        if (!b){
-            log.error("用户没有操作该文档的权限");
-            return false;
-        }
         mdRepository.updateMd( dto,dto.getType());
         return true;
     }
 
     @Override
     public List<ItemDto> getItem(QueryItemDto dto) {
+        try {
+            isPermission(dto.getContentNameId(),dto.getType());
+        }catch (Exception e){
+            log.error("查看文档权限失败",e);
+            return null;
+        }
         return mdRepository.getMd(dto.getContentNameId(),dto.getType());
     }
 

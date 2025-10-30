@@ -10,7 +10,7 @@ public class SaTokenUtils {
      * @return
      */
     public static Integer getLoginId(){
-        return (Integer) StpUtil.getLoginId();
+        return Integer.valueOf(StpUtil.getLoginId().toString());
     }
 
     /**

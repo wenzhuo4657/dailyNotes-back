@@ -3,11 +3,15 @@ package cn.wenzhuo4657.dailyWeb.tigger.http;
 
 import cn.dev33.satoken.stp.StpUtil;
 import cn.wenzhuo4657.dailyWeb.domain.Types.ITypesService;
+import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.TypeDto;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller(value = "types")
 @ResponseBody // 直接将响应值作为 HTTP 响应体正文，默认会走视图解析
@@ -19,9 +23,14 @@ public class TypeController {
 
 
     @RequestMapping(value = "/getAllTypes")
-    public String getAllTypes() {
-        User userEntity = (User)StpUtil.getSession().get("userInfo");
-        return typesService.getAllTypes(userEntity.getId()).toString();
+    public List<TypeDto> getAllTypes() {
+        return typesService.getAllTypes();
+    }
+
+
+    @RequestMapping(value = "/getContentIdsByType")
+    public List<Integer> getTypesWithItems(@RequestParam("id") Integer typeId) {
+        return typesService.getContentNameIdById(typeId);
     }
 
 }

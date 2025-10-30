@@ -8,7 +8,9 @@ public interface ITypesService {
 
     /**
      * 获取所有文档类型
-     * todo 这里需要调整为动态路由，根据用户身份来做权限控制
+     *
      */
-    List<TypeDto> getAllTypes(Integer userId);
+    List<TypeDto> getAllTypes();
+
+    List<Integer> getContentNameIdById(Integer typeId);
 }

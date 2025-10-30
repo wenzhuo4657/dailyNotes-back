@@ -1,4 +1,4 @@
-package cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.dao;
+package cn.wenzhuo4657.dailyWeb.infrastructure.database.dao;
 
 
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentName;

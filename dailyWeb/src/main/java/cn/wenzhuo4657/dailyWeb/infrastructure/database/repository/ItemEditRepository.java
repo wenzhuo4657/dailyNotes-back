@@ -7,7 +7,7 @@ import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.contentItemType;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.repository.IItemEditRepository;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.ContentItemDao;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.UserContentnameDao;
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.dao.ContentNameDao;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.ContentNameDao;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentItem;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentName;
 import org.slf4j.Logger;

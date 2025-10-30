@@ -1,6 +1,7 @@
 package cn.wenzhuo4657.dailyWeb.infrastructure.database.dao;
 
 
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentName;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.UserContentname;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -71,6 +72,9 @@ public interface UserContentnameDao {
      */
     int deleteById(Integer id);
 
-    int query(@Param("contentNameId") Integer contentNameId, @Param("type") Integer type, @Param("userid") Integer userid);
+    int query(@Param("contentNameId") Integer contentNameId, @Param("typeId") Integer type, @Param("userId") Integer userid);
+
+
+    List<ContentName> queryByloginIdAndtypeId(@Param("loginId") Integer loginId, @Param("typeId") Integer typeId);
 }
 

@@ -19,11 +19,13 @@ public class UpdateItemDto {
     private String content;
 
 
-
-
-    public UpdateItemDto(Integer id, String content) {
+    public UpdateItemDto(Integer id, Integer type, String content) {
         this.id = id;
+        this.type = type;
         this.content = content;
+    }
+
+    public UpdateItemDto() {
     }
 
     public Integer getId() {
@@ -49,4 +51,6 @@ public class UpdateItemDto {
     public void setType(Integer type) {
         this.type = type;
     }
+
+
 }
