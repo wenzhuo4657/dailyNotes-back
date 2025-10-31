@@ -10,22 +10,13 @@ public class UpdateItemDto {
     @NotNull
     @Min(value = 0)
     private Integer id;
-
-    @NotNull
-    @Min(0)
-    private Integer type;
-
     @NotNull
     private String content;
 
 
-    public UpdateItemDto(Integer id, Integer type, String content) {
+    public UpdateItemDto(Integer id, String content) {
         this.id = id;
-        this.type = type;
         this.content = content;
-    }
-
-    public UpdateItemDto() {
     }
 
     public Integer getId() {
@@ -43,14 +34,4 @@ public class UpdateItemDto {
     public void setContent(String content) {
         this.content = content;
     }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-
 }

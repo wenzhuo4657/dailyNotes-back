@@ -3,6 +3,6 @@
 <mapper namespace="cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.ContentTypeDao">
 
     <select id="getAll" resultType="cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentType">
-        select * from contentType
+        select * from content_type
     </select>
 </mapper>

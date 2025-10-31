@@ -6,10 +6,7 @@ import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.UpdateItemDto;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.contentItemType;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.repository.IItemEditRepository;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.ContentItemDao;
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.UserContentnameDao;
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.ContentNameDao;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentItem;
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentName;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,17 +19,19 @@ import java.util.List;
 
 @Repository
 public class ItemEditRepository implements IItemEditRepository {
-
+    private  static  final  contentItemType.ItemType BASIC_CONTENT = contentItemType.ItemType.BASIC_CONTENT;
+    private  static final int BASIC_CONTENT_TYPE_ID = BASIC_CONTENT.getId();
+    private static final int BASE_CONTENT_NAME_ID = 0;
 
     private final static Logger log= org.slf4j.LoggerFactory.getLogger(ItemEditRepository.class);
 
     @Autowired
     protected ContentItemDao contentItemDao;
 
-    @Autowired
-    protected UserContentnameDao userContentnameDao;
-    @Autowired
-    private ContentNameDao contentNameDao;
+    @Override
+    public List<ItemDto> getMd(){
+        return getMd(BASE_CONTENT_NAME_ID,BASIC_CONTENT_TYPE_ID);
+    }
 
 
     @Override
@@ -66,7 +65,10 @@ public class ItemEditRepository implements IItemEditRepository {
     }
 
 
-
+    @Override
+    public boolean updateMd(UpdateItemDto itemDto){
+        return  updateMd(itemDto,BASIC_CONTENT_TYPE_ID);
+    }
 
     @Override
     public boolean updateMd(UpdateItemDto itemDto,Integer type){
@@ -76,6 +78,7 @@ public class ItemEditRepository implements IItemEditRepository {
             ContentItem contentItem = new ContentItem();
             contentItem.setId(itemDto.getId());
             contentItem.setContent(itemDto.getContent());
+            contentItem.setContent_name_Id(itemType.getId());
             contentItemDao.updateContent(contentItem);
         }catch (ClassNotFoundException e){
             log.error("不支持的ItemType");
@@ -85,7 +88,12 @@ public class ItemEditRepository implements IItemEditRepository {
         return true;
     }
 
+    @Override
+    public void addItem()  {
 
+        addItem(BASE_CONTENT_NAME_ID,BASIC_CONTENT_TYPE_ID);
+
+    }
 
     @Override
     public void addItem(Integer content_name_Id,Integer type)  {
@@ -97,7 +105,7 @@ public class ItemEditRepository implements IItemEditRepository {
             contentItem.setContent("");
             contentItem.setDate(new Date(System.currentTimeMillis()).toString());
 
-            if (itemType.equals(contentItemType.ItemType.BASIC_CONTENT) &&contentItemDao.queryByContentIdAndDate(contentItem)!=0){
+            if (itemType==BASIC_CONTENT&&contentItemDao.queryByContentIdAndDate(contentItem)!=0){
                 throw new Exception("已经存在");
             }
 
@@ -129,25 +137,4 @@ public class ItemEditRepository implements IItemEditRepository {
         contentItemDao.updateField(item);
     }
 
-    @Override
-    public boolean queryContentName(Integer content_name_Id, Integer type, Integer userid) {
-//        todo 修改表中的联合主键和约束
-        int query = userContentnameDao.query(content_name_Id, type, userid);
-        if (query ==0){
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public int queryContentType(Integer id) {
-        ContentName contentname = contentNameDao.queryById(id);
-        if (contentname == null){
-            throw new RuntimeException("内容不存在");
-        }
-
-        return contentname.getType();
-
-
-    }
 }
