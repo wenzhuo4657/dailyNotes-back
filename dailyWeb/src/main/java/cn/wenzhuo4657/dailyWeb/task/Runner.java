@@ -1,4 +1,4 @@
-package cn.wenzhuo4657.dailyWeb.tigger.task;
+package cn.wenzhuo4657.dailyWeb.task;
 
 
 import cn.wenzhuo4657.dailyWeb.domain.email.EmailService;

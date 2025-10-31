@@ -5,7 +5,7 @@
 
 一键安装脚本
 
-`bash <(curl -fsSL https://raw.githubusercontent.com/wenzhuo4657/dailyNotes-back/main/shell/daily-install.sh)`
+`bash <(curl -fsSL https://raw.githubusercontent.com/wenzhuo4657/myScript/main/daily-install.sh)`
 
 
 
