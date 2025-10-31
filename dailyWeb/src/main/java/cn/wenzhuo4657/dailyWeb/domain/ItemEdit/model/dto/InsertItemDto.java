@@ -1,6 +1,7 @@
 package cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto;
 
 
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
@@ -11,27 +12,29 @@ public class InsertItemDto {
 
 
     @NotNull
-    private Integer content_name_Id;
+    @Min(0)
+    private Integer contentNameId;
+
     @NotNull
-    @Min(value = 0)
+    @Min(0)
     private Integer type;
-    private Date date;
+    private Date date; // 可选字段
 
     public InsertItemDto() {
     }
 
-    public InsertItemDto(Integer content_name_Id, Integer type, Date date) {
-        this.content_name_Id = content_name_Id;
+    public InsertItemDto(Integer contentNameId, Integer type, Date date) {
+        this.contentNameId = contentNameId;
         this.type = type;
         this.date = date;
     }
 
-    public Integer getContent_name_Id() {
-        return content_name_Id;
+    public Integer getContentNameId() {
+        return contentNameId;
     }
 
-    public void setContent_name_Id(Integer content_name_Id) {
-        this.content_name_Id = content_name_Id;
+    public void setContentNameId(Integer contentNameId) {
+        this.contentNameId = contentNameId;
     }
 
     public Integer getType() {
@@ -50,3 +53,4 @@ public class InsertItemDto {
         this.date = date;
     }
 }
+

@@ -1,7 +1,5 @@
 package cn.wenzhuo4657.dailyWeb.infrastructure.database.entity;
 
-import java.util.Date;
-
 public class ContentName {
 
     private Integer id;
@@ -10,14 +8,15 @@ public class ContentName {
 
     private Integer type;
 
-    private Date createTime;
+    // SQLite 最终存储为 TEXT，这里统一使用 String
+    private String createTime;
 
-    private Date updateTime;
+    private String updateTime;
 
     public ContentName() {
     }
 
-    public ContentName(Integer id, String name, Integer type, Date createTime, Date updateTime) {
+    public ContentName(Integer id, String name, Integer type, String createTime, String updateTime) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -49,19 +48,19 @@ public class ContentName {
         this.type = type;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public String getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
     }
 }
