@@ -3,6 +3,7 @@ package cn.wenzhuo4657.dailyWeb.tigger.http;
 
 import cn.dev33.satoken.stp.StpUtil;
 import cn.wenzhuo4657.dailyWeb.domain.Types.ITypesService;
+import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.ContentNameDto;
 import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.TypeDto;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,8 @@ public class TypeController {
     }
 
 
-    @RequestMapping(value = "/getContentIdsByType")
-    public List<Integer> getTypesWithItems(@RequestParam("id") Integer typeId) {
+    @RequestMapping(value = "/getContentIdsByTypes")
+    public List<ContentNameDto> getTypesWithItems(@RequestParam("id") Integer typeId) {
         return typesService.getContentNameIdById(typeId);
     }
 

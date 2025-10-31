@@ -1,5 +1,5 @@
 INSERT INTO contentType (id, name, des)
-SELECT 0, 'daily-base', '基本日报类型：以日期 格式分割content_item数据返回前端展示 '
+SELECT 0, 'dailyBase', '基本日报类型：以日期 格式分割content_item数据返回前端展示 '
     WHERE NOT EXISTS (SELECT 1 FROM contentType WHERE id = 0);
 
 

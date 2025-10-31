@@ -57,16 +57,16 @@ id, name, type, create_time, update_time
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into contentName(name, type, create_time, update_time)
+        insert into contentName(id, name, type, create_time, update_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.name}, #{entity.type}, #{entity.createTime}, #{entity.updateTime})
+            (#{entity.id}, #{entity.name}, #{entity.type}, #{entity.createTime}, #{entity.updateTime})
         </foreach>
-        on duplicate key update
-name = values(name),
-type = values(type),
-create_time = values(create_time),
-update_time = values(update_time)
+        on conflict(id) do update set
+            name = excluded.name,
+            type = excluded.type,
+            create_time = excluded.create_time,
+            update_time = excluded.update_time
     </insert>
 
     <!--通过主键修改数据-->

@@ -67,17 +67,17 @@ id, avatar_url, name, oauth_provider, oauth_provider_user_id, created_at
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into user(avatar_url, name, oauth_provider, oauth_provider_user_id, created_at)
+        insert into user(id, avatar_url, name, oauth_provider, oauth_provider_user_id, created_at)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.avatarUrl}, #{entity.name}, #{entity.oauthProvider}, #{entity.oauthProviderUserId}, #{entity.createdAt})
+            (#{entity.id}, #{entity.avatarUrl}, #{entity.name}, #{entity.oauthProvider}, #{entity.oauthProviderUserId}, #{entity.createdAt})
         </foreach>
-        on duplicate key update
-avatar_url = values(avatar_url),
-name = values(name),
-oauth_provider = values(oauth_provider),
-oauth_provider_user_id = values(oauth_provider_user_id),
-created_at = values(created_at)
+        on conflict(id) do update set
+            avatar_url = excluded.avatar_url,
+            name = excluded.name,
+            oauth_provider = excluded.oauth_provider,
+            oauth_provider_user_id = excluded.oauth_provider_user_id,
+            created_at = excluded.created_at
     </insert>
 
     <!--通过主键修改数据-->

@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -29,8 +30,9 @@ import java.util.Map;
 
 @Controller(value = "oauth")
 @RequestMapping(value = "/oauth")
+@ResponseBody
 public class AuthController {
-    @Autowired
+    @Autowired(required = false)
     private AuthRequest authRequest;
 
     @Autowired
@@ -43,6 +45,11 @@ public class AuthController {
      */
     @GetMapping("/render/github")
     public void renderGithub(HttpServletResponse response) throws IOException {
+        if (authRequest == null) {
+            response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+            response.getWriter().write("GitHub OAuth not configured");
+            return;
+        }
         String state = AuthStateUtils.createState();
         response.sendRedirect(authRequest.authorize(state));
     }
@@ -52,6 +59,13 @@ public class AuthController {
      */
     @GetMapping("/callback/github")
     public  void callbackGithub(AuthCallback callback, HttpServletResponse response) {
+        if (authRequest == null) {
+            try {
+                response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+                response.getWriter().write("GitHub OAuth not configured");
+            } catch (IOException ignored) {}
+            return;
+        }
         // 1. 使用 JustAuth 处理回调，获取用户信息
         AuthResponse authResponse = authRequest.login(callback);
 
@@ -86,6 +100,21 @@ public class AuthController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        }
+    }
+
+
+    /**
+     * 退出登录
+     */
+    @PostMapping("/logout")
+    public ResponseEntity<Boolean> logout() {
+        try {
+            // 执行登出逻辑
+            StpUtil.logout();
+            return ResponseEntity.ok(true);
+        } catch (Exception e) {
+            return ResponseEntity.ok(false);
         }
     }
 }

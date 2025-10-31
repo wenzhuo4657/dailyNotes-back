@@ -76,7 +76,6 @@ public class ItemEditRepository implements IItemEditRepository {
             ContentItem contentItem = new ContentItem();
             contentItem.setId(itemDto.getId());
             contentItem.setContent(itemDto.getContent());
-            contentItem.setContent_name_Id(itemType.getId());
             contentItemDao.updateContent(contentItem);
         }catch (ClassNotFoundException e){
             log.error("不支持的ItemType");

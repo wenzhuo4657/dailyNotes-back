@@ -49,14 +49,14 @@ id, tag, Log
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into dataVersion(tag, Log)
+        insert into dataVersion(id, tag, Log)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tag}, #{entity.log})
+            (#{entity.id}, #{entity.tag}, #{entity.log})
         </foreach>
-        on duplicate key update
-tag = values(tag),
-Log = values(Log)
+        on conflict(id) do update set
+            tag = excluded.tag,
+            Log = excluded.Log
     </insert>
 
     <!--通过主键修改数据-->

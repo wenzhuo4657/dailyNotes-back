@@ -78,15 +78,13 @@ id, userId, contentNameId, typeId
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into user_contentName(userId, contentNameId, typeId)
+        insert into user_contentName(id, userId, contentNameId, typeId)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.userid}, #{entity.contentnameid}, #{entity.typeid})
+            (#{entity.id}, #{entity.userid}, #{entity.contentnameid}, #{entity.typeid})
         </foreach>
-        on duplicate key update
-userId = values(userId),
-contentNameId = values(contentNameId),
-typeId = values(typeId)
+        on conflict(userId, typeId) do update set
+            contentNameId = excluded.contentNameId
     </insert>
 
     <!--通过主键修改数据-->

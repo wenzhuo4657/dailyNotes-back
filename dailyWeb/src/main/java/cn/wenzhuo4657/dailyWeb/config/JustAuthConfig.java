@@ -3,28 +3,22 @@ package cn.wenzhuo4657.dailyWeb.config;
 import me.zhyd.oauth.config.AuthConfig;
 import me.zhyd.oauth.request.AuthGithubRequest;
 import me.zhyd.oauth.request.AuthRequest;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@EnableConfigurationProperties(GithubProperties.class)
 public class JustAuthConfig {
 
-    @Value("${github.client-id}")
-    private String clientId;
-
-    @Value("${github.client-secret}")
-    private String clientSecret;
-
-    @Value("${github.redirect-uri}")
-    private String redirectUri;
-
     @Bean
-    public AuthRequest authRequest() {
+    @ConditionalOnProperty(prefix = "github", name = {"client-id", "client-secret", "redirect-uri"})
+    public AuthRequest authRequest(GithubProperties githubProperties) {
         return new AuthGithubRequest(AuthConfig.builder()
-                .clientId(clientId)
-                .clientSecret(clientSecret)
-                .redirectUri(redirectUri)
+                .clientId(githubProperties.getClientId())
+                .clientSecret(githubProperties.getClientSecret())
+                .redirectUri(githubProperties.getRedirectUri())
                 .build());
     }
 }

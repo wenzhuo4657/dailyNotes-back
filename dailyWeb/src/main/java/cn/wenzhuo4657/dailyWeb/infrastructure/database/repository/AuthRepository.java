@@ -66,13 +66,14 @@ public class AuthRepository  implements IAuthRepository {
             ContentName contentName = new ContentName();
             contentName.setName("default");
             contentName.setType(contentType.getId());
-            contentName.setCreateTime(new Date());
-            contentName.setUpdateTime(new Date());
+            contentName.setCreateTime(simpleDateFormat.format(new Date()));
+            contentName.setUpdateTime(simpleDateFormat.format(new Date()));
             contentNameDao.insert(contentName);
 
             UserContentname userContentname = new UserContentname();
             userContentname.setUserid(user.getId());
             userContentname.setContentnameid(contentName.getId());
+            userContentname.setTypeid(contentName.getType());
             userContentnameDao.insert(userContentname);
         }
 

@@ -53,15 +53,15 @@ id, user_id, content_type_id, deleted
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into user_selector(user_id, content_type_id, deleted)
+        insert into user_selector(id, user_id, content_type_id, deleted)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.userId}, #{entity.contentTypeId}, #{entity.deleted})
+            (#{entity.id}, #{entity.userId}, #{entity.contentTypeId}, #{entity.deleted})
         </foreach>
-        on duplicate key update
-user_id = values(user_id),
-content_type_id = values(content_type_id),
-deleted = values(deleted)
+        on conflict(id) do update set
+            user_id = excluded.user_id,
+            content_type_id = excluded.content_type_id,
+            deleted = excluded.deleted
     </insert>
 
     <!--通过主键修改数据-->

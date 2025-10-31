@@ -1,5 +1,6 @@
 package cn.wenzhuo4657.dailyWeb.domain.Types;
 
+import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.ContentNameDto;
 import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.TypeDto;
 import cn.wenzhuo4657.dailyWeb.domain.Types.repository.ITypesRepository;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentName;
@@ -24,11 +25,20 @@ public class TypesService  implements   ITypesService{
     }
 
     @Override
-    public List<Integer> getContentNameIdById(Integer typeId) {
+    public List<ContentNameDto> getContentNameIdById(Integer typeId) {
         Integer loginId = SaTokenUtils.getLoginId();
         List<ContentName> list = typesRepository.getContentNameIdById(loginId, typeId);
         return list.stream()
-                .map(ContentName::getId)
+                .map(
+
+                                contentName -> {
+                                    ContentNameDto dto=new ContentNameDto();
+                                    dto.setId(contentName.getId());
+                                    dto.setName(contentName.getName());
+                                    return dto;
+                                }
+
+                )
                 .collect(Collectors.toList());
     }
 }

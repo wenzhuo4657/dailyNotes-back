@@ -1,5 +1,6 @@
 package cn.wenzhuo4657.dailyWeb.domain.Types;
 
+import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.ContentNameDto;
 import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.TypeDto;
 
 import java.util.List;
@@ -12,5 +13,5 @@ public interface ITypesService {
      */
     List<TypeDto> getAllTypes();
 
-    List<Integer> getContentNameIdById(Integer typeId);
+    List<ContentNameDto> getContentNameIdById(Integer typeId);
 }
