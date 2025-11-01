@@ -114,6 +114,7 @@ server {
 
     location /md-web/ {
         alias /var/www/daily/;
+        try_files $uri $uri/ /md-web/index.html;
     }
 
     location /api {
