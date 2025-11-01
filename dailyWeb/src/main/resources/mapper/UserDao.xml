@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.UserDao">
+
+    <resultMap type="cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.User" id="UserMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="avatarUrl" column="avatar_url" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="oauthProvider" column="oauth_provider" jdbcType="VARCHAR"/>
+        <result property="oauthProviderUserId" column="oauth_provider_user_id" jdbcType="VARCHAR"/>
+        <result property="createdAt" column="created_at" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="UserMap">
+        select
+id, avatar_url, name, oauth_provider, oauth_provider_user_id, created_at
+        from user
+        where id = #{id}
+    </select>
+
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from user
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="avatarUrl != null and avatarUrl != ''">
+                and avatar_url = #{avatarUrl}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="oauthProvider != null and oauthProvider != ''">
+                and oauth_provider = #{oauthProvider}
+            </if>
+            <if test="oauthProviderUserId != null and oauthProviderUserId != ''">
+                and oauth_provider_user_id = #{oauthProviderUserId}
+            </if>
+            <if test="createdAt != null and createdAt != ''">
+                and created_at = #{createdAt}
+            </if>
+        </where>
+    </select>
+    <select id="queryByOauthId" resultType="cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.User">
+        select
+          id, avatar_url, name, oauth_provider, oauth_provider_user_id, created_at
+        from user
+        where oauth_provider = #{oauthProvider} and oauth_provider_user_id = #{oauthProviderUserId}
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into user(avatar_url, name, oauth_provider, oauth_provider_user_id, created_at)
+        values (#{avatarUrl}, #{name}, #{oauthProvider}, #{oauthProviderUserId}, #{createdAt})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into user(avatar_url, name, oauth_provider, oauth_provider_user_id, created_at)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.avatarUrl}, #{entity.name}, #{entity.oauthProvider}, #{entity.oauthProviderUserId}, #{entity.createdAt})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into user(id, avatar_url, name, oauth_provider, oauth_provider_user_id, created_at)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.id}, #{entity.avatarUrl}, #{entity.name}, #{entity.oauthProvider}, #{entity.oauthProviderUserId}, #{entity.createdAt})
+        </foreach>
+        on conflict(id) do update set
+            avatar_url = excluded.avatar_url,
+            name = excluded.name,
+            oauth_provider = excluded.oauth_provider,
+            oauth_provider_user_id = excluded.oauth_provider_user_id,
+            created_at = excluded.created_at
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update user
+        <set>
+            <if test="avatarUrl != null and avatarUrl != ''">
+                avatar_url = #{avatarUrl},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="oauthProvider != null and oauthProvider != ''">
+                oauth_provider = #{oauthProvider},
+            </if>
+            <if test="oauthProviderUserId != null and oauthProviderUserId != ''">
+                oauth_provider_user_id = #{oauthProviderUserId},
+            </if>
+            <if test="createdAt != null and createdAt != ''">
+                created_at = #{createdAt},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from user where id = #{id}
+    </delete>
+
+</mapper>
+

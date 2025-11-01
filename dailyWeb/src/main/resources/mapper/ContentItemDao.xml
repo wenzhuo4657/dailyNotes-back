@@ -12,30 +12,30 @@
 
 
     <insert id="insert" parameterType="cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentItem">
-        insert into content_item(content_name_id,item_content,item_Field,date)
+        insert into contentItem(content_name_id,item_content,item_Field,date)
         values(#{content_name_Id},#{content},#{field},#{date})
     </insert>
 
     <update id="updateContent"  parameterType="cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentItem">
-        update content_item
+        update contentItem
         set item_content=#{content}
-        where id=#{id}  and content_name_id=#{content_name_Id}
+        where id=#{id}
 
     </update>
     <update id="updateField" parameterType="cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentItem">
-        update content_item
+        update contentItem
         set item_Field= #{field}
         where id= #{id}
     </update>
 
 
     <select id="queryByContentId" resultMap="contentItem">
-        select * from content_item where content_name_id=#{i}  order by date  desc
+        select * from contentItem where content_name_id=#{i}  order by "date" desc
     </select>
     <select id="queryByContentIdAndDate" resultType="java.lang.Integer" parameterType="cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentItem">
-        select  count(*) from content_item where  content_name_id=#{content_name_Id} and date=#{date}
+        select  count(*) from contentItem where  content_name_id=#{content_name_Id} and "date"=#{date}
     </select>
     <select id="selectContentItem" resultMap="contentItem" >
-        select * from content_item where id=#{id}
+        select * from contentItem where id=#{id}
     </select>
 </mapper>
