@@ -2,15 +2,18 @@ server:
   servlet:
     context-path: /api
   port: 8080
-  ip: localhost  # todo 部署ip。后续使用动态配置
 
 
+
+# 区分配置文件，dev（本地开发）： 开发， 部署（需适应一键脚本的配置）：-prod
 dir:
   # 优先 daily.home，其次跨平台默认到用户家目录
   beifen: ${daily.home:${user.home}/daily/beifen}
   db: beifen.db
 
 spring:
+  profiles:
+    active: dev
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: org.sqlite.JDBC
@@ -33,13 +36,8 @@ mybatis:
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
 
 
-# TODO  这些变量要可以被覆盖
-email:
-  enable: false
-  config:
-    from: wenzhuo4657@gmail.com
-    to: wenzhuo4657@gmail.com
-    password: ${GMAIL_PASSWORD}
+
+
 
 
 sa-token:
@@ -57,11 +55,9 @@ sa-token:
   token-prefix: Bearer
 
 
+email:
+  enable: false
 
 
-#  todo 目前github登录的相关地址都是用本地，在部署版本中，需要可以动态配置ip
-github:
-  client-id:  ${GITHUB_CLIENT_ID}
-  client-secret:  ${GITHUB_CLIENT_SECRET}
-  redirect-uri: http://${server.ip}:${server.port}/api/oauth/callback/github
+
 

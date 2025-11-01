@@ -1,0 +1,15 @@
+domain:
+  url:  ${domain:test.wenzhuo4657.org}
+  home:  ${domain.url}/md-web
+
+github:
+  client-id:  ${GITHUB_CLIENT_ID}
+  client-secret:  ${GITHUB_CLIENT_SECRET}
+  redirect-uri: ${domain.url}/api/oauth/callback/github
+
+email:
+  enable: true
+  config:
+    from: wenzhuo4657@gmail.com
+    to: wenzhuo4657@gmail.com
+    password: ${GMAIL_PASSWORD}
