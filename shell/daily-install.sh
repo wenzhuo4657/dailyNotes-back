@@ -66,7 +66,13 @@ else
   echo "所有依赖已安装。"
 fi
 
-
+read -r -p "设置使用的域名，默认为80端口 "  domain
+export domain
+export DAILY_WEB_API_URL=https://${domain}
+export  DAILY_WEB_BACKGROUND_URL=https://blog.wenzhuo4657.org/img/2025/10/a1a61cd9c40ef9634219fe41ea93706b.jpg
+read -r -p "设置oauth的clientId"  clientId
+export clientId
+read -r -p "设置oath的secret"  secret
 
 echo	"开始进行后端部署"
 cd $homeback
@@ -77,7 +83,7 @@ mvn clean package  -DskipTests  # 跳过测试
 
 mkdir $home/beifen
 
-nohup java  -Ddir.beifen=$home/beifen -jar  target/dailyWeb-1.0-SNAPSHOT.jar  &
+nohup java  -Ddir.beifen=$home/beifen  -Ddomain.url=https://$domain -Dgithub.client-id=$clientId -Dgithub.client-secret=$secret -jar  target/dailyWeb-1.0-SNAPSHOT.jar  &
 
 echo "后端部署完成"
 
@@ -88,10 +94,6 @@ cd $homefront
 git clone    https://github.com/wenzhuo4657/dailyWeb-Front.git
 cd dailyWeb-Front/daily
 
-read -r -p "设置使用的域名，默认为80端口 "  domain
-export domain
-export DAILY_WEB_API_URL=https://${domain}
-export  DAILY_WEB_BACKGROUND_URL=https://blog.wenzhuo4657.org/img/2025/10/a1a61cd9c40ef9634219fe41ea93706b.jpg
 
 npm install
 npm run build

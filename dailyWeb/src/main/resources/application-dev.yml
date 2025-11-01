@@ -1,0 +1,15 @@
+domain:
+  url:  http://localhost:8080
+  home:  http://localhost:5173
+
+email:
+  enable: true
+  config:
+    from: wenzhuo4657@gmail.com
+    to: wenzhuo4657@gmail.com
+    password: ${GMAIL_PASSWORD}
+
+github:
+  client-id:  ${GITHUB_CLIENT_ID}
+  client-secret:  ${GITHUB_CLIENT_SECRET}
+  redirect-uri: ${domain.url}/api/oauth/callback/github

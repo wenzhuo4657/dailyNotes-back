@@ -16,6 +16,7 @@ import me.zhyd.oauth.request.AuthRequest;
 import me.zhyd.oauth.utils.AuthStateUtils;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,6 +54,8 @@ public class AuthController {
         String state = AuthStateUtils.createState();
         response.sendRedirect(authRequest.authorize(state));
     }
+    @Value("${domain.home}")
+    private  String name;
 
     /**
      * GitHub 授权回调
@@ -96,7 +99,7 @@ public class AuthController {
                         new ObjectMapper().writeValueAsString(user),
                         StandardCharsets.UTF_8
                 );
-                response.sendRedirect("http://localhost:5173/auth/callback?token=" + token + "&userInfo=" + userInfoJson);
+                response.sendRedirect(name+"/auth/callback?token=" + token + "&userInfo=" + userInfoJson);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

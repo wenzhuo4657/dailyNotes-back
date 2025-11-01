@@ -5,6 +5,7 @@ import cn.wenzhuo4657.dailyWeb.domain.email.EmailService;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -13,12 +14,13 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class Runner {
+@ConditionalOnProperty(name = "email.enable", havingValue = "true")
+public class EmailBackupScheduler {
 
     @Autowired
     private EmailService emailService;
 
-    private final static Logger log= org.slf4j.LoggerFactory.getLogger(Runner.class);
+    private final static Logger log= org.slf4j.LoggerFactory.getLogger(EmailBackupScheduler.class);
 
 
     /**
@@ -30,10 +32,7 @@ public class Runner {
       log.info("定时任务: 备份   -start");
 
       try {
-
           emailService.sendEmail();
-
-
 
       } catch (Exception e) {
         log.error("定时任务: 邮件备份失败",e);
