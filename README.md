@@ -13,16 +13,22 @@
 
 
 
-## 变量
+## 配置
+所有的个人配置都放置在`application-prod.yml`当中，请根据实际内容为主
 ```
+domain:
+  url:  ${domain:https://test.wenzhuo4657.org}  # 后端地址，用于确定oauth回调地址
+  home:  ${domain.url}/md-web    # 回调地址重定向到前端相应页面，后缀改动需要在前端程序更改 "build": "vite build --base=/md-web/ ",以及nginx的location匹配路径
 
-# 邮箱配置 ，目前仅支持gmail， password不是账号密码，而是gmail的16位应用专属密码
-email.enable: true/ false
-email.config.from: example@example.com
-email.config.to: smtp.example.com
-email.config.password: xxxxx   
+github:
+  client-id:  ${GITHUB_CLIENT_ID}  
+  client-secret:  ${GITHUB_CLIENT_SECRET}  
+  redirect-uri: ${domain.url}/api/oauth/callback/github
 
-# 备份
-dir.beifen: 备份目录、数据目录
-dir.home:  家目录，在一键脚本当中，他用于统一配置安装目录，且  dir.beifen == &dir.home/beifen
+email:
+  enable: true
+  config:
+    from: wenzhuo4657@gmail.com
+    to: wenzhuo4657@gmail.com
+    password: ${GMAIL_PASSWORD}
 ```
