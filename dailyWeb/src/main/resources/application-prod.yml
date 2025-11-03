@@ -1,5 +1,5 @@
 domain:
-  url:  ${domain:test.wenzhuo4657.org}
+  url:  ${domain:https://test.wenzhuo4657.org}
   home:  ${domain.url}/md-web
 
 github:
