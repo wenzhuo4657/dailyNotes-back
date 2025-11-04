@@ -1,9 +1,9 @@
-package cn.wenzhuo4657.dailyWeb.domain.tell.strategy.Impl;
+package cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.Impl;
 
-import cn.wenzhuo4657.dailyWeb.domain.tell.strategy.INotifier;
-import cn.wenzhuo4657.dailyWeb.domain.tell.strategy.NotifierConfig;
-import cn.wenzhuo4657.dailyWeb.domain.tell.strategy.NotifierMessage;
-import cn.wenzhuo4657.dailyWeb.domain.tell.strategy.NotifierResult;
+import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.INotifier;
+import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.NotifierConfig;
+import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.NotifierMessage;
+import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.NotifierResult;
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeBodyPart;
@@ -11,8 +11,6 @@ import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
 public class EmailNotifier extends INotifier {

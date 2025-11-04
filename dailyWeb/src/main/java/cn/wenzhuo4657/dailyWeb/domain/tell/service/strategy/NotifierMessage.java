@@ -1,4 +1,4 @@
-package cn.wenzhuo4657.dailyWeb.domain.tell.strategy;
+package cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy;
 
 import java.io.File;
 

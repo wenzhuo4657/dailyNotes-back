@@ -1,6 +1,6 @@
-package cn.wenzhuo4657.dailyWeb.domain.tell.strategy.Impl;
+package cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.Impl;
 
-import cn.wenzhuo4657.dailyWeb.domain.tell.strategy.NotifierConfig;
+import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.NotifierConfig;
 
 public class GmailConfig implements NotifierConfig {
 

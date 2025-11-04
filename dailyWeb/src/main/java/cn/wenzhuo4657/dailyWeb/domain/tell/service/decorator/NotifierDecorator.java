@@ -1,6 +1,6 @@
-package cn.wenzhuo4657.dailyWeb.domain.tell.decorator;
+package cn.wenzhuo4657.dailyWeb.domain.tell.service.decorator;
 
-import cn.wenzhuo4657.dailyWeb.domain.tell.strategy.INotifier;
+import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.INotifier;
 
 public abstract class NotifierDecorator extends INotifier {
 

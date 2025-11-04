@@ -1,4 +1,4 @@
-package cn.wenzhuo4657.dailyWeb.domain.tell.decorator;
+package cn.wenzhuo4657.dailyWeb.domain.tell.service.decorator;
 
 
 /**
