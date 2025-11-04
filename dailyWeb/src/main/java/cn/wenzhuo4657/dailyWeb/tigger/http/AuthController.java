@@ -45,14 +45,19 @@ public class AuthController {
      * 重定向到 GitHub 授权页面
      */
     @GetMapping("/render/github")
-    public void renderGithub(HttpServletResponse response) throws IOException {
-        if (authRequest == null) {
-            response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
-            response.getWriter().write("GitHub OAuth not configured");
-            return;
+    public void renderGithub(HttpServletResponse response)  {
+        try {
+            if (authRequest == null) {
+                response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+                response.getWriter().write("GitHub OAuth not configured");
+                return;
+            }
+            String state = AuthStateUtils.createState();
+            response.sendRedirect(authRequest.authorize(state));
+        }catch (IOException e){
+
         }
-        String state = AuthStateUtils.createState();
-        response.sendRedirect(authRequest.authorize(state));
+
     }
     @Value("${domain.home}")
     private  String name;
