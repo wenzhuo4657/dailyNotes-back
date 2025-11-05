@@ -45,11 +45,15 @@ public class EmailNotifier extends INotifier {
 
             MimeBodyPart html = new MimeBodyPart();
             html.setContent("<p>"+content+"</p>", "text/html; charset=UTF-8");
-            MimeBodyPart attach = new MimeBodyPart();
-            attach.attachFile(file);
             Multipart multipart = new MimeMultipart();
             multipart.addBodyPart(html);
-            multipart.addBodyPart(attach);
+
+            if (file != null){
+                MimeBodyPart attach = new MimeBodyPart();
+                attach.attachFile(file);
+                multipart.addBodyPart(attach);
+            }
+
 
 
             msg.setContent(multipart);
@@ -58,10 +62,11 @@ public class EmailNotifier extends INotifier {
             Transport.send(msg);
         }catch (Exception e){
             e.printStackTrace();
+            return NotifierResult.fail();
         }
 
 
-        return null;
+        return NotifierResult.ok();
     }
 
     @Override

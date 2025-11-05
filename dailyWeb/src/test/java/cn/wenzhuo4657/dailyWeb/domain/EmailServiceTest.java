@@ -1,4 +1,4 @@
-package cn.wenzhuo4657.dailyWeb;
+package cn.wenzhuo4657.dailyWeb.domain;
 
 import cn.wenzhuo4657.dailyWeb.domain.email.EmailService;
 import org.junit.Test;

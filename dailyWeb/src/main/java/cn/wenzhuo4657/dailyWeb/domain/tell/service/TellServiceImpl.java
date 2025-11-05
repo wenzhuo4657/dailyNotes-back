@@ -6,6 +6,7 @@ import cn.wenzhuo4657.dailyWeb.domain.tell.repository.ITellRepository;
 import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.INotifier;
 import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.NotifierConfig;
 import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.NotifierMessage;
+import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.NotifierResult;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.Usernotifier;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
@@ -26,24 +27,28 @@ public class TellServiceImpl implements ITellService {
     }
 
     @Override
-    public void sendNotify(Integer notifyId,String type, NotifierMessage message) {
+    public NotifierResult sendNotify(Integer notifyId, String type, NotifierMessage message) {
 //        1,读取配置
         ConfigType configType = ConfigType.fromTag(type);
         String json = tellRepository.queryNotifyConfig(notifyId);
 
 
-        // 2,解析配置，创建通知策略+装饰器
+        // 2,解析配置，创建通知器
 
         Class strategy = configType.getStrategy();
         Class config = configType.getConfig();
 
         NotifierConfig notifierConfig = (NotifierConfig) JSONObject.parseObject(json,config);
+
+//        3，发起通知
         try {
-            INotifier notifier = (INotifier) strategy.getDeclaredConstructor(config).newInstance(notifierConfig);
-            notifier.send(message);
+            INotifier notifier = (INotifier) strategy.getDeclaredConstructor(NotifierConfig.class).newInstance(notifierConfig);
+            return notifier.send(message);
         } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e){
             e.printStackTrace();
         }
+
+        return  NotifierResult.fail();
 
 
     }

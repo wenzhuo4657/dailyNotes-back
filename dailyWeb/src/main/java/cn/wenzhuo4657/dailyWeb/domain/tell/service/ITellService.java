@@ -3,6 +3,7 @@ package cn.wenzhuo4657.dailyWeb.domain.tell.service;
 import cn.wenzhuo4657.dailyWeb.domain.tell.model.entity.UserNotifierDto;
 import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.NotifierConfig;
 import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.NotifierMessage;
+import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.NotifierResult;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface ITellService {
      * @param message 通知消息
      *
      */
-    public void sendNotify(Integer notifyId,String type, NotifierMessage message);
+    public NotifierResult sendNotify(Integer notifyId, String type, NotifierMessage message);
 
 
     /**
