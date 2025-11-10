@@ -5,11 +5,10 @@ import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.ItemDto;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.UpdateItemDto;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.contentItemType;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.repository.IItemEditRepository;
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.ContentItemDao;
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.UserContentnameDao;
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.ContentNameDao;
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentItem;
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentName;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.DocsDao;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.DocsItemDao;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.UserAuthDao;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.DocsItem;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,12 +26,12 @@ public class ItemEditRepository implements IItemEditRepository {
     private final static Logger log= org.slf4j.LoggerFactory.getLogger(ItemEditRepository.class);
 
     @Autowired
-    protected ContentItemDao contentItemDao;
+    protected DocsItemDao docsItemDao;
 
     @Autowired
-    protected UserContentnameDao userContentnameDao;
+    protected UserAuthDao userAuthDao;
     @Autowired
-    private ContentNameDao contentNameDao;
+    private DocsDao docsDao;
 
 
     @Override
@@ -42,7 +41,7 @@ public class ItemEditRepository implements IItemEditRepository {
 
             contentItemType.ItemType itemType = contentItemType.ItemType.toItemType(type);
 
-            List<ContentItem> contentItems = contentItemDao.queryByContentId(content_name_Id);
+            List<ContentItem> contentItems = docsItemDao.queryByContentId(content_name_Id);
 
             List<ItemDto> itemDtos= new ArrayList<>();
             for (
@@ -76,7 +75,7 @@ public class ItemEditRepository implements IItemEditRepository {
             ContentItem contentItem = new ContentItem();
             contentItem.setId(itemDto.getId());
             contentItem.setContent(itemDto.getContent());
-            contentItemDao.updateContent(contentItem);
+            docsItemDao.updateContent(contentItem);
         }catch (ClassNotFoundException e){
             log.error("不支持的ItemType");
             return false;
@@ -97,11 +96,11 @@ public class ItemEditRepository implements IItemEditRepository {
             contentItem.setContent("");
             contentItem.setDate(new Date(System.currentTimeMillis()).toString());
 
-            if (itemType.equals(contentItemType.ItemType.BASIC_CONTENT) &&contentItemDao.queryByContentIdAndDate(contentItem)!=0){
+            if (itemType.equals(contentItemType.ItemType.BASIC_CONTENT) &&docsItemDao.queryByContentIdAndDate(contentItem)!=0){
                 throw new Exception("已经存在");
             }
 
-            contentItemDao.insert(contentItem);
+            docsItemDao.insert(contentItem);
         }catch (ClassNotFoundException e){
             log.error("不支持的ItemType");
 
@@ -115,8 +114,8 @@ public class ItemEditRepository implements IItemEditRepository {
 
 
     @Override
-    public ContentItem selectContentItem(Integer id){
-        return contentItemDao.selectContentItem(id);
+    public DocsItem selectDocsItem(Long id){
+        return docsItemDao.selectDocsItem(id);
     }
 
 
@@ -126,13 +125,13 @@ public class ItemEditRepository implements IItemEditRepository {
         ContentItem item = new ContentItem();
         item.setId(id);
         item.setField(field);
-        contentItemDao.updateField(item);
+        docsItemDao.updateField(item);
     }
 
     @Override
     public boolean queryContentName(Integer content_name_Id, Integer type, Integer userid) {
 //        todo 修改表中的联合主键和约束
-        int query = userContentnameDao.query(content_name_Id, type, userid);
+        int query = userAuthDao.query(content_name_Id, type, userid);
         if (query ==0){
             return false;
         }
@@ -141,7 +140,7 @@ public class ItemEditRepository implements IItemEditRepository {
 
     @Override
     public int queryContentType(Integer id) {
-        ContentName contentname = contentNameDao.queryById(id);
+        ContentName contentname = docsDao.queryById(id);
         if (contentname == null){
             throw new RuntimeException("内容不存在");
         }

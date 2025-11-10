@@ -19,7 +19,7 @@ public interface CheckListService {
     /**
      * 更新备忘录状态为完成
      */
-    public boolean CheckListFinish(Integer  id);
+    public boolean CheckListFinish(Long  id);
 
 
 }

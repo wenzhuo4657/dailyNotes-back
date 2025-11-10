@@ -13,3 +13,4 @@ github:
   client-id:  ${GITHUB_CLIENT_ID}
   client-secret:  ${GITHUB_CLIENT_SECRET}
   redirect-uri: ${domain.url}/api/oauth/callback/github
+

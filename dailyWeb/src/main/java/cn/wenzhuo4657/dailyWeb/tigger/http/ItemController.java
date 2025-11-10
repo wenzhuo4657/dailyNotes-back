@@ -52,7 +52,7 @@ public class ItemController {
     }
 
     @PostMapping("field/checklist/finish")
-    public ResponseEntity<?> finishChecklist(@RequestParam("id") @NotNull @Min(0) Integer id) {
+    public ResponseEntity<?> finishChecklist(@RequestParam("id") @NotNull @Min(0) Long id) {
         boolean ok = itemEditService.CheckListFinish(id);
         return ResponseEntity.ok(Map.of("success", ok));
     }

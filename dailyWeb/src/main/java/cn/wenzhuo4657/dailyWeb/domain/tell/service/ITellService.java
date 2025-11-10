@@ -22,5 +22,5 @@ public interface ITellService {
     /**
      * 查询通知配置列表: 用户维度
      */
-    public List<UserNotifierDto> queryNotifyConfigs(Integer userId);
+    public List<UserNotifierDto> queryNotifyConfigs(Long userId);
 }

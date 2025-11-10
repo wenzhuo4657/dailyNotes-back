@@ -1,17 +1,16 @@
 package cn.wenzhuo4657.dailyWeb.infrastructure.database.dao;
 
-
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.Usernotifier;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.Notifier;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * (Usernotifier)表数据库访问层
+ * (Notifier)表数据库访问层
  *
  * @author makejava
- * @since 2025-11-04 16:35:22
+ * @since 2025-11-10 18:17:09
  */
-public interface UsernotifierDao {
+public interface NotifierDao {
 
     /**
      * 通过ID查询单条数据
@@ -19,49 +18,49 @@ public interface UsernotifierDao {
      * @param id 主键
      * @return 实例对象
      */
-    Usernotifier queryById(Integer id);
+    Notifier queryById(Integer id);
 
   
     /**
      * 统计总行数
      *
-     * @param usernotifier 查询条件
+     * @param notifier 查询条件
      * @return 总行数
      */
-    long count(Usernotifier usernotifier);
+    long count(Notifier notifier);
 
     /**
      * 新增数据
      *
-     * @param usernotifier 实例对象
+     * @param notifier 实例对象
      * @return 影响行数
      */
-    int insert(Usernotifier usernotifier);
+    int insert(Notifier notifier);
 
     /**
      * 批量新增数据（MyBatis原生foreach方法）
      *
-     * @param entities List<Usernotifier> 实例对象列表
+     * @param entities List<Notifier> 实例对象列表
      * @return 影响行数
      */
-    int insertBatch(@Param("entities") List<Usernotifier> entities);
+    int insertBatch(@Param("entities") List<Notifier> entities);
 
     /**
      * 批量新增或按主键更新数据（MyBatis原生foreach方法）
      *
-     * @param entities List<Usernotifier> 实例对象列表
+     * @param entities List<Notifier> 实例对象列表
      * @return 影响行数
      * @throws org.springframework.jdbc.BadSqlGrammarException 入参是空List的时候会抛SQL语句错误的异常，请自行校验入参
      */
-    int insertOrUpdateBatch(@Param("entities") List<Usernotifier> entities);
+    int insertOrUpdateBatch(@Param("entities") List<Notifier> entities);
 
     /**
      * 修改数据
      *
-     * @param usernotifier 实例对象
+     * @param notifier 实例对象
      * @return 影响行数
      */
-    int update(Usernotifier usernotifier);
+    int update(Notifier notifier);
 
     /**
      * 通过主键删除数据
@@ -71,8 +70,8 @@ public interface UsernotifierDao {
      */
     int deleteById(Integer id);
 
-    String queryByNotifyId(Integer notifyId);
+    List<Notifier> querByUserId(@Param("userId") Long userId);
 
-    List<Usernotifier> querByUserId(Integer userId);
+    String queryByNotifyId(@Param("notifyId") Integer notifyId);
 }
 

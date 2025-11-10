@@ -1,17 +1,16 @@
 package cn.wenzhuo4657.dailyWeb.infrastructure.database.dao;
 
-
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentName;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.NotifierType;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * (ContentName)表数据库访问层
+ * (NotifierType)表数据库访问层
  *
  * @author makejava
- * @since 2025-10-27 22:33:20
+ * @since 2025-11-10 13:41:14
  */
-public interface ContentNameDao {
+public interface NotifierTypeDao {
 
     /**
      * 通过ID查询单条数据
@@ -19,49 +18,49 @@ public interface ContentNameDao {
      * @param id 主键
      * @return 实例对象
      */
-    ContentName queryById(Integer id);
+    NotifierType queryById(Integer id);
 
   
     /**
      * 统计总行数
      *
-     * @param contentname 查询条件
+     * @param notifierType 查询条件
      * @return 总行数
      */
-    long count(ContentName contentname);
+    long count(NotifierType notifierType);
 
     /**
      * 新增数据
      *
-     * @param contentname 实例对象
+     * @param notifierType 实例对象
      * @return 影响行数
      */
-    int insert(ContentName contentname);
+    int insert(NotifierType notifierType);
 
     /**
      * 批量新增数据（MyBatis原生foreach方法）
      *
-     * @param entities List<ContentName> 实例对象列表
+     * @param entities List<NotifierType> 实例对象列表
      * @return 影响行数
      */
-    int insertBatch(@Param("entities") List<ContentName> entities);
+    int insertBatch(@Param("entities") List<NotifierType> entities);
 
     /**
      * 批量新增或按主键更新数据（MyBatis原生foreach方法）
      *
-     * @param entities List<ContentName> 实例对象列表
+     * @param entities List<NotifierType> 实例对象列表
      * @return 影响行数
      * @throws org.springframework.jdbc.BadSqlGrammarException 入参是空List的时候会抛SQL语句错误的异常，请自行校验入参
      */
-    int insertOrUpdateBatch(@Param("entities") List<ContentName> entities);
+    int insertOrUpdateBatch(@Param("entities") List<NotifierType> entities);
 
     /**
      * 修改数据
      *
-     * @param contentname 实例对象
+     * @param notifierType 实例对象
      * @return 影响行数
      */
-    int update(ContentName contentname);
+    int update(NotifierType notifierType);
 
     /**
      * 通过主键删除数据
@@ -70,6 +69,7 @@ public interface ContentNameDao {
      * @return 影响行数
      */
     int deleteById(Integer id);
+
 
 }
 

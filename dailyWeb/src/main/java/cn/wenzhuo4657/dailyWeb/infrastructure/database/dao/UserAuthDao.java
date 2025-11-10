@@ -1,17 +1,16 @@
 package cn.wenzhuo4657.dailyWeb.infrastructure.database.dao;
 
-
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.UserSelector;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.UserAuth;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * (UserSelector)表数据库访问层
+ * (UserAuth)表数据库访问层
  *
  * @author makejava
- * @since 2025-10-27 21:55:13
+ * @since 2025-11-10 13:41:16
  */
-public interface UserSelectorDao {
+public interface UserAuthDao {
 
     /**
      * 通过ID查询单条数据
@@ -19,49 +18,49 @@ public interface UserSelectorDao {
      * @param id 主键
      * @return 实例对象
      */
-    UserSelector queryById(Integer id);
+    UserAuth queryById(Integer id);
 
   
     /**
      * 统计总行数
      *
-     * @param userSelector 查询条件
+     * @param userAuth 查询条件
      * @return 总行数
      */
-    long count(UserSelector userSelector);
+    long count(UserAuth userAuth);
 
     /**
      * 新增数据
      *
-     * @param userSelector 实例对象
+     * @param userAuth 实例对象
      * @return 影响行数
      */
-    int insert(UserSelector userSelector);
+    int insert(UserAuth userAuth);
 
     /**
      * 批量新增数据（MyBatis原生foreach方法）
      *
-     * @param entities List<UserSelector> 实例对象列表
+     * @param entities List<UserAuth> 实例对象列表
      * @return 影响行数
      */
-    int insertBatch(@Param("entities") List<UserSelector> entities);
+    int insertBatch(@Param("entities") List<UserAuth> entities);
 
     /**
      * 批量新增或按主键更新数据（MyBatis原生foreach方法）
      *
-     * @param entities List<UserSelector> 实例对象列表
+     * @param entities List<UserAuth> 实例对象列表
      * @return 影响行数
      * @throws org.springframework.jdbc.BadSqlGrammarException 入参是空List的时候会抛SQL语句错误的异常，请自行校验入参
      */
-    int insertOrUpdateBatch(@Param("entities") List<UserSelector> entities);
+    int insertOrUpdateBatch(@Param("entities") List<UserAuth> entities);
 
     /**
      * 修改数据
      *
-     * @param userSelector 实例对象
+     * @param userAuth 实例对象
      * @return 影响行数
      */
-    int update(UserSelector userSelector);
+    int update(UserAuth userAuth);
 
     /**
      * 通过主键删除数据

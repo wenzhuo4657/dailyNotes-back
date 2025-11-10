@@ -1,6 +1,15 @@
 package cn.wenzhuo4657.dailyWeb.infrastructure.database.entity;
 
-public class ContentType {
+import java.io.Serializable;
+
+/**
+ * (DocsType)实体类
+ *
+ * @author makejava
+ * @since 2025-11-10 13:41:14
+ */
+public class DocsType implements Serializable {
+    private static final long serialVersionUID = 384328872257298043L;
 
     private Integer id;
 
@@ -8,14 +17,8 @@ public class ContentType {
 
     private String des;
 
-    public ContentType() {
-    }
+    private Integer typeId;
 
-    public ContentType(Integer id, String name, String des) {
-        this.id = id;
-        this.name = name;
-        this.des = des;
-    }
 
     public Integer getId() {
         return id;
@@ -40,4 +43,14 @@ public class ContentType {
     public void setDes(String des) {
         this.des = des;
     }
+
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
 }
+

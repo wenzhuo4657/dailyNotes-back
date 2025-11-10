@@ -1,11 +1,9 @@
 package cn.wenzhuo4657.dailyWeb.tigger.http;
 
 
-import cn.dev33.satoken.stp.StpUtil;
 import cn.wenzhuo4657.dailyWeb.domain.Types.ITypesService;
 import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.ContentNameDto;
 import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.TypeDto;
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

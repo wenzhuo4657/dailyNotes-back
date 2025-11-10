@@ -1,5 +1,6 @@
 package cn.wenzhuo4657.dailyWeb.domain;
 
+import cn.wenzhuo4657.dailyWeb.domain.tell.model.entity.UserNotifierDto;
 import cn.wenzhuo4657.dailyWeb.domain.tell.service.ITellService;
 import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.NotifierMessage;
 import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.NotifierResult;
@@ -17,6 +18,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -44,6 +46,12 @@ public class TellServiceTest {
         message.setFile(getFile());
         NotifierResult result = tellService.sendNotify(0, "gmail", message);
         System.out.println(result);
+    }
+
+    @Test
+    public void test2(){
+        List<UserNotifierDto> userNotifierDtos = tellService.queryNotifyConfigs(1L);
+        System.out.println(userNotifierDtos);
     }
 
 

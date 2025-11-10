@@ -7,8 +7,8 @@ import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.INotifier;
 import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.NotifierConfig;
 import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.NotifierMessage;
 import cn.wenzhuo4657.dailyWeb.domain.tell.service.strategy.NotifierResult;
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.Usernotifier;
-import com.alibaba.fastjson2.JSON;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.Notifier;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.NotifierType;
 import com.alibaba.fastjson2.JSONObject;
 import org.springframework.stereotype.Service;
 
@@ -55,12 +55,13 @@ public class TellServiceImpl implements ITellService {
 
 
     @Override
-    public List<UserNotifierDto> queryNotifyConfigs(Integer userId) {
-        List<Usernotifier> usernotifiers = tellRepository.queryUserNotifyConfig(userId);
+    public List<UserNotifierDto> queryNotifyConfigs(Long userId) {
+        List<Notifier> usernotifiers = tellRepository.queryUserNotifyConfig(userId);
         return  usernotifiers.stream().map(entity->{
             UserNotifierDto userNotifierDto = new UserNotifierDto();
-            userNotifierDto.setId(entity.getId());
-            userNotifierDto.setType(entity.getType());
+            userNotifierDto.setNotifyId(entity.getNotifierId());
+            NotifierType notifierType = tellRepository.queryNotifierTypeById(entity.getNotifierTypeId());
+            userNotifierDto.setType(notifierType.getName());
             return  userNotifierDto;
         }).collect(Collectors.toList());
     }

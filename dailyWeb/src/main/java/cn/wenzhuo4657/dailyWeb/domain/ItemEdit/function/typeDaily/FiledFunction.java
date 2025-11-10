@@ -2,7 +2,6 @@ package cn.wenzhuo4657.dailyWeb.domain.ItemEdit.function.typeDaily;
 
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.ContentItemFiled;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.contentItemType;
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.ContentItem;
 
 import java.util.Map;
 

@@ -1,17 +1,16 @@
 package cn.wenzhuo4657.dailyWeb.infrastructure.database.dao;
 
-
-import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.User;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.Docs;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * (User)表数据库访问层
+ * (Docs)表数据库访问层
  *
  * @author makejava
  * @since 2025-11-10 13:41:14
  */
-public interface UserDao {
+public interface DocsDao {
 
     /**
      * 通过ID查询单条数据
@@ -19,49 +18,49 @@ public interface UserDao {
      * @param id 主键
      * @return 实例对象
      */
-    User queryById(Integer id);
+    Docs queryById(Integer id);
 
   
     /**
      * 统计总行数
      *
-     * @param user 查询条件
+     * @param docs 查询条件
      * @return 总行数
      */
-    long count(User user);
+    long count(Docs docs);
 
     /**
      * 新增数据
      *
-     * @param user 实例对象
+     * @param docs 实例对象
      * @return 影响行数
      */
-    int insert(User user);
+    int insert(Docs docs);
 
     /**
      * 批量新增数据（MyBatis原生foreach方法）
      *
-     * @param entities List<User> 实例对象列表
+     * @param entities List<Docs> 实例对象列表
      * @return 影响行数
      */
-    int insertBatch(@Param("entities") List<User> entities);
+    int insertBatch(@Param("entities") List<Docs> entities);
 
     /**
      * 批量新增或按主键更新数据（MyBatis原生foreach方法）
      *
-     * @param entities List<User> 实例对象列表
+     * @param entities List<Docs> 实例对象列表
      * @return 影响行数
      * @throws org.springframework.jdbc.BadSqlGrammarException 入参是空List的时候会抛SQL语句错误的异常，请自行校验入参
      */
-    int insertOrUpdateBatch(@Param("entities") List<User> entities);
+    int insertOrUpdateBatch(@Param("entities") List<Docs> entities);
 
     /**
      * 修改数据
      *
-     * @param user 实例对象
+     * @param docs 实例对象
      * @return 影响行数
      */
-    int update(User user);
+    int update(Docs docs);
 
     /**
      * 通过主键删除数据
@@ -71,6 +70,5 @@ public interface UserDao {
      */
     int deleteById(Integer id);
 
-    User queryByOauthId(@Param("oauthProvider") String oauthProvider, @Param("oauthProviderUserId") String oauthProviderUserId);
 }
 
