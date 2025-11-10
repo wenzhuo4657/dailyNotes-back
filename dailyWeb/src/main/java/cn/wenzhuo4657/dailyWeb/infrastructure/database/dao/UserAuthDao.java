@@ -1,5 +1,6 @@
 package cn.wenzhuo4657.dailyWeb.infrastructure.database.dao;
 
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.Docs;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.UserAuth;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -70,5 +71,6 @@ public interface UserAuthDao {
      */
     int deleteById(Integer id);
 
+    List<Docs> queryByUserIdAndtypeId(@Param("userId") Integer userId, @Param("typeId") Integer typeId);
 }
 

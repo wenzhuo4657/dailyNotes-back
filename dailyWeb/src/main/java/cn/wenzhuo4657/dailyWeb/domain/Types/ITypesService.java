@@ -13,5 +13,9 @@ public interface ITypesService {
      */
     List<TypeDto> getAllTypes();
 
+    /**
+     * 根据类型id获取相应用户的文档id
+     * @return
+     */
     List<ContentNameDto> getContentNameIdById(Integer typeId);
 }

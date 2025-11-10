@@ -88,6 +88,7 @@ public class AuthController {
             registerByOauthDto.setOauth_provider_avatar(authUser.getAvatar());
             registerByOauthDto.setOauth_provider_username(authUser.getUsername());
             registerByOauthDto.setOauth_provider_user_id(authUser.getUuid());
+//            todo 底层改id --> user_id为Long
             UserDto user = userService.registerByOauth(registerByOauthDto);
 
             StpUtil.login(user.getId());

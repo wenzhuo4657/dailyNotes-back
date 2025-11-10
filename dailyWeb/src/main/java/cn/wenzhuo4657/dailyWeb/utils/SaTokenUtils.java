@@ -9,8 +9,8 @@ public class SaTokenUtils {
      * 获取登录用户的id
      * @return
      */
-    public static Integer getLoginId(){
-        return Integer.valueOf(StpUtil.getLoginId().toString());
+    public static Long getLoginId(){
+        return Long.valueOf(StpUtil.getLoginId().toString());
     }
 
     /**

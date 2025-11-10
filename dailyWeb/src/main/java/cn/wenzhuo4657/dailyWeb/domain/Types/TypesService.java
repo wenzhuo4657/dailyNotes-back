@@ -1,8 +1,10 @@
 package cn.wenzhuo4657.dailyWeb.domain.Types;
 
 import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.ContentNameDto;
+import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.DocsDto;
 import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.TypeDto;
 import cn.wenzhuo4657.dailyWeb.domain.Types.repository.ITypesRepository;
+import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.Docs;
 import cn.wenzhuo4657.dailyWeb.utils.SaTokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,15 +26,15 @@ public class TypesService  implements   ITypesService{
     }
 
     @Override
-    public List<ContentNameDto> getContentNameIdById(Integer typeId) {
+    public List<DocsDto> getContentNameIdById(Integer typeId) {
         Integer loginId = SaTokenUtils.getLoginId();
-        List<ContentName> list = typesRepository.getContentNameIdById(loginId, typeId);
+        List<Docs> list = typesRepository.getDocsIdByTypeId(loginId, typeId);
         return list.stream()
                 .map(
 
                                 contentName -> {
-                                    ContentNameDto dto=new ContentNameDto();
-                                    dto.setId(contentName.getId());
+                                    DocsDto dto=new DocsDto();
+                                    dto.setId(contentName.getDocsId());
                                     dto.setName(contentName.getName());
                                     return dto;
                                 }

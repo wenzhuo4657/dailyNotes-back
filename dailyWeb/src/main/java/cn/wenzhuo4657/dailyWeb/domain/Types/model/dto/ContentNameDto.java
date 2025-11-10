@@ -1,17 +1,18 @@
 package cn.wenzhuo4657.dailyWeb.domain.Types.model.dto;
 
-public class ContentNameDto {
+public class DocsDto {
 
     private Integer id;
 
     private String name;
 
-    public ContentNameDto() {
-    }
 
-    public ContentNameDto(Integer id, String name) {
+    public DocsDto(Integer id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public DocsDto() {
     }
 
     public Integer getId() {
