@@ -1,11 +1,8 @@
 package cn.wenzhuo4657.dailyWeb.tigger.http;
 
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.ItemEditService;
-import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.InsertItemDto;
-import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.ItemDto;
-import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.QueryItemDto;
-import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.UpdateCheckListDto;
-import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.UpdateItemDto;
+import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.*;
+import cn.wenzhuo4657.dailyWeb.utils.AuthUtils;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -30,12 +27,12 @@ public class ItemController {
     @PostMapping("/get")
     public List<ItemDto> getItems(@Valid @RequestBody QueryItemDto params) {
         
-        return itemEditService.getItem(params);
+        return itemEditService.getItem(params, AuthUtils.getLoginId());
     }
 
     @PostMapping("/insert")
     public ResponseEntity<?> insertItem(@Valid @RequestBody InsertItemDto body) {
-        boolean ok = itemEditService.insertItem(body);
+        boolean ok = itemEditService.insertItem(body, AuthUtils.getLoginId());
         return ResponseEntity.ok(Map.of("success", ok));
     }
 

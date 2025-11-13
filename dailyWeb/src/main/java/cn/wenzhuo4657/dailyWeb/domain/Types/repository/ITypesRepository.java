@@ -10,7 +10,7 @@ public interface ITypesRepository {
     List<TypeDto> getAll();
 
 
-    List<TypeDto> getAllByUserId(Integer userId);
+    List<TypeDto> getAllByUserId(Long userId);
 
-    List<Docs> getDocsIdByTypeId(Integer userId, Integer typeId);
+    List<Docs> getDocsIdByTypeId(Long userId, Integer typeId);
 }

@@ -2,8 +2,10 @@ package cn.wenzhuo4657.dailyWeb.tigger.http;
 
 
 import cn.wenzhuo4657.dailyWeb.domain.Types.ITypesService;
-import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.ContentNameDto;
+
+import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.DocsDto;
 import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.TypeDto;
+import cn.wenzhuo4657.dailyWeb.utils.AuthUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,13 +25,13 @@ public class TypeController {
 
     @RequestMapping(value = "/getAllTypes")
     public List<TypeDto> getAllTypes() {
-        return typesService.getAllTypes();
+        return typesService.getAllTypes(AuthUtils.getLoginId());
     }
 
 
     @RequestMapping(value = "/getContentIdsByTypes")
-    public List<ContentNameDto> getTypesWithItems(@RequestParam("id") Integer typeId) {
-        return typesService.getContentNameIdById(typeId);
+    public List<DocsDto> getTypesWithItems(@RequestParam("id") Integer typeId) {
+        return typesService.getContentNameIdById(typeId,AuthUtils.getLoginId());
     }
 
 }

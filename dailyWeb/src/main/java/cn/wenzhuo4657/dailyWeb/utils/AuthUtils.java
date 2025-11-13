@@ -3,7 +3,11 @@ package cn.wenzhuo4657.dailyWeb.utils;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.wenzhuo4657.dailyWeb.domain.auth.model.dto.UserDto;
 
-public class SaTokenUtils {
+/**
+ *  登录身份工具类：隔绝框架层影响，如果后续更换权限框架，只改它就好了，
+ *
+ */
+public class AuthUtils {
 
     /**
      * 获取登录用户的id

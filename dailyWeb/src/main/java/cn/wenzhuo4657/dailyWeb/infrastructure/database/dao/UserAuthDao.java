@@ -71,6 +71,6 @@ public interface UserAuthDao {
      */
     int deleteById(Integer id);
 
-    List<Docs> queryByUserIdAndtypeId(@Param("userId") Integer userId, @Param("typeId") Integer typeId);
+    List<Docs> queryByUserIdAndtypeId(@Param("userId") Long userId, @Param("typeId") Integer typeId);
 }
 

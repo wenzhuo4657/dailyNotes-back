@@ -15,7 +15,7 @@ public interface IItemEditService {
     /**
      * 增加item
      */
-    boolean insertItem(InsertItemDto dto);
+    boolean insertItem(InsertItemDto dto,Long userId);
 
 
     /**
@@ -26,5 +26,5 @@ public interface IItemEditService {
     /**
      * 获取item
      */
-    List<ItemDto> getItem(QueryItemDto dto);
+    List<ItemDto> getItem(QueryItemDto dto,Long userId);
 }

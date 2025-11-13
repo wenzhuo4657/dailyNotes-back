@@ -6,6 +6,7 @@ import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.DocsItem;
 
 import java.util.List;
 
+
 public interface IItemEditRepository {
 
 
@@ -25,7 +26,7 @@ public interface IItemEditRepository {
     void updateField(Integer id, String field);
 
 
-    boolean queryContentName(Integer content_name_Id,Integer type,Integer userid);
+    boolean queryContentName(Integer content_name_Id,Integer type,Long userid);
 
 
     int queryContentType(Integer id);

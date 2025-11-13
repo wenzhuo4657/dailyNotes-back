@@ -5,7 +5,6 @@ import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.*;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.ContentItemFiled;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.repository.IItemEditRepository;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.DocsItem;
-import cn.wenzhuo4657.dailyWeb.utils.SaTokenUtils;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,17 +24,19 @@ public  class ItemEditService implements IItemEditService,CheckListService {
     @Autowired
     protected IItemEditRepository mdRepository;
 
-    private void isPermission(Integer contentNameId, Integer type) {
-        if (!mdRepository.queryContentName(contentNameId, type, SaTokenUtils.getLoginId())){
+//    todo 重构
+
+    private void isPermission(Integer contentNameId, Integer type,Long userId) {
+        if (!mdRepository.queryContentName(contentNameId, type, userId)){
             throw new RuntimeException("用户没有操作该文档的权限");
         }
     }
 
 
     @Override
-    public boolean insertItem(InsertItemDto dto) {
+    public boolean insertItem(InsertItemDto dto,Long userId) {
         try {
-            isPermission(dto.getContentNameId(),dto.getType());
+            isPermission(dto.getContentNameId(),dto.getType(),userId);
         }catch (Exception e){
             log.error("查看文档权限失败",e);
             return false;
@@ -54,9 +55,9 @@ public  class ItemEditService implements IItemEditService,CheckListService {
     }
 
     @Override
-    public List<ItemDto> getItem(QueryItemDto dto) {
+    public List<ItemDto> getItem(QueryItemDto dto,Long userId) {
         try {
-            isPermission(dto.getContentNameId(),dto.getType());
+            isPermission(dto.getContentNameId(),dto.getType(),userId);
         }catch (Exception e){
             log.error("查看文档权限失败",e);
             return null;
