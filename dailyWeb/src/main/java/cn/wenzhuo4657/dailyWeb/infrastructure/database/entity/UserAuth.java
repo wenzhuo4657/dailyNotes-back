@@ -11,18 +11,18 @@ import java.io.Serializable;
 public class UserAuth implements Serializable {
     private static final long serialVersionUID = -49622796500743526L;
 
-    private Integer id;
+    private Long id;
 
     private Long userId;
 
-    private Integer docsTypeId;
+    private Long docsTypeId;
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -34,11 +34,11 @@ public class UserAuth implements Serializable {
         this.userId = userId;
     }
 
-    public Integer getDocsTypeId() {
+    public Long getDocsTypeId() {
         return docsTypeId;
     }
 
-    public void setDocsTypeId(Integer docsTypeId) {
+    public void setDocsTypeId(Long docsTypeId) {
         this.docsTypeId = docsTypeId;
     }
 

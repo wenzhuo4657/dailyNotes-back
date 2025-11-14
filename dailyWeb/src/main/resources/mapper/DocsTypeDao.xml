@@ -3,10 +3,10 @@
 <mapper namespace="cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.DocsTypeDao">
 
     <resultMap type="cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.DocsType" id="DocsTypeMap">
-        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="BIGINT"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="des" column="des" jdbcType="VARCHAR"/>
-        <result property="typeId" column="type_id" jdbcType="INTEGER"/>
+        <result property="typeId" column="type_id" jdbcType="BIGINT"/>
     </resultMap>
 
     <!--查询单个-->

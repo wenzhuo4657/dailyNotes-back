@@ -11,28 +11,28 @@ import java.io.Serializable;
 public class NotifierType implements Serializable {
     private static final long serialVersionUID = 858588409541034480L;
 
-    private Integer id;
+    private Long id;
 
-    private Integer typeId;
+    private Long typeId;
 
     private String name;
 
     private String des;
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getTypeId() {
+    public Long getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(Long typeId) {
         this.typeId = typeId;
     }
 

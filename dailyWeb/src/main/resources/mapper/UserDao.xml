@@ -3,8 +3,8 @@
 <mapper namespace="cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.UserDao">
 
     <resultMap type="cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.User" id="UserMap">
-        <result property="id" column="id" jdbcType="INTEGER"/>
-        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="BIGINT"/>
+        <result property="userId" column="user_id" jdbcType="BIGINT"/>
         <result property="oauthUserid" column="oauth_userId" jdbcType="VARCHAR"/>
         <result property="oauthProvider" column="oauth_provider" jdbcType="VARCHAR"/>
         <result property="createdAt" column="created_at" jdbcType="VARCHAR"/>

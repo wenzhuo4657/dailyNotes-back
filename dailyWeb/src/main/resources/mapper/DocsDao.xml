@@ -3,13 +3,13 @@
 <mapper namespace="cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.DocsDao">
 
     <resultMap type="cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.Docs" id="DocsMap">
-        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="BIGINT"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
-        <result property="typeId" column="type_id" jdbcType="INTEGER"/>
+        <result property="typeId" column="type_id" jdbcType="BIGINT"/>
         <result property="createTime" column="create_time" jdbcType="VARCHAR"/>
         <result property="updateTime" column="update_time" jdbcType="VARCHAR"/>
-        <result property="docsId" column="docs_id" jdbcType="INTEGER"/>
-        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="docsId" column="docs_id" jdbcType="BIGINT"/>
+        <result property="userId" column="user_id" jdbcType="BIGINT"/>
     </resultMap>
 
     <!--查询单个-->
@@ -48,6 +48,20 @@ id, name, type_id, create_time, update_time, docs_id, user_id
                 and user_id = #{userId}
             </if>
         </where>
+    </select>
+    <select id="isPermissions"  resultType="java.lang.Boolean">
+        select count(1) == 1
+        from docs
+        where
+            user_id = #{userId}
+            and  docs_id = #{docsId}
+        
+    </select>
+    <select id="isExist" resultType="java.lang.Boolean">
+        select count(1) == 1
+        from docs
+        where  docs_id = #{docsId}
+
     </select>
 
     <!--新增所有列-->

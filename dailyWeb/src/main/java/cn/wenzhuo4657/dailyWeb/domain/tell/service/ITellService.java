@@ -16,7 +16,7 @@ public interface ITellService {
      * @param message 通知消息
      *
      */
-    public NotifierResult sendNotify(Integer notifyId, String type, NotifierMessage message);
+    public NotifierResult sendNotify(Long notifyId, String type, NotifierMessage message);
 
 
     /**

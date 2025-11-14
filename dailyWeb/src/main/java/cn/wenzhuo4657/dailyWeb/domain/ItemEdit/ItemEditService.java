@@ -26,49 +26,32 @@ public  class ItemEditService implements IItemEditService,CheckListService {
 
 //    todo 重构
 
-    private void isPermission(Integer contentNameId, Integer type,Long userId) {
-        if (!mdRepository.queryContentName(contentNameId, type, userId)){
-            throw new RuntimeException("用户没有操作该文档的权限");
-        }
-    }
 
 
     @Override
     public boolean insertItem(InsertItemDto dto,Long userId) {
-        try {
-            isPermission(dto.getContentNameId(),dto.getType(),userId);
-        }catch (Exception e){
-            log.error("查看文档权限失败",e);
-            return false;
-        }
 
+        return mdRepository.addItem(dto.getDocsId(),dto.getType(),userId);
 
-        mdRepository.addItem(dto.getContentNameId(),dto.getType());
-        return true;
     }
 
     @Override
-    public boolean updateItem(UpdateItemDto dto) {
+    public boolean updateItem(UpdateItemDto dto,Long userId) {
 
-        mdRepository.updateMd( dto,dto.getType());
+        mdRepository.updateItem( dto,dto.getType(),userId);
         return true;
     }
 
     @Override
     public List<ItemDto> getItem(QueryItemDto dto,Long userId) {
-        try {
-            isPermission(dto.getContentNameId(),dto.getType(),userId);
-        }catch (Exception e){
-            log.error("查看文档权限失败",e);
-            return null;
-        }
-        return mdRepository.getMd(dto.getContentNameId(),dto.getType());
+
+        return mdRepository.getDocsItems(dto.getDocsId(),dto.getType(),userId);
     }
 
 
     @Override
     public boolean CheckList(UpdateCheckListDto params) {
-        DocsItem docsItem = mdRepository.selectDocsItem(params.getId());
+        DocsItem docsItem = mdRepository.selectDocsItem(params.getIndex());
         if (docsItem==null){
             log.error("未找到该条目");
             return false;

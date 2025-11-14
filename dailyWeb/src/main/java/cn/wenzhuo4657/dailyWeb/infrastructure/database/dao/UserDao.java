@@ -19,7 +19,7 @@ public interface UserDao {
      * @param id 主键
      * @return 实例对象
      */
-    User queryById(Integer id);
+    User queryById(Long id);
 
   
     /**
@@ -69,7 +69,7 @@ public interface UserDao {
      * @param id 主键
      * @return 影响行数
      */
-    int deleteById(Integer id);
+    int deleteById(Long id);
 
     User queryByOauthId(@Param("oauthProvider") String oauthProvider, @Param("oauthProviderUserId") String oauthProviderUserId);
 }

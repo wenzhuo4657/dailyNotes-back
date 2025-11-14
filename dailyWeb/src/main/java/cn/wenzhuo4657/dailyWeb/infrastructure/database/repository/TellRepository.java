@@ -22,7 +22,7 @@ public class TellRepository implements ITellRepository {
 //   todo 缺少安全性配置  例如，如果找不到，应该返回什么？
 
     @Override
-    public String queryNotifyConfig(Integer notifyId) {
+    public String queryNotifyConfig(Long notifyId) {
         return  usernotifierDao.queryByNotifyId(notifyId);
 
     }
@@ -33,7 +33,7 @@ public class TellRepository implements ITellRepository {
     }
 
     @Override
-    public NotifierType queryNotifierTypeById(Integer notifierTypeId) {
+    public NotifierType queryNotifierTypeById(Long notifierTypeId) {
         return notifierTypeDao.queryById(notifierTypeId);
     }
 }

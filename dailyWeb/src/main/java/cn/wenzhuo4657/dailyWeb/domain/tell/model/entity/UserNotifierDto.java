@@ -1,17 +1,17 @@
 package cn.wenzhuo4657.dailyWeb.domain.tell.model.entity;
 
 public class UserNotifierDto {
-    private  Integer notifyId;
+    private  Long notifyId;
     private String name;
 
     private String type;
 
 
-    public Integer getNotifyId() {
+    public Long getNotifyId() {
         return notifyId;
     }
 
-    public void setNotifyId(Integer notifyId) {
+    public void setNotifyId(Long notifyId) {
         this.notifyId = notifyId;
     }
 
@@ -31,7 +31,7 @@ public class UserNotifierDto {
         this.type = type;
     }
 
-    public UserNotifierDto(Integer notifyId, String name, String type) {
+    public UserNotifierDto(Long notifyId, String name, String type) {
         this.notifyId = notifyId;
         this.name = name;
         this.type = type;

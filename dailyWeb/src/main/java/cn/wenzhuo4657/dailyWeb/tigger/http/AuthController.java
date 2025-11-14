@@ -5,7 +5,8 @@ import cn.dev33.satoken.stp.StpUtil;
 import cn.wenzhuo4657.dailyWeb.domain.auth.UserService;
 import cn.wenzhuo4657.dailyWeb.domain.auth.model.dto.RegisterByOauthDto;
 import cn.wenzhuo4657.dailyWeb.domain.auth.model.dto.UserDto;
-import cn.wenzhuo4657.dailyWeb.utils.SaTokenUtils;
+
+import cn.wenzhuo4657.dailyWeb.types.utils.AuthUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletResponse;
@@ -94,7 +95,7 @@ public class AuthController {
             StpUtil.login(user.getId());
 
             // 4. 可以将用户信息存入 Sa-Token 的 Session 中，方便后续获取
-            SaTokenUtils.setUserInfo(user);
+            AuthUtils.setUserInfo(user);
 
 
             log.info("GitHub 用户 {} 登录成功！", authUser.getUsername());

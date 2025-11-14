@@ -11,26 +11,26 @@ import java.io.Serializable;
 public class Docs implements Serializable {
     private static final long serialVersionUID = -26464799115145196L;
 
-    private Integer id;
+    private Long id;
 
     private String name;
 
-    private Integer typeId;
+    private Long typeId;
 
     private String createTime;
 
     private String updateTime;
 
-    private Integer docsId;
+    private Long docsId;
 
     private Long userId;
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -42,11 +42,11 @@ public class Docs implements Serializable {
         this.name = name;
     }
 
-    public Integer getTypeId() {
+    public Long getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(Long typeId) {
         this.typeId = typeId;
     }
 
@@ -66,11 +66,11 @@ public class Docs implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Integer getDocsId() {
+    public Long getDocsId() {
         return docsId;
     }
 
-    public void setDocsId(Integer docsId) {
+    public void setDocsId(Long docsId) {
         this.docsId = docsId;
     }
 
@@ -82,4 +82,3 @@ public class Docs implements Serializable {
         this.userId = userId;
     }
 }
-

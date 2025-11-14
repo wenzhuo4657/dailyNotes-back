@@ -10,24 +10,23 @@ import java.util.List;
 public interface IItemEditRepository {
 
 
-    List<ItemDto> getMd(Integer content_name_Id, Integer type);
+    List<ItemDto> getDocsItems(Long docs_Id, Integer type, Long userId);
 
 
 
-    boolean updateMd(UpdateItemDto itemDto, Integer type);
+    boolean updateItem(UpdateItemDto itemDto, Integer type, Long userId);
 
 
 
-    void addItem(Integer content_name_Id, Integer type);
+    boolean addItem(Long docs_Id, Integer type, Long userId);
 
 
     DocsItem selectDocsItem(Long id);
 
-    void updateField(Integer id, String field);
+    void updateField(Long id, String field);
 
 
-    boolean queryContentName(Integer content_name_Id,Integer type,Long userid);
 
 
-    int queryContentType(Integer id);
+
 }

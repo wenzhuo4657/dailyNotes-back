@@ -2,12 +2,12 @@ package cn.wenzhuo4657.dailyWeb.domain.Types.model.dto;
 
 public class DocsDto {
 
-    private Integer id;
+    private Long id;
 
     private String name;
 
 
-    public DocsDto(Integer id, String name) {
+    public DocsDto(Long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -15,11 +15,11 @@ public class DocsDto {
     public DocsDto() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

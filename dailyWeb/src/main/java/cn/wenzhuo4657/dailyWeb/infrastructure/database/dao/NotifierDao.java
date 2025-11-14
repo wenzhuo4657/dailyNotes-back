@@ -18,7 +18,7 @@ public interface NotifierDao {
      * @param id 主键
      * @return 实例对象
      */
-    Notifier queryById(Integer id);
+    Notifier queryById(Long id);
 
   
     /**
@@ -68,10 +68,10 @@ public interface NotifierDao {
      * @param id 主键
      * @return 影响行数
      */
-    int deleteById(Integer id);
+    int deleteById(Long id);
 
     List<Notifier> querByUserId(@Param("userId") Long userId);
 
-    String queryByNotifyId(@Param("notifyId") Integer notifyId);
+    String queryByNotifyId(@Param("notifyId") Long notifyId);
 }
 

@@ -12,5 +12,5 @@ public interface ITypesRepository {
 
     List<TypeDto> getAllByUserId(Long userId);
 
-    List<Docs> getDocsIdByTypeId(Long userId, Integer typeId);
+    List<Docs> getDocsIdByTypeId(Long userId, Long typeId);
 }

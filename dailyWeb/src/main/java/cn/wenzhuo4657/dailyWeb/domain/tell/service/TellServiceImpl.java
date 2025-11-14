@@ -27,7 +27,7 @@ public class TellServiceImpl implements ITellService {
     }
 
     @Override
-    public NotifierResult sendNotify(Integer notifyId, String type, NotifierMessage message) {
+    public NotifierResult sendNotify(Long notifyId, String type, NotifierMessage message) {
 //        1,读取配置
         ConfigType configType = ConfigType.fromTag(type);
         String json = tellRepository.queryNotifyConfig(notifyId);

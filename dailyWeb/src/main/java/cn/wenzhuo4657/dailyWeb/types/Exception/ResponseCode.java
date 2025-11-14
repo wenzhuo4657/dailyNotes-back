@@ -9,9 +9,11 @@ package cn.wenzhuo4657.dailyWeb.types.Exception;
  * 5xx - 服务器错误
  */
 public enum ResponseCode {
-
-
-    ;
+    /**
+     * 资源不存在
+     */
+    RESOURCE_NOT_FOUND(404, "资源不存在"),
+    MISSING_CREDENTIALS(400,    "客户端请求参数错误、格式不正确、必填字段缺失等" );
     private String info;
     private Integer code;
 

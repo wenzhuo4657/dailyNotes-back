@@ -18,7 +18,7 @@ public interface DocsDao {
      * @param id 主键
      * @return 实例对象
      */
-    Docs queryById(Integer id);
+    Docs queryById(Long id);
 
   
     /**
@@ -68,7 +68,11 @@ public interface DocsDao {
      * @param id 主键
      * @return 影响行数
      */
-    int deleteById(Integer id);
+    int deleteById(Long id);
 
+
+    boolean isPermissions(@Param("docsId") Long docsId, @Param("userId") Long userId);
+
+    boolean isExist(@Param("docsId") Long docsId);
 }
 

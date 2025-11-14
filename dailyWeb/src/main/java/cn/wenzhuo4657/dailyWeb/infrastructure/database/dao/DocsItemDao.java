@@ -18,7 +18,7 @@ public interface DocsItemDao {
      * @param id 主键
      * @return 实例对象
      */
-    DocsItem queryById(Integer id);
+    DocsItem queryById(Long id);
 
   
     /**
@@ -68,8 +68,10 @@ public interface DocsItemDao {
      * @param id 主键
      * @return 影响行数
      */
-    int deleteById(Integer id);
+    int deleteById(Long id);
 
     DocsItem selectDocsItem(@Param("id") Long id);
+
+    List<DocsItem> queryByDocsId(Long docsId);
 }
 

@@ -7,7 +7,7 @@ public class UpdateCheckListDto {
 
     @NotNull
     @Min(value = 0)
-    private Long id;
+    private Long index;
 
     @NotNull
     private String title;
@@ -16,16 +16,16 @@ public class UpdateCheckListDto {
     }
 
     public UpdateCheckListDto(Long id, String title) {
-        this.id = id;
+        this.index = id;
         this.title = title;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIndex() {
+        return index;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIndex(Long index) {
+        this.index = index;
     }
 
     public String getTitle() {

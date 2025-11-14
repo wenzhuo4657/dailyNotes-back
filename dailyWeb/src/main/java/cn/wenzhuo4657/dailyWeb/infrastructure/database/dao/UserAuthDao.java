@@ -19,7 +19,7 @@ public interface UserAuthDao {
      * @param id 主键
      * @return 实例对象
      */
-    UserAuth queryById(Integer id);
+    UserAuth queryById(Long id);
 
   
     /**
@@ -69,8 +69,8 @@ public interface UserAuthDao {
      * @param id 主键
      * @return 影响行数
      */
-    int deleteById(Integer id);
+    int deleteById(Long id);
 
-    List<Docs> queryByUserIdAndtypeId(@Param("userId") Long userId, @Param("typeId") Integer typeId);
+    List<Docs> queryByUserIdAndtypeId(@Param("userId") Long userId, @Param("typeId") Long typeId);
 }
 

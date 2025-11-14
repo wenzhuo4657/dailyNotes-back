@@ -3,9 +3,9 @@
 <mapper namespace="cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.DocsItemDao">
 
     <resultMap type="cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.DocsItem" id="DocsItemMap">
-        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="BIGINT"/>
         <result property="index" column="index" jdbcType="INTEGER"/>
-        <result property="docsId" column="docs_id" jdbcType="INTEGER"/>
+        <result property="docsId" column="docs_id" jdbcType="BIGINT"/>
         <result property="itemContent" column="item_content" jdbcType="VARCHAR"/>
         <result property="itemField" column="item_Field" jdbcType="VARCHAR"/>
     </resultMap>
@@ -43,6 +43,11 @@
     </select>
     <select id="selectDocsItem" resultType="cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.DocsItem">
 
+    </select>
+    <select id="queryByDocsId" resultType="cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.DocsItem">
+        select *
+        from docs_item
+        where docs_id = #{docsId}
     </select>
 
     <!--新增所有列-->

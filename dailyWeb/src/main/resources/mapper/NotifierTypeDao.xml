@@ -3,8 +3,8 @@
 <mapper namespace="cn.wenzhuo4657.dailyWeb.infrastructure.database.dao.NotifierTypeDao">
 
     <resultMap type="cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.NotifierType" id="NotifierTypeMap">
-        <result property="id" column="id" jdbcType="INTEGER"/>
-        <result property="typeId" column="type_id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="BIGINT"/>
+        <result property="typeId" column="type_id" jdbcType="BIGINT"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="des" column="des" jdbcType="VARCHAR"/>
     </resultMap>

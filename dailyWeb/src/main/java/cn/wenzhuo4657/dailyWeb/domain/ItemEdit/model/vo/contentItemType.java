@@ -2,7 +2,7 @@ package cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo;
 
 
 /**
- * ItemType遵循ContentTyp表中类型，  todo 但目前未设置初始化逻辑
+ * ItemType遵循ContentTyp表中类型，
  */
 public   class   contentItemType{
 
@@ -50,8 +50,7 @@ public   class   contentItemType{
             }
 
 
-//            todo 这里可以拓展，启用哪些ItemType，
-//            具体来说，可以写到环境里，然后做成一个路由接口返回给前端，这样在解析contentItemType
+
 
             public static ItemType toItemType(int id) throws ClassNotFoundException {
                 for (ItemType itemType : ItemType.values()){

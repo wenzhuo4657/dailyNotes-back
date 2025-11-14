@@ -18,7 +18,7 @@ public interface NotifierTypeDao {
      * @param id 主键
      * @return 实例对象
      */
-    NotifierType queryById(Integer id);
+    NotifierType queryById(Long id);
 
   
     /**
@@ -68,7 +68,7 @@ public interface NotifierTypeDao {
      * @param id 主键
      * @return 影响行数
      */
-    int deleteById(Integer id);
+    int deleteById(Long id);
 
 
 }

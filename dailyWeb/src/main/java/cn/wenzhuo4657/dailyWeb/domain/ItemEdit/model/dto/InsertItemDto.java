@@ -13,7 +13,7 @@ public class InsertItemDto {
 
     @NotNull
     @Min(0)
-    private Integer contentNameId;
+    private Long docsId;
 
     @NotNull
     @Min(0)
@@ -23,18 +23,18 @@ public class InsertItemDto {
     public InsertItemDto() {
     }
 
-    public InsertItemDto(Integer contentNameId, Integer type, Date date) {
-        this.contentNameId = contentNameId;
+    public InsertItemDto(Long docsId, Integer type, Date date) {
+        this.docsId = docsId;
         this.type = type;
         this.date = date;
     }
 
-    public Integer getContentNameId() {
-        return contentNameId;
+    public Long getDocsId() {
+        return docsId;
     }
 
-    public void setContentNameId(Integer contentNameId) {
-        this.contentNameId = contentNameId;
+    public void setContentNameId(Long docsId) {
+        this.docsId = docsId;
     }
 
     public Integer getType() {

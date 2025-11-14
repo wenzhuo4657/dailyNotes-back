@@ -24,7 +24,7 @@ public class TypesService  implements   ITypesService{
     }
 
     @Override
-    public List<DocsDto> getContentNameIdById(Integer typeId,Long userId) {
+    public List<DocsDto> getContentNameIdById(Long typeId, Long userId) {
         List<Docs> list = typesRepository.getDocsIdByTypeId(userId, typeId);
         return list.stream()
                 .map(

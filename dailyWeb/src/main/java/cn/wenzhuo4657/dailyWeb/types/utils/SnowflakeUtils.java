@@ -11,7 +11,6 @@ public class SnowflakeUtils {
 
     public  static  long getSnowflakeId(){
         Snowflake snowflake = IdUtil.getSnowflake(1, 1);
-
         long id = snowflake.nextId();
         log.debug("Snowflake生成: {}",id);
         return  id;

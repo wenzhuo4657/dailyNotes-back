@@ -11,40 +11,40 @@ import java.io.Serializable;
 public class Notifier implements Serializable {
     private static final long serialVersionUID = 334212465223081884L;
 
-    private Integer id;
+    private Long id;
 
-    private Integer userId;
+    private Long userId;
 
-    private Integer notifierTypeId;
+    private Long notifierTypeId;
 
     private String name;
 
     private String configJson;
 
-    private Integer notifierId;
+    private Long notifierId;
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public Integer getNotifierTypeId() {
+    public Long getNotifierTypeId() {
         return notifierTypeId;
     }
 
-    public void setNotifierTypeId(Integer notifierTypeId) {
+    public void setNotifierTypeId(Long notifierTypeId) {
         this.notifierTypeId = notifierTypeId;
     }
 
@@ -64,11 +64,11 @@ public class Notifier implements Serializable {
         this.configJson = configJson;
     }
 
-    public Integer getNotifierId() {
+    public Long getNotifierId() {
         return notifierId;
     }
 
-    public void setNotifierId(Integer notifierId) {
+    public void setNotifierId(Long notifierId) {
         this.notifierId = notifierId;
     }
 

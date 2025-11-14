@@ -2,7 +2,7 @@ package cn.wenzhuo4657.dailyWeb.tigger.http;
 
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.ItemEditService;
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.dto.*;
-import cn.wenzhuo4657.dailyWeb.utils.AuthUtils;
+import cn.wenzhuo4657.dailyWeb.types.utils.AuthUtils;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -38,7 +38,7 @@ public class ItemController {
 
     @PostMapping("/update")
     public ResponseEntity<?> updateItem(@Valid @RequestBody UpdateItemDto body) {
-        boolean ok = itemEditService.updateItem(body);
+        boolean ok = itemEditService.updateItem(body,AuthUtils.getLoginId());
         return ResponseEntity.ok(Map.of("success", ok));
     }
 

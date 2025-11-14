@@ -11,38 +11,39 @@ import java.io.Serializable;
 public class DocsItem implements Serializable {
     private static final long serialVersionUID = -16086469790491786L;
 
-    private Integer id;
+    private Long id;
 
-    private Integer index;
+    private Long index;
 
-    private Integer docsId;
+    private Long docsId;
 
     private String itemContent;
 
     private String itemField;
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getIndex() {
+
+    public Long getIndex() {
         return index;
     }
 
-    public void setIndex(Integer index) {
+    public void setIndex(Long index) {
         this.index = index;
     }
 
-    public Integer getDocsId() {
+    public Long getDocsId() {
         return docsId;
     }
 
-    public void setDocsId(Integer docsId) {
+    public void setDocsId(Long docsId) {
         this.docsId = docsId;
     }
 
@@ -61,6 +62,5 @@ public class DocsItem implements Serializable {
     public void setItemField(String itemField) {
         this.itemField = itemField;
     }
-
 }
 

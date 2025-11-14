@@ -32,7 +32,7 @@ public class TellServiceTest {
         NotifierMessage message=new NotifierMessage();
         message.setTitle("测试通知");
         message.setContent("这是一个测试通知内容。");
-        NotifierResult result = tellService.sendNotify(0, "gmail", message);
+        NotifierResult result = tellService.sendNotify(0L, "gmail", message);
         System.out.println(result);
     }
 
@@ -44,7 +44,7 @@ public class TellServiceTest {
         message.setContent("这是一个测试通知内容。");
 
         message.setFile(getFile());
-        NotifierResult result = tellService.sendNotify(0, "gmail", message);
+        NotifierResult result = tellService.sendNotify(0L, "gmail", message);
         System.out.println(result);
     }
 

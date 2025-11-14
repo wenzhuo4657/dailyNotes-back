@@ -5,7 +5,7 @@ import cn.wenzhuo4657.dailyWeb.domain.Types.ITypesService;
 
 import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.DocsDto;
 import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.TypeDto;
-import cn.wenzhuo4657.dailyWeb.utils.AuthUtils;
+import cn.wenzhuo4657.dailyWeb.types.utils.AuthUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +30,7 @@ public class TypeController {
 
 
     @RequestMapping(value = "/getContentIdsByTypes")
-    public List<DocsDto> getTypesWithItems(@RequestParam("id") Integer typeId) {
+    public List<DocsDto> getTypesWithItems(@RequestParam("id") Long typeId) {
         return typesService.getContentNameIdById(typeId,AuthUtils.getLoginId());
     }
 

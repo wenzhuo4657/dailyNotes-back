@@ -15,7 +15,7 @@ public interface ITellRepository {
      *
      */
 
-    String queryNotifyConfig(Integer notifyId);
+    String queryNotifyConfig(Long notifyId);
 
 
     /**
@@ -23,5 +23,5 @@ public interface ITellRepository {
      */
     List<Notifier> queryUserNotifyConfig(Long userId);
 
-    NotifierType queryNotifierTypeById(Integer notifierTypeId);
+    NotifierType queryNotifierTypeById(Long notifierTypeId);
 }

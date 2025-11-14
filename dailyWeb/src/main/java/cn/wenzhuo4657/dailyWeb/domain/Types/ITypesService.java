@@ -1,6 +1,5 @@
 package cn.wenzhuo4657.dailyWeb.domain.Types;
 
-import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.ContentNameDto;
 import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.DocsDto;
 import cn.wenzhuo4657.dailyWeb.domain.Types.model.dto.TypeDto;
 
@@ -18,5 +17,5 @@ public interface ITypesService {
      * 根据类型id获取相应用户的文档id
      * @return
      */
-    List<DocsDto> getContentNameIdById(Integer typeId,Long userId);
+    List<DocsDto> getContentNameIdById(Long typeId, Long userId);
 }

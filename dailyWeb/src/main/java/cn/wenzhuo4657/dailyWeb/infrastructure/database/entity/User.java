@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class User implements Serializable {
     private static final long serialVersionUID = 202532437837927539L;
 
-    private Integer id;
+    private Long id;
 
     private Long userId;
 
@@ -26,11 +26,11 @@ public class User implements Serializable {
     private String avatarUrl;
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

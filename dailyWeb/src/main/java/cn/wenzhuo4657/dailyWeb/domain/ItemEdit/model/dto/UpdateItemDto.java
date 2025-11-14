@@ -9,7 +9,7 @@ public class UpdateItemDto {
 
     @NotNull
     @Min(value = 0)
-    private Integer id;
+    private Long index;
 
     @NotNull
     @Min(0)
@@ -19,8 +19,8 @@ public class UpdateItemDto {
     private String content;
 
 
-    public UpdateItemDto(Integer id, Integer type, String content) {
-        this.id = id;
+    public UpdateItemDto(Long id, Integer type, String content) {
+        this.index = id;
         this.type = type;
         this.content = content;
     }
@@ -28,12 +28,12 @@ public class UpdateItemDto {
     public UpdateItemDto() {
     }
 
-    public Integer getId() {
-        return id;
+    public Long getIndex() {
+        return index;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIndex(Long index) {
+        this.index = index;
     }
 
     public String getContent() {

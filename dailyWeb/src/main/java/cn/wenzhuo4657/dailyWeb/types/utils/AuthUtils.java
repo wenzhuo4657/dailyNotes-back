@@ -1,4 +1,4 @@
-package cn.wenzhuo4657.dailyWeb.utils;
+package cn.wenzhuo4657.dailyWeb.types.utils;
 
 import cn.dev33.satoken.stp.StpUtil;
 import cn.wenzhuo4657.dailyWeb.domain.auth.model.dto.UserDto;

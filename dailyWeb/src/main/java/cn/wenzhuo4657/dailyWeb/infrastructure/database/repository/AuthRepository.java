@@ -65,6 +65,7 @@ public class AuthRepository  implements IAuthRepository {
             Docs docs = new Docs();
             docs.setName("default");
             docs.setTypeId(docsType.getTypeId());
+
             docs.setCreateTime(simpleDateFormat.format(new Date()));
             docs.setUpdateTime(simpleDateFormat.format(new Date()));
             docs.setUserId(user.getUserId());
