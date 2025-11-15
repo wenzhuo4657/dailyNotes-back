@@ -33,26 +33,46 @@ public class ItemEditRepository implements IItemEditRepository {
     }
 
     @Override
-    public boolean updateItem(UpdateItemDto itemDto, Integer type, Long userId) {
-//        1,检查权限
-//        2.修改
-        return false;
+    public boolean updateItem(Long index, String content) {
+
+        DocsItem item=new DocsItem();
+        item.setIndex(index);
+        item.setItemContent(content);
+        docsItemDao.update(item);
+        return true;
     }
 
+    @Override
+    public boolean isPermissions(Long docsId, Long userId) {
+        boolean permissions = docsDao.isPermissions(docsId, userId);
+        if (permissions){
+            return true;
+        }else {
+            return false;
+        }
 
+
+
+    }
 
     @Override
-    public boolean addItem(Long docs_Id, Integer type, Long userId) {
-        return false;
+    public boolean addItem(DocsItem docs) {
+        docsItemDao.insert(docs);
+        return true;
     }
 
     @Override
     public DocsItem selectDocsItem(Long id) {
-        return null;
+        return  docsItemDao.queryByIndex(id);
     }
 
     @Override
     public void updateField(Long id, String field) {
-
+        DocsItem item=new DocsItem();
+        item.setIndex(id);
+        item.setItemContent(field);
+        docsItemDao.update(item);
     }
+
+
 }

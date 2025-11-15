@@ -16,17 +16,16 @@ public class InsertItemDto {
     private Long docsId;
 
     @NotNull
-    @Min(0)
-    private Integer type;
-    private Date date; // 可选字段
+
+    private String typeName;
 
     public InsertItemDto() {
     }
 
-    public InsertItemDto(Long docsId, Integer type, Date date) {
+    public InsertItemDto(Long docsId, String type) {
         this.docsId = docsId;
-        this.type = type;
-        this.date = date;
+        this.typeName = type;
+
     }
 
     public Long getDocsId() {
@@ -37,20 +36,16 @@ public class InsertItemDto {
         this.docsId = docsId;
     }
 
-    public Integer getType() {
-        return type;
+    public void setDocsId(Long docsId) {
+        this.docsId = docsId;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
+    public String getTypeName() {
+        return typeName;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 }
 

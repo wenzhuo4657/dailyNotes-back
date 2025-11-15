@@ -21,7 +21,7 @@ public interface IItemEditService {
     /**
      * 修改item
      */
-    boolean updateItem(UpdateItemDto dto,Long userId);
+    boolean updateItem(UpdateItemDto dto);
 
     /**
      * 获取item

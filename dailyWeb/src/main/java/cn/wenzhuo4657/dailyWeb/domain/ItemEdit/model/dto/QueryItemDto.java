@@ -19,7 +19,7 @@ public class QueryItemDto {
 
     public QueryItemDto(Long docsId, String typeName) {
         this.docsId = docsId;
-        this.typeName=typeName
+        this.typeName=typeName;
 
     }
 

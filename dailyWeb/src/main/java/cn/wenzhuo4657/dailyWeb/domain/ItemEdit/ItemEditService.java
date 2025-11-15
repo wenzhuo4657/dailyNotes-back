@@ -8,6 +8,7 @@ import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.strategy.TypeStrategy;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.DocsItem;
 import cn.wenzhuo4657.dailyWeb.types.Exception.AppException;
 import cn.wenzhuo4657.dailyWeb.types.Exception.ResponseCode;
+import cn.wenzhuo4657.dailyWeb.types.utils.SnowflakeUtils;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,22 +38,34 @@ public  class ItemEditService implements IItemEditService,CheckListService {
     @Override
     public boolean insertItem(InsertItemDto dto,Long userId) {
 
-        //        1，检查权限
-//        2，操作数据库
-//      todo  这是为了方便后续需要同时修改多个item，尽量让数据库方法单一职责
+        try {
 
-        return mdRepository.addItem(dto.getDocsId(),dto.getType(),userId);
+            if (!mdRepository.isPermissions(dto.getDocsId(),userId)){
+                throw  new AppException(ResponseCode.NOT_PERMISSIONS);
+            }
+            String filed = strategy.toFiled(dto.getTypeName());
+
+            DocsItem item=new DocsItem();
+            item.setDocsId(dto.getDocsId());
+            item.setItemField(filed);
+            item.setItemContent("");
+            item.setIndex(SnowflakeUtils.getSnowflakeId());
+
+            return mdRepository.addItem(item);
+
+        } catch (ClassNotFoundException e) {
+            throw new AppException(ResponseCode.MISSING_CREDENTIALS);
+        }
+
 
     }
 
     @Override
-    public boolean updateItem(UpdateItemDto dto,Long userId) {
-//        1，检查权限
-//        2，操作数据库
-//      todo  这是为了方便后续需要同时修改多个item，尽量让数据库方法单一职责
+    public boolean updateItem(UpdateItemDto dto) {
 
-        mdRepository.updateItem( dto,dto.getType(),userId);
-        return true;
+            return mdRepository.updateItem(dto.getIndex(),dto.getContent());
+
+
     }
 
     @Override
@@ -81,7 +94,7 @@ public  class ItemEditService implements IItemEditService,CheckListService {
             Map<String, String> map = DocsItemFiled.toMap(docsItem.getItemField());
             map.put(DocsItemFiled.ItemFiled.title.getFiled(), params.getTitle());
             String filed = DocsItemFiled.toFiled(map);
-            mdRepository.updateField(docsItem.getId(),filed );
+            mdRepository.updateField(docsItem.getIndex(),filed );
         }catch (ClassNotFoundException e){
             log.error("不支持的属性");
             return false;
@@ -103,7 +116,7 @@ public  class ItemEditService implements IItemEditService,CheckListService {
             DateTimeFormatter TS = DateTimeFormatter.ofPattern("yyyyMMdd");
             map.put(DocsItemFiled.ItemFiled.data.getFiled(), LocalDateTime.now().format(TS));
             String filed = DocsItemFiled.toFiled(map);
-            mdRepository.updateField(docsItem.getId(),filed );
+            mdRepository.updateField(docsItem.getDocsId(),filed );
         }catch (ClassNotFoundException e){
             log.error("不支持的属性");
             return false;

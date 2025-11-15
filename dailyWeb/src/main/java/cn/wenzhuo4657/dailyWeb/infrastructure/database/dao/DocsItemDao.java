@@ -73,5 +73,7 @@ public interface DocsItemDao {
     DocsItem selectDocsItem(@Param("id") Long id);
 
     List<DocsItem> queryByDocsId(Long docsId);
+
+    DocsItem queryByIndex(@Param("index") Long id);
 }
 

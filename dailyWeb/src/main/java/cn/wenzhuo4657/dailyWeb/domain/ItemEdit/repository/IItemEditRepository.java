@@ -13,12 +13,12 @@ public interface IItemEditRepository {
 
 
 
-    boolean updateItem(UpdateItemDto itemDto, Integer type, Long userId);
 
 
 
 
-    boolean addItem(Long docs_Id, Integer type, Long userId);
+
+    boolean addItem(DocsItem docs_Id);
 
 
     DocsItem selectDocsItem(Long id);
@@ -26,7 +26,7 @@ public interface IItemEditRepository {
     void updateField(Long id, String field);
 
 
+    boolean isPermissions(Long docsId, Long userId);
 
-
-
+    boolean updateItem(Long index, String content);
 }

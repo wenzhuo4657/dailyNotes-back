@@ -11,9 +11,7 @@ public class UpdateItemDto {
     @Min(value = 0)
     private Long index;
 
-    @NotNull
-    @Min(0)
-    private Integer type;
+
 
     @NotNull
     private String content;
@@ -21,7 +19,7 @@ public class UpdateItemDto {
 
     public UpdateItemDto(Long id, Integer type, String content) {
         this.index = id;
-        this.type = type;
+
         this.content = content;
     }
 
@@ -44,13 +42,7 @@ public class UpdateItemDto {
         this.content = content;
     }
 
-    public Integer getType() {
-        return type;
-    }
 
-    public void setType(Integer type) {
-        this.type = type;
-    }
 
 
 }

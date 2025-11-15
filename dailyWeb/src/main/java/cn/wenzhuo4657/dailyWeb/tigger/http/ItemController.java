@@ -38,7 +38,7 @@ public class ItemController {
 
     @PostMapping("/update")
     public ResponseEntity<?> updateItem(@Valid @RequestBody UpdateItemDto body) {
-        boolean ok = itemEditService.updateItem(body,AuthUtils.getLoginId());
+        boolean ok = itemEditService.updateItem(body);
         return ResponseEntity.ok(Map.of("success", ok));
     }
 
