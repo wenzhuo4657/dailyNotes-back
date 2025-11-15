@@ -27,7 +27,7 @@ public class ItemController {
     @PostMapping("/get")
     public List<ItemDto> getItems(@Valid @RequestBody QueryItemDto params) {
         
-        return itemEditService.getItem(params, AuthUtils.getLoginId());
+        return itemEditService.getItem(params);
     }
 
     @PostMapping("/insert")

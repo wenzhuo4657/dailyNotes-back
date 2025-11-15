@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ContentItemFiled {
+public class DocsItemFiled {
 
-    private static final Logger log = LoggerFactory.getLogger(ContentItemFiled.class);
+    private static final Logger log = LoggerFactory.getLogger(DocsItemFiled.class);
 
     public static final String FILED_SPLIT_1=":";
     public static final String FILED_SPLIT_2=" ";

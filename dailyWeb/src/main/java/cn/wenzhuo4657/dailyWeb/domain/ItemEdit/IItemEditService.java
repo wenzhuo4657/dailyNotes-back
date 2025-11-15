@@ -26,5 +26,5 @@ public interface IItemEditService {
     /**
      * 获取item
      */
-    List<ItemDto> getItem(QueryItemDto dto,Long userId);
+    List<ItemDto> getItem(QueryItemDto dto);
 }
