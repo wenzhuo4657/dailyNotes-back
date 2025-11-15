@@ -1,8 +1,6 @@
 package cn.wenzhuo4657.dailyWeb.domain.ItemEdit.strategy.function;
 
 import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.DocsItemType;
-import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.model.vo.contentItemType;
-import cn.wenzhuo4657.dailyWeb.domain.ItemEdit.strategy.function.typeDaily.ContentItem;
 import cn.wenzhuo4657.dailyWeb.infrastructure.database.entity.DocsItem;
 
 @FunctionalInterface
