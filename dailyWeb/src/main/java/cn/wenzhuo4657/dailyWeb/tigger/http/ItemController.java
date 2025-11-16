@@ -25,9 +25,8 @@ public class ItemController {
     private ItemEditService itemEditService;
 
     @PostMapping("/get")
-    public List<ItemDto> getItems(@Valid @RequestBody QueryItemDto params) {
-        
-        return itemEditService.getItem(params);
+    public ResponseEntity<?> getItems(@Valid @RequestBody QueryItemDto params) {
+        return ResponseEntity.ok(itemEditService.getItem(params));
     }
 
     @PostMapping("/insert")
